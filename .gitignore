@@ -1,0 +1,41 @@
+# Secrets
+.env
+
+# Database
+agent/data/*.db
+agent/data/*.db-wal
+agent/data/*.db-shm
+
+# Logs
+agent/logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (dashboard)
+node_modules/
+dashboard/dist/
+
+# Reference files
+claude-code-ref/
+mt5-bot/

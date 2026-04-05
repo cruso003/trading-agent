@@ -1,0 +1,23 @@
+# GoldTrader AI Agent — Python Dependencies
+
+# MT5
+MetaTrader5>=5.0.45
+
+# AI APIs
+anthropic>=0.39.0
+openai>=1.50.0
+requests>=2.31.0
+
+# Configuration
+python-dotenv>=1.0.0
+
+# API Gateway (Phase 2)
+fastapi>=0.115.0
+uvicorn>=0.30.0
+sse-starlette>=2.1.0
+
+# Scheduling
+schedule>=1.2.0
+
+# Telegram
+# (uses requests, no extra dependency)
