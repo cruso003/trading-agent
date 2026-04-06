@@ -238,6 +238,50 @@ def get_ema_direction(candles: list, fast_period: int = 9, slow_period: int = 21
     return "NEUTRAL"
 
 
+def get_ema_consecutive_bars(candles: list, fast_period: int = 9, slow_period: int = 21) -> int:
+    """
+    Count how many consecutive recent candles have held the same EMA direction.
+    Returns 0 if direction is NEUTRAL or data is insufficient.
+    A value of 1 means the direction just flipped on the last candle.
+    """
+    if not candles or len(candles) < slow_period + 1:
+        return 0
+
+    ema_fast = calculate_ema(candles, fast_period)
+    ema_slow = calculate_ema(candles, slow_period)
+
+    if not ema_fast or not ema_slow:
+        return 0
+
+    # Build per-bar direction from the point both EMAs are valid
+    directions = []
+    for f, s in zip(ema_fast, ema_slow):
+        if f is None or s is None:
+            directions.append("NEUTRAL")
+        elif f > s:
+            directions.append("BUY")
+        elif f < s:
+            directions.append("SELL")
+        else:
+            directions.append("NEUTRAL")
+
+    if not directions:
+        return 0
+
+    current = directions[-1]
+    if current == "NEUTRAL":
+        return 0
+
+    count = 0
+    for d in reversed(directions):
+        if d == current:
+            count += 1
+        else:
+            break
+
+    return count
+
+
 # ------------------------------------------------------------------
 # Session Levels
 # ------------------------------------------------------------------
@@ -324,6 +368,7 @@ def analyse_timeframe(candles: list, tf_name: str) -> dict:
         return {
             "timeframe": tf_name,
             "direction": "NEUTRAL",
+            "consecutive_bars": 0,
             "strength": 0.0,
             "rsi": 50.0,
             "macd": {"macd_line": 0, "signal_line": 0, "histogram": 0, "slope": "flat"},
@@ -332,6 +377,7 @@ def analyse_timeframe(candles: list, tf_name: str) -> dict:
         }
 
     direction = get_ema_direction(candles)
+    consecutive_bars = get_ema_consecutive_bars(candles)
     strength = calculate_strength(candles)
     rsi = calculate_rsi(candles)
     macd = calculate_macd(candles)
@@ -341,6 +387,7 @@ def analyse_timeframe(candles: list, tf_name: str) -> dict:
     return {
         "timeframe": tf_name,
         "direction": direction,
+        "consecutive_bars": consecutive_bars,
         "strength": strength,
         "rsi": rsi,
         "macd": macd,

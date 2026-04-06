@@ -1,0 +1,9 @@
+.analytics-page {
+  padding: 0;
+}
+.loading-state {
+  text-align: center;
+  padding: 60px;
+  color: var(--text-muted);
+  font-style: italic;
+}

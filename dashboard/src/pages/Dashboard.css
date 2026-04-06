@@ -1,0 +1,26 @@
+.dashboard {
+  padding: 0;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "status controls"
+    "trades analysis";
+  gap: 16px;
+}
+.grid-status { grid-area: status; }
+.grid-controls { grid-area: controls; }
+.grid-trades { grid-area: trades; }
+.grid-analysis { grid-area: analysis; }
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "status"
+      "controls"
+      "trades"
+      "analysis";
+  }
+}

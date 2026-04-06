@@ -150,11 +150,17 @@ def time_to_next_window(
         }
 
 
-def get_window_name(window_id: Optional[str]) -> str:
-    """Human-readable window name."""
+def get_window_name(
+    window_id: Optional[str],
+    w1_start: str = "23:00",
+    w1_end: str = "07:00",
+    w2_start: str = "08:00",
+    w2_end: str = "16:00",
+) -> str:
+    """Human-readable window name using actual configured times."""
     names = {
-        WINDOW_1_NAME: "Asia Open (23:00-01:00)",
-        WINDOW_2_NAME: "London-NY Overlap (12:00-14:00)",
+        WINDOW_1_NAME: f"Asia Open ({w1_start}-{w1_end})",
+        WINDOW_2_NAME: f"London-NY Overlap ({w2_start}-{w2_end})",
     }
     return names.get(window_id, "Outside Windows")
 

@@ -43,6 +43,7 @@ def run_prefilter(
     # ---------------------------------------------------------------
     h4 = indicators.get("H4", {})
     h1 = indicators.get("H1", {})
+    m30 = indicators.get("M30", {})
     m15 = indicators.get("M15", {})
     h4_dir = h4.get("direction", "NEUTRAL")
     h1_dir = h1.get("direction", "NEUTRAL")
@@ -54,9 +55,39 @@ def run_prefilter(
         return (False, reason)
 
     # ---------------------------------------------------------------
+    # Check 1b: H4 must have held its direction for at least 2 bars
+    # (prevents trading a fresh H4 flip before it's confirmed)
+    # ---------------------------------------------------------------
+    h4_consecutive = h4.get("consecutive_bars", 0)
+    if h4_dir != "NEUTRAL" and h4_consecutive < 2:
+        reason = f"htf_fresh_flip: H4={h4_dir} only {h4_consecutive} bar(s) old"
+        logger.info(f"FAIL | {reason}")
+        return (False, reason)
+
+    # ---------------------------------------------------------------
+    # Check 1c: M30 sequence must not show strong momentum against H4
+    # Weak/failed counter candles (body_ratio <= 60%) are pullbacks —
+    # they're noise and don't count against the trend.
+    # Only strong counter candles (body_ratio > 60%) signal real
+    # momentum opposition. Block if 2+ strong counter bars in last 3.
+    # ---------------------------------------------------------------
+    STRONG_BODY = 60.0
+    m30_sequence = indicators.get("m30_sequence", [])
+    if h4_dir != "NEUTRAL" and len(m30_sequence) >= 3:
+        strong_conflicts = 0
+        for c in m30_sequence[-3:]:
+            candle_dir = "BUY" if c.get("direction") == "BULL" else "SELL"
+            if candle_dir != h4_dir and c.get("body_ratio", 0) > STRONG_BODY:
+                strong_conflicts += 1
+
+        if strong_conflicts >= 2:
+            reason = f"m30_sequence_conflict: {strong_conflicts} strong counter-H4 bars in last 3 M30 candles"
+            logger.info(f"FAIL | {reason}")
+            return (False, reason)
+
+    # ---------------------------------------------------------------
     # Check 2: M30 body strength not in dead zone (40-55%)
     # ---------------------------------------------------------------
-    m30 = indicators.get("M30", {})
     m30_body = m30.get("body_ratio", 50.0)
 
     if 40.0 <= m30_body <= 55.0:

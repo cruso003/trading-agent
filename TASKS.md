@@ -364,16 +364,16 @@ PHASE 1 — Agent Core (Headless)
 
 ## Phase 3: Dashboard
 
-⬜ TASK-023: Vite + React + Tailwind setup
-⬜ TASK-024: useSSE hook
-⬜ TASK-025: AgentStatus component
-⬜ TASK-026: TradeCard component
-⬜ TASK-027: PriceChart component
-⬜ TASK-028: AnalysisPanel component
-⬜ TASK-029: PerformanceCharts component
-⬜ TASK-030: Controls component
-⬜ TASK-031: Dashboard page assembly
-⬜ TASK-032: Analytics page
+✅ TASK-023: Vite + React + TypeScript setup (2026-04-06)
+✅ TASK-024: useSSE hook (2026-04-06)
+✅ TASK-025: AgentStatus component (2026-04-06)
+✅ TASK-026: TradeCard component (2026-04-06)
+✅ TASK-027: PriceChart component — merged into PerformanceCharts (2026-04-06)
+✅ TASK-028: AnalysisPanel component (2026-04-06)
+✅ TASK-029: PerformanceCharts component (2026-04-06)
+✅ TASK-030: Controls component (2026-04-06)
+✅ TASK-031: Dashboard page assembly (2026-04-06)
+✅ TASK-032: Analytics page (2026-04-06)
 ⬜ TASK-033: Full system integration test
 
 ---

@@ -1,0 +1,70 @@
+.analysis-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
+.analysis-panel h3 {
+  margin: 0 0 16px 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+.decisions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.decision-item {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.decision-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.grade-badge {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.decision-dir {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+}
+.decision-conf {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+.decision-time {
+  margin-left: auto;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+.decision-reasoning {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+.gpt-badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.gpt-badge.confirm {
+  background: rgba(0, 255, 136, 0.15);
+  color: var(--accent-green);
+}
+.gpt-badge.challenge {
+  background: rgba(255, 140, 0, 0.15);
+  color: var(--accent-orange);
+}

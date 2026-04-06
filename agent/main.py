@@ -183,7 +183,7 @@ def main():
                 "minutes_into_window": mins_in,
                 "session": session,
             }
-            logger.info(f"WINDOW: {get_window_name(window)} | {mins_in}min in | session={session}")
+            logger.info(f"WINDOW: {get_window_name(window, config.window_1_start, config.window_1_end, config.window_2_start, config.window_2_end)} | {mins_in}min in | session={session}")
             db.update_agent_state({"status": "watching", "current_window": window})
 
             # ----------------------------------------------------------
@@ -452,7 +452,7 @@ def main():
                     "tp1_level": analysis["tp1"],
                     "tp2_level": analysis["tp2"],
                     "sl_level": analysis["sl"],
-                    "window_name": get_window_name(window),
+                    "window_name": get_window_name(window, config.window_1_start, config.window_1_end, config.window_2_start, config.window_2_end),
                     "confidence": analysis.get("confidence"),
                     "reasoning": analysis.get("reasoning"),
                     "account_type": config.active_account,
