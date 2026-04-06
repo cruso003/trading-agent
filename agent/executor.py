@@ -12,9 +12,6 @@ from typing import Optional
 
 logger = logging.getLogger("executor")
 
-SYMBOL = "XAUUSD"
-MAGIC_NUMBER = 234001
-
 
 class Executor:
     """
@@ -35,6 +32,8 @@ class Executor:
         self.db = db
         self.notifier = notifier
         self.config = config
+        self.symbol = config.symbol
+        self.magic = config.magic_number
         self._monitor_threads = {}  # ticket_id -> thread
 
     def place_trade(
@@ -74,14 +73,14 @@ class Executor:
             # Use TP2 as the MT5 take profit (TP1 managed by monitor thread)
             request = {
                 "action": mt5.TRADE_ACTION_DEAL,
-                "symbol": SYMBOL,
+                "symbol": self.symbol,
                 "volume": lot_size,
                 "type": order_type,
                 "price": price,
                 "sl": sl,
                 "tp": tp2,
                 "deviation": 20,
-                "magic": MAGIC_NUMBER,
+                "magic": self.magic,
                 "comment": comment[:31] if comment else "GoldTrader",
                 "type_time": mt5.ORDER_TIME_GTC,
                 "type_filling": mt5.ORDER_FILLING_IOC,
@@ -139,13 +138,13 @@ class Executor:
 
             request = {
                 "action": mt5.TRADE_ACTION_DEAL,
-                "symbol": SYMBOL,
+                "symbol": self.symbol,
                 "volume": position.volume,
                 "type": close_type,
                 "position": ticket_id,
                 "price": price,
                 "deviation": 20,
-                "magic": MAGIC_NUMBER,
+                "magic": self.magic,
                 "comment": "GoldTrader close",
                 "type_time": mt5.ORDER_TIME_GTC,
                 "type_filling": mt5.ORDER_FILLING_IOC,
@@ -181,13 +180,13 @@ class Executor:
 
             request = {
                 "action": mt5.TRADE_ACTION_DEAL,
-                "symbol": SYMBOL,
+                "symbol": self.symbol,
                 "volume": round(volume, 2),
                 "type": close_type,
                 "position": ticket_id,
                 "price": price,
                 "deviation": 10,
-                "magic": MAGIC_NUMBER,
+                "magic": self.magic,
                 "comment": "GoldTrader TP1",
                 "type_time": mt5.ORDER_TIME_GTC,
                 "type_filling": mt5.ORDER_FILLING_IOC,
@@ -216,11 +215,11 @@ class Executor:
 
             request = {
                 "action": mt5.TRADE_ACTION_SLTP,
-                "symbol": SYMBOL,
+                "symbol": self.symbol,
                 "position": ticket_id,
                 "sl": new_sl,
                 "tp": position.tp,
-                "magic": MAGIC_NUMBER,
+                "magic": self.magic,
             }
 
             result = mt5.order_send(request)

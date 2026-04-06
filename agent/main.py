@@ -114,6 +114,7 @@ def main():
     logger.info("=" * 60)
     logger.info("GoldTrader AI Agent starting")
     logger.info(f"Account: {config.active_account}")
+    logger.info(f"Symbol: {config.symbol}")
     logger.info(f"Claude model: {config.claude_model}")
     logger.info(f"GPT model: {config.gpt_model}")
     if args.dry_run:
@@ -178,13 +179,14 @@ def main():
             # Step 1: Fetch market data
             # ----------------------------------------------------------
             logger.info("Fetching market data...")
-            candles_h4 = market.get_candles(timeframe="H4", count=50)
-            candles_h1 = market.get_candles(timeframe="H1", count=60)
-            candles_m30 = market.get_candles(timeframe="M30", count=30)
-            candles_m15 = market.get_candles(timeframe="M15", count=30)
-            price_info = market.get_current_price()
+            sym = config.symbol
+            candles_h4 = market.get_candles(symbol=sym, timeframe="H4", count=50)
+            candles_h1 = market.get_candles(symbol=sym, timeframe="H1", count=60)
+            candles_m30 = market.get_candles(symbol=sym, timeframe="M30", count=30)
+            candles_m15 = market.get_candles(symbol=sym, timeframe="M15", count=30)
+            price_info = market.get_current_price(symbol=sym)
             account_info = market.get_account_info()
-            open_positions = market.get_open_positions()
+            open_positions = market.get_open_positions(symbol=sym, magic=config.magic_number)
 
             if not candles_m15 or not price_info:
                 logger.warning("No market data available, sleeping 60s")

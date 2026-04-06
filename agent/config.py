@@ -80,6 +80,10 @@ class Config:
     # --- Active Account ---
     active_account: str  # "demo" or "live"
 
+    # --- Symbol ---
+    symbol: str
+    magic_number: int
+
     # --- Risk Parameters ---
     max_daily_loss_usd: float
     max_positions: int
@@ -177,6 +181,10 @@ def load_config() -> Config:
 
         # Active Account
         active_account=active,
+
+        # Symbol
+        symbol=_get("SYMBOL", "XAUUSDm"),
+        magic_number=_get_int("MAGIC_NUMBER", 234001),
 
         # Risk Parameters
         max_daily_loss_usd=_get_float("MAX_DAILY_LOSS_USD", 50.0),

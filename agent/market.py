@@ -11,9 +11,8 @@ from typing import Optional
 
 logger = logging.getLogger("market")
 
-# Symbol is always XAUUSD
-SYMBOL = "XAUUSD"
-MAGIC_NUMBER = 234001
+# Default symbol — overridden by config.symbol at runtime
+DEFAULT_SYMBOL = "XAUUSDm"
 
 # MT5 timeframe constants (will be imported from MetaTrader5 at runtime)
 # Defined here as fallback values matching MT5 constants
@@ -118,7 +117,7 @@ class Market:
             self._connected = False
             return False
 
-    def get_candles(self, symbol: str = SYMBOL, timeframe: str = "M15", count: int = 100) -> list:
+    def get_candles(self, symbol: str = DEFAULT_SYMBOL, timeframe: str = "M15", count: int = 100) -> list:
         """
         Fetch OHLCV candles from MT5.
         Returns list of dicts with: time, open, high, low, close, volume
@@ -148,7 +147,7 @@ class Market:
             logger.error(f"get_candles failed: {e}")
             return []
 
-    def get_current_price(self, symbol: str = SYMBOL) -> dict:
+    def get_current_price(self, symbol: str = DEFAULT_SYMBOL) -> dict:
         """Get current bid/ask/spread."""
         try:
             mt5 = self._import_mt5()
@@ -189,11 +188,11 @@ class Market:
             logger.error(f"get_account_info failed: {e}")
             return {}
 
-    def get_open_positions(self, magic: int = MAGIC_NUMBER) -> list:
+    def get_open_positions(self, symbol: str = DEFAULT_SYMBOL, magic: int = 234001) -> list:
         """Get all open positions with our magic number."""
         try:
             mt5 = self._import_mt5()
-            positions = mt5.positions_get(symbol=SYMBOL)
+            positions = mt5.positions_get(symbol=symbol)
             if positions is None:
                 return []
 
