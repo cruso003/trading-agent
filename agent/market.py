@@ -254,10 +254,11 @@ class Market:
             logger.warning(f"get_economic_calendar failed: {e}")
             return []
 
-    def wait_for_next_m15(self) -> None:
+    def wait_for_next_m15(self, stop_check=None) -> None:
         """
         Block until the next M15 candle closes.
         Calculates remaining seconds to next 15-minute boundary.
+        stop_check: optional callable — if it returns True, exits early (for graceful shutdown).
         """
         now = datetime.now(timezone.utc)
         current_minute = now.minute
@@ -275,4 +276,8 @@ class Market:
             seconds_to_wait = 1
 
         logger.debug(f"Waiting {seconds_to_wait}s for next M15 close")
-        time.sleep(seconds_to_wait)
+        for _ in range(seconds_to_wait):
+            if stop_check and stop_check():
+                logger.debug("Wait interrupted by shutdown signal")
+                return
+            time.sleep(1)

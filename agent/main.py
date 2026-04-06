@@ -264,7 +264,7 @@ def main():
             if not pf_passed:
                 logger.info(f"Prefilter FAIL: {pf_reason}")
                 # Wait for next M15 candle
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             logger.info("Prefilter PASS — proceeding to news check")
@@ -285,7 +285,7 @@ def main():
             if news_context["should_skip"]:
                 logger.info(f"News SKIP: {news_context['summary']}")
                 notifier.send_news_alert(news_context["summary"])
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             logger.info(f"News OK: risk={news_context['risk_level']}")
@@ -338,7 +338,7 @@ def main():
                 decision_record["executed"] = False
                 db.log_decision(decision_record)
                 logger.info(f"SKIP: {analysis.get('skip_reason', 'No reason')}")
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             # ----------------------------------------------------------
@@ -349,7 +349,7 @@ def main():
                 db.log_decision(decision_record)
                 notifier.send_b_alert(analysis)
                 logger.info("Grade B — Telegram alert sent, no execution")
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             # ----------------------------------------------------------
@@ -371,7 +371,7 @@ def main():
                 analysis["gpt_reasoning"] = gpt_reasoning
                 notifier.send_gpt_challenge(analysis)
                 logger.info("GPT CHALLENGE — downgraded to B, alert sent")
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             # ----------------------------------------------------------
@@ -394,7 +394,7 @@ def main():
                 decision_id = db.log_decision(decision_record)
                 notifier.send_risk_blocked(risk_reason, decision_id)
                 logger.info(f"Risk BLOCKED: {risk_reason}")
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             # ----------------------------------------------------------
@@ -412,7 +412,7 @@ def main():
                 decision_record["executed"] = False
                 decision_record["execution_reason"] = "dry_run"
                 db.log_decision(decision_record)
-                market.wait_for_next_m15()
+                market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
             logger.info(f"EXECUTING: {direction} {lot_size} lots, SL={analysis['sl']}, TP1={analysis['tp1']}, TP2={analysis['tp2']}")
@@ -473,7 +473,7 @@ def main():
             # ----------------------------------------------------------
             # Sleep until next M15
             # ----------------------------------------------------------
-            market.wait_for_next_m15()
+            market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
 
     except KeyboardInterrupt:
         logger.info("KeyboardInterrupt received")
