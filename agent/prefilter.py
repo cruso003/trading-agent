@@ -38,15 +38,18 @@ def run_prefilter(
     """
 
     # ---------------------------------------------------------------
-    # Check 1: H4 and H1 direction agree
+    # Check 1: H4 must not oppose M15 direction
+    # (H1 divergence is Claude's job — don't hard-block on it)
     # ---------------------------------------------------------------
     h4 = indicators.get("H4", {})
     h1 = indicators.get("H1", {})
+    m15 = indicators.get("M15", {})
     h4_dir = h4.get("direction", "NEUTRAL")
     h1_dir = h1.get("direction", "NEUTRAL")
+    m15_dir = m15.get("direction", "NEUTRAL")
 
-    if h4_dir != "NEUTRAL" and h1_dir != "NEUTRAL" and h4_dir != h1_dir:
-        reason = f"htf_conflict: H4={h4_dir}, H1={h1_dir}"
+    if h4_dir != "NEUTRAL" and m15_dir != "NEUTRAL" and h4_dir != m15_dir:
+        reason = f"htf_conflict: H4={h4_dir} vs M15={m15_dir}"
         logger.info(f"FAIL | {reason}")
         return (False, reason)
 

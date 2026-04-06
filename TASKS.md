@@ -353,11 +353,11 @@ PHASE 1 — Agent Core (Headless)
 
 ## Phase 2: API Gateway
 
-⬜ TASK-017: FastAPI setup + state.py
-⬜ TASK-018: SSE stream endpoint
-⬜ TASK-019: Agent status + control routes
-⬜ TASK-020: Trade history routes
-⬜ TASK-021: Analytics routes
+✅ TASK-017: FastAPI setup + state.py (2026-04-06)
+✅ TASK-018: SSE stream endpoint (2026-04-06)
+✅ TASK-019: Agent status + control routes (2026-04-06)
+✅ TASK-020: Trade history routes (2026-04-06)
+✅ TASK-021: Analytics routes (2026-04-06)
 ⬜ TASK-022: Integration test (agent + API)
 
 ---

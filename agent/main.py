@@ -156,7 +156,38 @@ def main():
             logger.info("-" * 40)
 
             # ----------------------------------------------------------
-            # Step 0: Check MT5 connection (circuit breaker)
+            # Step 1: Check trading windows (BEFORE any data fetch)
+            # ----------------------------------------------------------
+            window = get_current_window(
+                config.window_1_start, config.window_1_end,
+                config.window_2_start, config.window_2_end,
+            )
+
+            if window is None:
+                next_w = time_to_next_window(
+                    config.window_1_start, config.window_1_end,
+                    config.window_2_start, config.window_2_end,
+                )
+                logger.info(f"Outside windows. Next: {next_w['window']} in {next_w['minutes']}min")
+                db.update_agent_state({"status": "sleeping", "current_window": "OUTSIDE"})
+                time.sleep(60)
+                continue
+
+            session = get_current_session()
+            mins_in = minutes_into_window(
+                config.window_1_start, config.window_1_end,
+                config.window_2_start, config.window_2_end,
+            )
+            window_status = {
+                "window": window,
+                "minutes_into_window": mins_in,
+                "session": session,
+            }
+            logger.info(f"WINDOW: {get_window_name(window)} | {mins_in}min in | session={session}")
+            db.update_agent_state({"status": "watching", "current_window": window})
+
+            # ----------------------------------------------------------
+            # Step 2: Check MT5 connection (circuit breaker)
             # ----------------------------------------------------------
             if not market.is_connected():
                 logger.warning("MT5 disconnected, attempting reconnect...")
@@ -176,7 +207,7 @@ def main():
                     continue
 
             # ----------------------------------------------------------
-            # Step 1: Fetch market data
+            # Step 3: Fetch market data
             # ----------------------------------------------------------
             logger.info("Fetching market data...")
             sym = config.symbol
@@ -196,7 +227,7 @@ def main():
             current_price = price_info.get("bid", 0)
 
             # ----------------------------------------------------------
-            # Step 2: Calculate indicators
+            # Step 4: Calculate indicators
             # ----------------------------------------------------------
             logger.info("Calculating indicators...")
             h4_data = analyse_timeframe(candles_h4, "H4")
@@ -223,39 +254,7 @@ def main():
             }
 
             # ----------------------------------------------------------
-            # Step 3: Check trading windows
-            # ----------------------------------------------------------
-            window = get_current_window(
-                config.window_1_start, config.window_1_end,
-                config.window_2_start, config.window_2_end,
-            )
-            session = get_current_session()
-
-            if window is None:
-                next_w = time_to_next_window(
-                    config.window_1_start, config.window_1_end,
-                    config.window_2_start, config.window_2_end,
-                )
-                logger.info(f"Outside windows. Next: {next_w['window']} in {next_w['minutes']}min")
-                db.update_agent_state({"status": "sleeping", "current_window": "OUTSIDE"})
-                time.sleep(60)
-                continue
-
-            mins_in = minutes_into_window(
-                config.window_1_start, config.window_1_end,
-                config.window_2_start, config.window_2_end,
-            )
-            window_status = {
-                "window": window,
-                "minutes_into_window": mins_in,
-                "session": session,
-            }
-
-            logger.info(f"WINDOW: {get_window_name(window)} | {mins_in}min in | session={session}")
-            db.update_agent_state({"status": "watching", "current_window": window})
-
-            # ----------------------------------------------------------
-            # Step 4: Prefilter (zero API cost)
+            # Step 5: Prefilter (zero API cost)
             # ----------------------------------------------------------
             logger.info("Running prefilter...")
             pf_passed, pf_reason = run_prefilter(
