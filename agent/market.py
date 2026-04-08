@@ -226,9 +226,6 @@ class Market:
             now = datetime.now(timezone.utc)
             future = now + timedelta(hours=hours_ahead)
 
-            # MT5 calendar_get returns economic events
-            events = mt5.copy_ticks_from(SYMBOL, now, 1, mt5.COPY_TICKS_ALL)
-
             # Note: MT5 Python API calendar support varies by build.
             # If calendar_get is not available, return empty (news.py
             # will fall through to Perplexity if ATR anomaly detected).

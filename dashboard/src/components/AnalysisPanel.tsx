@@ -1,57 +1,103 @@
+import { CheckCircle2, AlertCircle, MinusCircle, ShieldCheck, ShieldAlert } from 'lucide-react';
 import './AnalysisPanel.css';
 
 interface Props {
   decisions: Record<string, unknown>[];
 }
 
-const GRADE_CONFIG: Record<string, { emoji: string; bg: string; color: string }> = {
-  'A+': { emoji: '🟢', bg: 'rgba(0, 255, 136, 0.1)', color: 'var(--accent-green)' },
-  B: { emoji: '🟡', bg: 'rgba(255, 201, 71, 0.1)', color: 'var(--accent-gold)' },
-  SKIP: { emoji: '⚪', bg: 'rgba(255, 255, 255, 0.05)', color: 'var(--text-muted)' },
+const GRADE_CONFIG: Record<string, {
+  icon: React.ReactNode;
+  bg: string;
+  color: string;
+  border: string;
+}> = {
+  'A+': {
+    icon: <CheckCircle2 size={13} />,
+    bg: 'rgba(0, 214, 143, 0.07)',
+    color: 'var(--accent-green)',
+    border: 'rgba(0, 214, 143, 0.15)',
+  },
+  B: {
+    icon: <AlertCircle size={13} />,
+    bg: 'rgba(244, 183, 64, 0.07)',
+    color: 'var(--accent-gold)',
+    border: 'rgba(244, 183, 64, 0.15)',
+  },
+  SKIP: {
+    icon: <MinusCircle size={13} />,
+    bg: 'transparent',
+    color: 'var(--text-muted)',
+    border: 'var(--border)',
+  },
 };
 
 export default function AnalysisPanel({ decisions }: Props) {
   return (
     <div className="analysis-panel">
-      <h3>Recent Decisions</h3>
-
-      {!decisions.length && (
-        <p className="empty-state">No decisions logged yet.</p>
-      )}
-
-      <div className="decisions-list">
-        {decisions.slice(0, 8).map((d, i) => {
-          const grade = String(d.grade || 'SKIP');
-          const cfg = GRADE_CONFIG[grade] || GRADE_CONFIG.SKIP;
-          const dir = String(d.direction || '—');
-          const conf = Number(d.confidence || 0);
-          const reasoning = String(d.reasoning || '').slice(0, 120);
-          const time = d.timestamp
-            ? new Date(String(d.timestamp)).toLocaleTimeString()
-            : '—';
-
-          return (
-            <div key={i} className="decision-item" style={{ background: cfg.bg }}>
-              <div className="decision-header">
-                <span className="grade-badge" style={{ color: cfg.color }}>
-                  {cfg.emoji} {grade}
-                </span>
-                <span className="decision-dir">{dir}</span>
-                <span className="decision-conf">{conf}%</span>
-                <span className="decision-time">{time}</span>
-              </div>
-              {reasoning && (
-                <p className="decision-reasoning">{reasoning}...</p>
-              )}
-              {Boolean(d.gpt_verdict) && (
-                <span className={`gpt-badge ${String(d.gpt_verdict).toLowerCase()}`}>
-                  GPT: {String(d.gpt_verdict)}
-                </span>
-              )}
-            </div>
-          );
-        })}
+      <div className="card-header">
+        <span className="card-title">Agent Decisions</span>
+        <span className="card-count">{decisions.length}</span>
       </div>
+
+      {!decisions.length ? (
+        <div className="empty-state">
+          <MinusCircle size={20} strokeWidth={1.5} />
+          <span>No decisions logged yet</span>
+        </div>
+      ) : (
+        <div className="decisions-list">
+          {decisions.slice(0, 8).map((d, i) => {
+            const grade = String(d.grade || 'SKIP');
+            const cfg = GRADE_CONFIG[grade] || GRADE_CONFIG.SKIP;
+            const dir = String(d.direction || '—');
+            const conf = Number(d.confidence || 0);
+            const reasoning = String(d.reasoning || '').slice(0, 110);
+            const time = d.timestamp
+              ? new Date(String(d.timestamp)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+              : '—';
+            const gptVerdict = d.gpt_verdict ? String(d.gpt_verdict).toLowerCase() : null;
+
+            return (
+              <div
+                key={i}
+                className="decision-row"
+                style={{ background: cfg.bg, borderColor: cfg.border }}
+              >
+                <div className="decision-left">
+                  <span className="grade-pill" style={{ color: cfg.color }}>
+                    {cfg.icon}
+                    <span>{grade}</span>
+                  </span>
+                  {dir !== '—' && (
+                    <span className={`decision-dir dir-${dir.toLowerCase()}`}>{dir}</span>
+                  )}
+                </div>
+
+                <div className="decision-center">
+                  {reasoning && (
+                    <p className="decision-reasoning">{reasoning}{reasoning.length >= 110 ? '…' : ''}</p>
+                  )}
+                </div>
+
+                <div className="decision-right">
+                  {conf > 0 && (
+                    <span className="conf-value mono">{conf}%</span>
+                  )}
+                  {gptVerdict && (
+                    <span className={`gpt-badge gpt-${gptVerdict}`}>
+                      {gptVerdict === 'confirm'
+                        ? <ShieldCheck size={10} />
+                        : <ShieldAlert size={10} />}
+                      <span>GPT</span>
+                    </span>
+                  )}
+                  <span className="decision-time">{time}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

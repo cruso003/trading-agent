@@ -1,0 +1,113 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 200;
+  background: rgba(6, 11, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+}
+
+.navbar-brand-apex {
+  color: var(--gold);
+}
+
+.navbar-brand-gold {
+  color: #ffffff;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-link {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  padding: 8px 14px;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+  border-radius: 6px;
+}
+
+.navbar-link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  background: transparent;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.navbar-btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
+}
+
+.navbar-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0e1a;
+  background: var(--gold);
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.navbar-btn-gold:hover {
+  background: #f0b030;
+  opacity: 0.95;
+}

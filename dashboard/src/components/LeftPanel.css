@@ -1,0 +1,133 @@
+.left-panel-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Section */
+.lp-section {
+  border-bottom: 1px solid var(--border);
+}
+
+.lp-section:last-child {
+  border-bottom: none;
+}
+
+.lp-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 12px 16px 6px;
+}
+
+/* Rows */
+.lp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 16px;
+  min-height: 24px;
+}
+
+.lp-label {
+  font-size: 11px;
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.lp-value {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+  text-align: right;
+}
+
+/* Status row */
+.lp-status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+.lp-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.lp-status-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Badges */
+.lp-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--mono);
+}
+
+.lp-badge-live {
+  background: var(--green-dim);
+  color: var(--green);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.lp-badge-offline {
+  background: var(--red-dim);
+  color: var(--red);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+/* P&L colors */
+.lp-positive {
+  color: var(--green);
+}
+
+.lp-negative {
+  color: var(--red);
+}
+
+/* Controls section */
+.lp-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 16px 12px;
+}
+
+.lp-btn {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: 1px solid var(--border-hi);
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.lp-btn-pause:hover {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border-color: var(--amber);
+}
+
+.lp-btn-resume:hover {
+  background: var(--green-dim);
+  color: var(--green);
+  border-color: var(--green);
+}

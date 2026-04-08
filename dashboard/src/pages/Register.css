@@ -1,0 +1,137 @@
+.register-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px 36px;
+}
+
+.register-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+}
+
+.register-brand-apex { color: var(--gold); }
+.register-brand-gold { color: #fff; }
+
+.register-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: center;
+  margin: 0 0 6px;
+}
+
+.register-subtitle {
+  font-size: 13px;
+  color: var(--text-2);
+  text-align: center;
+  margin: 0 0 28px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.register-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.register-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--text);
+  font-family: var(--sans);
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.register-input-mono {
+  font-family: var(--mono);
+  letter-spacing: 1.5px;
+}
+
+.register-input::placeholder { color: var(--text-3); }
+.register-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.register-error {
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--red);
+}
+
+.register-submit {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: opacity 0.15s;
+}
+
+.register-submit:hover:not(:disabled) { opacity: 0.88; }
+.register-submit:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.register-login-link,
+.register-apply-link {
+  font-size: 13px;
+  color: var(--text-2);
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+.register-login-anchor,
+.register-apply-anchor {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-login-anchor:hover,
+.register-apply-anchor:hover {
+  text-decoration: underline;
+}

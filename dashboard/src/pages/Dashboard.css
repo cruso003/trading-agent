@@ -1,26 +1,30 @@
 .dashboard {
-  padding: 0;
+  display: flex;
+  height: calc(100vh - 48px);
+  overflow: hidden;
+  background: var(--bg);
 }
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "status controls"
-    "trades analysis";
-  gap: 16px;
-}
-.grid-status { grid-area: status; }
-.grid-controls { grid-area: controls; }
-.grid-trades { grid-area: trades; }
-.grid-analysis { grid-area: analysis; }
 
-@media (max-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "status"
-      "controls"
-      "trades"
-      "analysis";
-  }
+.left-panel {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  background: var(--panel);
+}
+
+.center-panel {
+  flex: 1;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.right-panel {
+  width: 300px;
+  flex-shrink: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel);
 }

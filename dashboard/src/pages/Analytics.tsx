@@ -8,13 +8,17 @@ export default function Analytics() {
   if (loading) {
     return (
       <div className="analytics-page">
-        <div className="loading-state">Loading analytics...</div>
+        <div className="analytics-loading">Loading analytics...</div>
       </div>
     );
   }
 
   return (
     <div className="analytics-page">
+      <div className="analytics-page-header">
+        <div className="analytics-page-title">Performance Analytics</div>
+        <div className="analytics-page-sub">XAUUSDm · All Time</div>
+      </div>
       <PerformanceCharts summary={summary} daily={daily} grades={grades} />
     </div>
   );

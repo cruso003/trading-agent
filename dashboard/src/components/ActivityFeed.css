@@ -1,0 +1,220 @@
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+.af-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 36px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  flex-shrink: 0;
+}
+
+.af-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+
+.af-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: af-blink 1.8s ease-in-out infinite;
+}
+
+@keyframes af-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* Tabs */
+.af-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.af-tab {
+  flex: 1;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.af-tab:hover {
+  color: var(--text);
+}
+
+.af-tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* Content area */
+.af-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ── Decisions tab ── */
+.af-decision-row {
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(48, 68, 100, 0.2);
+}
+
+.af-decision-row:hover {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.af-decision-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.af-dec-time {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-2);
+  flex-shrink: 0;
+}
+
+.af-grade-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.af-grade-a {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+.af-grade-b {
+  background: var(--amber-dim);
+  color: var(--amber);
+}
+
+.af-grade-skip {
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+
+.af-dir-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.af-dir-buy {
+  background: var(--green-dim);
+  color: var(--green);
+}
+
+.af-dir-sell {
+  background: var(--red-dim);
+  color: var(--red);
+}
+
+.af-dir-none {
+  color: var(--text-3);
+  font-size: 10px;
+}
+
+.af-conf {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-2);
+  margin-left: auto;
+}
+
+.af-verdict-icon {
+  display: flex;
+  align-items: center;
+}
+
+.af-decision-reason {
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--text-2);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* ── Events tab ── */
+.af-events-list {
+  padding: 4px 0;
+}
+
+.af-event-row {
+  padding: 3px 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.5;
+  display: flex;
+  gap: 6px;
+}
+
+.af-event-row:hover {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.af-event-time {
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+
+.af-event-type {
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.af-event-body {
+  color: var(--text-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Event type colors */
+.ev-trade { color: var(--green); }
+.ev-risk  { color: var(--red); }
+.ev-info  { color: var(--blue); }
+.ev-gpt-confirm  { color: var(--green); }
+.ev-gpt-challenge { color: var(--amber); }
+.ev-window-open   { color: var(--gold); }
+.ev-window-closed { color: var(--text-2); }
+.ev-faint { color: var(--text-3); }
+
+/* Empty */
+.af-empty {
+  padding: 32px 14px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-3);
+}

@@ -21,3 +21,7 @@ schedule>=1.2.0
 
 # Telegram
 # (uses requests, no extra dependency)
+
+# ApexGold Platform Auth
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4

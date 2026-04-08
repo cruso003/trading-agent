@@ -1,0 +1,323 @@
+.manage-page {
+  height: 100%;
+  overflow-y: auto;
+  padding: 28px 28px 60px;
+}
+
+.manage-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.manage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.manage-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.manage-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.manage-refresh:hover {
+  color: var(--text);
+  border-color: var(--border-hi);
+}
+
+/* Tabs */
+.manage-tabs {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.manage-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+}
+
+.manage-tab:hover { color: var(--text); }
+
+.manage-tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.manage-tab-badge {
+  background: var(--amber);
+  color: #000;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-family: var(--mono);
+}
+
+.manage-tab-badge-grey {
+  background: var(--surface);
+  color: var(--text-2);
+}
+
+/* Section */
+.manage-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.manage-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.manage-empty {
+  color: var(--text-2);
+  font-size: 14px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Application cards */
+.manage-app-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.manage-app-card-reviewed {
+  opacity: 0.65;
+}
+
+.manage-app-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.manage-app-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.manage-app-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.manage-app-email {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.manage-app-meta {
+  font-size: 11px;
+  color: var(--text-3);
+  font-family: var(--mono);
+}
+
+.manage-app-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.manage-app-reason {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-style: italic;
+}
+
+/* Buttons */
+.manage-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.manage-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.manage-btn:not(:disabled):hover { opacity: 0.82; }
+
+.manage-btn-approve { background: var(--green); color: #fff; }
+.manage-btn-reject { background: var(--surface); color: var(--red); border: 1px solid rgba(220,38,38,0.3); }
+.manage-btn-suspend { background: var(--surface); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+.manage-btn-activate { background: var(--surface); color: var(--green); border: 1px solid rgba(22,163,74,0.3); }
+.manage-btn-create { background: var(--gold); color: #000; }
+
+/* Table */
+.manage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.manage-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0 12px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.manage-table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.manage-table tr.manage-row-used td {
+  opacity: 0.5;
+}
+
+.manage-td-name { font-weight: 500; }
+.manage-td-email { color: var(--text-2); }
+.manage-td-date { color: var(--text-2); font-family: var(--mono); font-size: 12px; }
+.manage-td-code { font-family: var(--mono); font-size: 12px; letter-spacing: 1px; }
+
+/* Badges */
+.manage-badge {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.mb-green { background: rgba(22,163,74,0.15); color: var(--green); }
+.mb-amber { background: rgba(245,158,11,0.15); color: var(--amber); }
+.mb-red { background: rgba(220,38,38,0.12); color: var(--red); }
+.mb-grey { background: var(--surface); color: var(--text-2); }
+
+.manage-role-badge {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text-2);
+  letter-spacing: 0.5px;
+}
+
+/* Invite create */
+.manage-invite-create {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.manage-invite-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.manage-invite-input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+.manage-invite-input::placeholder { color: var(--text-3); }
+.manage-invite-input:focus { outline: none; border-color: var(--gold); }
+
+.manage-invite-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(232,160,32,0.08);
+  border: 1px solid rgba(232,160,32,0.25);
+  border-radius: 8px;
+}
+
+.manage-invite-code {
+  flex: 1;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+}
+
+.manage-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.manage-copy-btn:hover {
+  color: var(--text);
+  border-color: var(--border-hi);
+}

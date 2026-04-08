@@ -1,12 +1,11 @@
-.app {
+.shell {
   display: flex;
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
 }
 
-/* ── Top navigation bar ── */
-.topbar {
+.shell-topbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,54 +21,43 @@
   flex-shrink: 0;
 }
 
-.topbar-left {
+.shell-topbar-left {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.topbar-icon {
-  color: var(--gold);
+.shell-brand {
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
 }
 
-.topbar-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.topbar-name {
-  font-size: 13px;
-  font-weight: 600;
+.shell-brand-apex {
   color: var(--gold);
-  letter-spacing: 1.5px;
-  line-height: 1;
 }
 
-.topbar-sub {
-  font-size: 9px;
-  color: var(--text-2);
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  line-height: 1;
+.shell-brand-gold {
+  color: #ffffff;
 }
 
-.topbar-divider {
+.shell-divider {
   width: 1px;
   height: 20px;
   background: var(--border);
   margin: 0 4px;
 }
 
-.topbar-nav {
+.shell-nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
-.topbar-link {
+.shell-link {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -81,44 +69,75 @@
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
   height: 48px;
+  text-decoration: none;
 }
 
-.topbar-link:hover {
+.shell-link:hover {
   color: var(--text);
 }
 
-.topbar-link.active {
+.shell-link.active {
   color: var(--gold);
   border-bottom-color: var(--gold);
 }
 
-.topbar-right {
+.shell-topbar-right {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
 
-/* ── UTC Clock ── */
-.nav-clock {
+.shell-clock {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.nav-clock-label {
+.shell-clock-label {
   font-size: 10px;
   color: var(--text-2);
   letter-spacing: 1px;
   text-transform: uppercase;
+  font-family: var(--mono);
 }
 
-.nav-clock-time {
+.shell-clock-time {
   font-size: 13px;
   color: var(--text);
   letter-spacing: 0.5px;
 }
 
-/* ── Content area ── */
-.app-content {
+.shell-username {
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shell-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.shell-logout:hover {
+  color: var(--text);
+  border-color: var(--border-hi);
+  background: var(--surface);
+}
+
+.shell-content {
   margin-top: 48px;
   flex: 1;
   overflow: hidden;

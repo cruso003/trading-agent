@@ -1,51 +1,70 @@
 .controls-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: var(--radius-md);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.controls-card h3 {
-  margin: 0 0 16px 0;
-  font-size: 0.85rem;
+
+.controls-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--text-muted);
+  flex-shrink: 0;
 }
-.controls-grid {
+
+.controls-row {
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
+
 .ctrl-btn {
-  flex: 1;
-  padding: 12px 20px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-primary);
-  font-size: 0.85rem;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s ease;
+  font-family: 'Inter', sans-serif;
 }
 .ctrl-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
 }
 .ctrl-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 .ctrl-btn.pause:hover:not(:disabled) {
-  border-color: var(--accent-gold);
+  background: var(--accent-gold-dim);
   color: var(--accent-gold);
+  border-color: rgba(244, 183, 64, 0.25);
 }
 .ctrl-btn.resume:hover:not(:disabled) {
-  border-color: var(--accent-green);
+  background: var(--accent-green-dim);
   color: var(--accent-green);
+  border-color: rgba(0, 214, 143, 0.25);
 }
+
 .ctrl-message {
-  margin: 12px 0 0 0;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  text-align: center;
+  font-size: 0.72rem;
+  margin-left: auto;
 }
+.ctrl-message.ok { color: var(--accent-green); }
+.ctrl-message.err { color: var(--accent-red); }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin { animation: spin 0.8s linear infinite; }

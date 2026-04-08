@@ -15,6 +15,7 @@ export function useSSE({ url, onEvent }: UseSSEOptions) {
   const [connected, setConnected] = useState(false);
   const [lastEvent, setLastEvent] = useState<SSEEvent | null>(null);
   const [agentStatus, setAgentStatus] = useState<Record<string, unknown>>({});
+  const [recentEvents, setRecentEvents] = useState<SSEEvent[]>([]);
   const eventSourceRef = useRef<EventSource | null>(null);
   const onEventRef = useRef(onEvent);
   onEventRef.current = onEvent;
@@ -31,11 +32,9 @@ export function useSSE({ url, onEvent }: UseSSEOptions) {
     es.onerror = () => {
       setConnected(false);
       es.close();
-      // Reconnect after 3s
       setTimeout(connect, 3000);
     };
 
-    // Event types from ARCHITECTURE.md Section 5
     const eventTypes = [
       'agent_status', 'window_open', 'window_closed',
       'prefilter_pass', 'prefilter_fail', 'news_alert',
@@ -47,9 +46,14 @@ export function useSSE({ url, onEvent }: UseSSEOptions) {
     eventTypes.forEach(type => {
       es.addEventListener(type, (e: MessageEvent) => {
         try {
-          const data = JSON.parse(e.data);
-          const event: SSEEvent = { type, data };
+          const data = JSON.parse(e.data) as Record<string, unknown>;
+          const event: SSEEvent = {
+            type,
+            data,
+            timestamp: new Date().toISOString(),
+          };
           setLastEvent(event);
+          setRecentEvents(prev => [event, ...prev].slice(0, 100));
 
           if (type === 'agent_status') {
             setAgentStatus(data);
@@ -57,7 +61,7 @@ export function useSSE({ url, onEvent }: UseSSEOptions) {
 
           onEventRef.current?.(event);
         } catch {
-          // Ignore parse errors (heartbeats)
+          // Ignore parse errors
         }
       });
     });
@@ -70,5 +74,5 @@ export function useSSE({ url, onEvent }: UseSSEOptions) {
     };
   }, [connect]);
 
-  return { connected, lastEvent, agentStatus };
+  return { connected, lastEvent, agentStatus, recentEvents };
 }
