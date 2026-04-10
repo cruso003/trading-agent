@@ -98,6 +98,14 @@
   background: rgba(255, 255, 255, 0.02);
 }
 
+.trades-tbl tbody tr.trade-row-clickable {
+  cursor: pointer;
+}
+
+.trades-tbl tbody tr.trade-row-clickable:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
 .trades-tbl tbody tr.row-open {
   background: var(--gold-dim);
 }

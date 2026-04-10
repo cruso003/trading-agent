@@ -68,6 +68,11 @@ class SetupOwnerRequest(BaseModel):
     setup_key: str
 
 
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
+
+
 # ------------------------------------------------------------------
 # Helper functions
 # ------------------------------------------------------------------
@@ -278,6 +283,29 @@ async def me(
     user = await get_current_user(request, token)
     safe_user = {k: v for k, v in user.items() if k != "password_hash"}
     return safe_user
+
+
+@router.post("/change-password")
+async def change_password(
+    request: Request,
+    body: ChangePasswordRequest,
+    user: dict = Depends(get_current_user),
+):
+    """Change the authenticated user's password."""
+    if not verify_password(body.current_password, user["password_hash"]):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Current password is incorrect",
+        )
+    if len(body.new_password) < 8:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="New password must be at least 8 characters",
+        )
+    new_hash = hash_password(body.new_password)
+    platform_db = request.app.state.platform_db
+    platform_db.update_user(user["id"], {"password_hash": new_hash})
+    return {"status": "changed"}
 
 
 @router.post("/setup-owner", response_model=TokenResponse)

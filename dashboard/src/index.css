@@ -24,6 +24,7 @@
   --text-2:    #5a6f8a;
   --text-3:    #2a3a52;
   --mono:      'JetBrains Mono', monospace;
+  --sans:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 *, *::before, *::after {

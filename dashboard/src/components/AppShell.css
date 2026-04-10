@@ -115,6 +115,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.shell-username:hover {
+  color: var(--text);
 }
 
 .shell-logout {
@@ -139,6 +148,6 @@
 
 .shell-content {
   margin-top: 48px;
-  flex: 1;
+  height: calc(100vh - 48px);
   overflow: hidden;
 }

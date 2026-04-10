@@ -1,0 +1,194 @@
+.profile-page {
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 28px 80px;
+}
+
+.profile-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-header {
+  margin-bottom: 4px;
+}
+
+.profile-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Card */
+.profile-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Info grid */
+.profile-info-grid {
+  padding: 4px 0;
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-info-row:last-child {
+  border-bottom: none;
+}
+
+.profile-info-label {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.profile-info-val {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Badges */
+.profile-role-badge,
+.profile-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.role-owner {
+  background: rgba(232, 160, 32, 0.12);
+  color: var(--gold);
+}
+
+.role-mentee,
+.role-trial {
+  background: var(--surface);
+  color: var(--text-2);
+}
+
+.status-active {
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--green);
+}
+
+.status-suspended {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--red);
+}
+
+/* Password form */
+.profile-pw-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.profile-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: var(--sans);
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-input::placeholder {
+  color: var(--text-3);
+}
+
+.profile-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.profile-error {
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  color: var(--red);
+}
+
+.profile-success {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  color: var(--green);
+}
+
+.profile-save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.profile-save-btn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.profile-save-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

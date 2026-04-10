@@ -82,8 +82,24 @@
   border-bottom: 1px solid rgba(48, 68, 100, 0.2);
 }
 
-.af-decision-row:hover {
-  background: rgba(255, 255, 255, 0.015);
+.af-decision-clickable {
+  cursor: pointer;
+}
+
+.af-decision-clickable:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.af-expand-hint {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--text-3);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.af-decision-clickable:hover .af-expand-hint {
+  opacity: 1;
 }
 
 .af-decision-top {

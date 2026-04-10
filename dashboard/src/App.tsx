@@ -17,6 +17,8 @@ import ManageUsers from './pages/ManageUsers';
 
 // Shared authenticated pages
 import Broadcasts from './pages/Broadcasts';
+import Profile from './pages/Profile';
+import LessonPage from './pages/LessonPage';
 
 // Mentee pages
 import MenteeDashboard from './pages/MenteeDashboard';
@@ -75,9 +77,21 @@ export default function App() {
               <AppShell><Academy /></AppShell>
             </ProtectedRoute>
           } />
+          <Route path="/academy/lesson/:module/:lesson" element={
+            <ProtectedRoute role="mentee">
+              <AppShell><LessonPage /></AppShell>
+            </ProtectedRoute>
+          } />
           <Route path="/updates" element={
             <ProtectedRoute role="mentee">
               <AppShell><Broadcasts /></AppShell>
+            </ProtectedRoute>
+          } />
+
+          {/* ── Shared authenticated routes ────────────────────────── */}
+          <Route path="/profile" element={
+            <ProtectedRoute role="any">
+              <AppShell><Profile /></AppShell>
             </ProtectedRoute>
           } />
 

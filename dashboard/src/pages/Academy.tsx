@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import { Lock, BookOpen, CheckCircle } from 'lucide-react';
+import { useAllProgress } from '../hooks/useProgress';
 import './Academy.css';
 
 interface Module {
@@ -70,6 +72,13 @@ const MODULES: Module[] = [
 ];
 
 export default function Academy() {
+  const navigate = useNavigate();
+  const progress = useAllProgress();
+
+  function lessonDone(moduleNum: number, lessonNum: number): boolean {
+    return progress[`${moduleNum}-${lessonNum}`] === true;
+  }
+
   return (
     <div className="academy-page">
       <div className="academy-inner">
@@ -82,7 +91,7 @@ export default function Academy() {
         </div>
 
         <div className="academy-modules">
-          {MODULES.map(mod => (
+          {MODULES.map((mod, modIdx) => (
             <div
               className={`academy-module ${mod.available ? 'module-available' : 'module-locked'}`}
               key={mod.num}
@@ -109,28 +118,32 @@ export default function Academy() {
               </div>
 
               <div className="academy-lessons">
-                {mod.lessons.map((lesson, i) => (
-                  <div
-                    className={`academy-lesson ${!mod.available ? 'lesson-locked' : ''}`}
-                    key={i}
-                  >
-                    <span className="academy-lesson-icon">
-                      {lesson.done ? (
-                        <CheckCircle size={13} className="icon-done" />
-                      ) : mod.available ? (
-                        <span className="lesson-dot" />
-                      ) : (
-                        <Lock size={11} className="icon-lock" />
-                      )}
-                    </span>
-                    <span className="academy-lesson-title">{lesson.title}</span>
-                    {mod.available && (
-                      <span className="academy-lesson-action">
-                        {lesson.done ? 'Review' : 'Start'}
+                {mod.lessons.map((lesson, i) => {
+                  const done = lessonDone(modIdx + 1, i + 1);
+                  return (
+                    <div
+                      className={`academy-lesson ${!mod.available ? 'lesson-locked' : ''}`}
+                      key={i}
+                      onClick={() => mod.available && navigate(`/academy/lesson/${modIdx + 1}/${i + 1}`)}
+                    >
+                      <span className="academy-lesson-icon">
+                        {done ? (
+                          <CheckCircle size={13} className="icon-done" />
+                        ) : mod.available ? (
+                          <span className="lesson-dot" />
+                        ) : (
+                          <Lock size={11} className="icon-lock" />
+                        )}
                       </span>
-                    )}
-                  </div>
-                ))}
+                      <span className="academy-lesson-title">{lesson.title}</span>
+                      {mod.available && (
+                        <span className="academy-lesson-action">
+                          {done ? 'Review' : 'Start'}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}

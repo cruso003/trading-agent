@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   BarChart3,
@@ -43,6 +43,7 @@ interface Props {
 
 export default function AppShell({ children }: Props) {
   const { user, logout, isOwner } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="shell">
@@ -116,7 +117,9 @@ export default function AppShell({ children }: Props) {
         <div className="shell-topbar-right">
           <UtcClock />
           {user && (
-            <span className="shell-username">{user.name}</span>
+            <button className="shell-username" onClick={() => navigate('/profile')}>
+              {user.name}
+            </button>
           )}
           <button className="shell-logout" onClick={logout} title="Logout">
             <LogOut size={14} />
