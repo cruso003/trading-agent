@@ -162,9 +162,10 @@ def run_prefilter(
             logger.warning(f"Cooling period check error: {e}")
 
     # ---------------------------------------------------------------
-    # Check 7: Price not mid-range (position 35-65%)
-    # Mid-range = no edge. Price at the edge of range has a defined
-    # direction to push. Price in the middle can go either way.
+    # Check 7: No position already open in same direction
+    # (mid_range removed — session range grows over 8-hour windows
+    # making the percentage check unreliable. Location is Pillar 3,
+    # Claude's domain. Claude receives price_position_pct directly.)
     # ---------------------------------------------------------------
     session = indicators.get("session_levels", {})
     current_price = indicators.get("current_price", 0)
@@ -174,11 +175,6 @@ def run_prefilter(
 
     if session_high > session_low and current_price > 0:
         position_pct = ((current_price - session_low) / (session_high - session_low)) * 100
-
-        if 35.0 <= position_pct <= 65.0:
-            reason = f"mid_range: position_pct={position_pct:.1f}%"
-            logger.info(f"FAIL | {reason}")
-            return (False, reason)
 
     # ---------------------------------------------------------------
     # Check 8: No position already open in same direction

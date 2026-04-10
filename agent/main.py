@@ -168,9 +168,18 @@ def main():
                     config.window_1_start, config.window_1_end,
                     config.window_2_start, config.window_2_end,
                 )
-                logger.info(f"Outside windows. Next: {next_w['window']} in {next_w['minutes']}min")
+                # Sleep until 1 minute before next window — wake up ready, not polling
+                sleep_minutes = max(1, next_w['minutes'] - 1)
+                logger.info(
+                    f"Outside windows. Next: {next_w['window']} in {next_w['minutes']}min "
+                    f"— sleeping {sleep_minutes}min"
+                )
                 db.update_agent_state({"status": "sleeping", "current_window": "OUTSIDE"})
-                time.sleep(60)
+                # Sleep in 1s ticks so shutdown is still responsive
+                for _ in range(sleep_minutes * 60):
+                    if _shutdown_requested:
+                        break
+                    time.sleep(1)
                 continue
 
             session = get_current_session()
