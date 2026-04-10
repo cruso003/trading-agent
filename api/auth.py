@@ -9,10 +9,10 @@ import os
 from datetime import datetime, timedelta
 from typing import Optional
 
+import bcrypt as _bcrypt
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from pydantic import BaseModel
 
 # ------------------------------------------------------------------
@@ -22,12 +22,6 @@ from pydantic import BaseModel
 JWT_SECRET: str = os.getenv("JWT_SECRET", "apexgold-dev-secret-change-in-production")
 JWT_ALGORITHM: str = "HS256"
 ACCESS_TOKEN_EXPIRE_HOURS: int = 24
-
-# ------------------------------------------------------------------
-# Password hashing
-# ------------------------------------------------------------------
-
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # ------------------------------------------------------------------
 # OAuth2 scheme
@@ -80,11 +74,11 @@ class SetupOwnerRequest(BaseModel):
 
 
 def hash_password(password: str) -> str:
-    return pwd_context.hash(password)
+    return _bcrypt.hashpw(password.encode(), _bcrypt.gensalt()).decode()
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    return pwd_context.verify(plain, hashed)
+    return _bcrypt.checkpw(plain.encode(), hashed.encode())
 
 
 def create_token(data: dict) -> str:
