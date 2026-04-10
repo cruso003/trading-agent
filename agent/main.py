@@ -150,6 +150,96 @@ def main():
     # ---------------------------------------------------------------
     # MAIN LOOP
     # ---------------------------------------------------------------
+
+    # Session tracker — reset each time we enter a new window
+    _session = {
+        "window": None,
+        "start_time": None,
+        "total_cycles": 0,
+        "prefilter_pass": 0,
+        "claude_called": 0,
+        "trades_taken": 0,
+        "session_pnl": 0.0,
+        "session_high": 0.0,
+        "session_low": float("inf"),
+        "h4_direction": "NEUTRAL",
+        "skip_reasons": [],
+        "open_notified": False,
+    }
+
+    def _reset_session(window_id, window_name):
+        _session["window"] = window_id
+        _session["window_name"] = window_name
+        _session["start_time"] = datetime.now(timezone.utc).isoformat()
+        _session["total_cycles"] = 0
+        _session["prefilter_pass"] = 0
+        _session["claude_called"] = 0
+        _session["trades_taken"] = 0
+        _session["session_pnl"] = 0.0
+        _session["session_high"] = 0.0
+        _session["session_low"] = float("inf")
+        _session["h4_direction"] = "NEUTRAL"
+        _session["skip_reasons"] = []
+        _session["open_notified"] = False
+
+    def _flush_session_digest(window_id, session_label, current_price):
+        """Write session summary to DB and send Telegram digest."""
+        if _session["window"] != window_id:
+            return
+        if _session["total_cycles"] == 0:
+            return
+
+        high = _session["session_high"] if _session["session_high"] > 0 else current_price
+        low = _session["session_low"] if _session["session_low"] < float("inf") else current_price
+        rng = round(high - low, 2)
+
+        # Classify character
+        if rng > 120:
+            character = "VOLATILE"
+        elif rng > 80:
+            character = "TRENDING"
+        elif rng < 40:
+            character = "COMPRESSING"
+        else:
+            character = "RANGING"
+
+        # Top skip reasons (most common, max 3)
+        from collections import Counter
+        reason_counts = Counter(_session["skip_reasons"])
+        top_reasons = [r for r, _ in reason_counts.most_common(3)]
+
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        digest = {
+            "date": today,
+            "window_name": window_id,
+            "session_label": session_label,
+            "window_start": _session.get("start_time", ""),
+            "window_end": datetime.now(timezone.utc).isoformat(),
+            "session_high": round(high, 2),
+            "session_low": round(low, 2),
+            "range_pts": rng,
+            "character": character,
+            "total_cycles": _session["total_cycles"],
+            "prefilter_pass": _session["prefilter_pass"],
+            "claude_called": _session["claude_called"],
+            "trades_taken": _session["trades_taken"],
+            "session_pnl": round(_session["session_pnl"], 2),
+            "top_skip_reasons": json.dumps(top_reasons),
+            "h4_direction": _session["h4_direction"],
+            "notes": None,
+        }
+
+        db.save_session_summary(digest)
+
+        digest["window_name"] = get_window_name(
+            window_id,
+            config.window_1_start, config.window_1_end,
+            config.window_2_start, config.window_2_end,
+        )
+        digest["top_skip_reasons"] = top_reasons
+        notifier.send_session_digest(digest)
+        logger.info(f"Session digest sent: {character}, range={rng}pts")
+
     try:
         while not _shutdown_requested:
             cycle_start = datetime.now(timezone.utc)
@@ -164,6 +254,21 @@ def main():
             )
 
             if window is None:
+                # Flush digest if we just left a window
+                if _session["window"] is not None:
+                    price_now = 0.0
+                    try:
+                        pi = market.get_current_price(symbol=config.symbol)
+                        price_now = pi.get("bid", 0.0)
+                    except Exception:
+                        pass
+                    _flush_session_digest(
+                        _session["window"],
+                        get_current_session(),
+                        price_now,
+                    )
+                    _session["window"] = None
+
                 next_w = time_to_next_window(
                     config.window_1_start, config.window_1_end,
                     config.window_2_start, config.window_2_end,
@@ -192,8 +297,23 @@ def main():
                 "minutes_into_window": mins_in,
                 "session": session,
             }
-            logger.info(f"WINDOW: {get_window_name(window, config.window_1_start, config.window_1_end, config.window_2_start, config.window_2_end)} | {mins_in}min in | session={session}")
+            win_display = get_window_name(window, config.window_1_start, config.window_1_end, config.window_2_start, config.window_2_end)
+            logger.info(f"WINDOW: {win_display} | {mins_in}min in | session={session}")
             db.update_agent_state({"status": "watching", "current_window": window})
+
+            # New window entered — reset tracker and send open ping
+            if _session["window"] != window:
+                _reset_session(window, win_display)
+
+            # Window open ping (once per window entry)
+            if not _session["open_notified"]:
+                try:
+                    pi = market.get_current_price(symbol=config.symbol)
+                    open_price = pi.get("bid", 0.0)
+                except Exception:
+                    open_price = 0.0
+                notifier.send_window_open(win_display, session, open_price)
+                _session["open_notified"] = True
 
             # ----------------------------------------------------------
             # Step 2: Check MT5 connection (circuit breaker)
@@ -265,6 +385,14 @@ def main():
             # ----------------------------------------------------------
             # Step 5: Prefilter (zero API cost)
             # ----------------------------------------------------------
+            # Track session high/low and H4 direction
+            _session["total_cycles"] += 1
+            if current_price > _session["session_high"]:
+                _session["session_high"] = current_price
+            if current_price < _session["session_low"]:
+                _session["session_low"] = current_price
+            _session["h4_direction"] = h4_data.get("direction", "NEUTRAL")
+
             logger.info("Running prefilter...")
             pf_passed, pf_reason = run_prefilter(
                 indicators, window_status, open_positions, db, config
@@ -272,9 +400,13 @@ def main():
 
             if not pf_passed:
                 logger.info(f"Prefilter FAIL: {pf_reason}")
-                # Wait for next M15 candle
+                # Track prefilter skip reason category
+                reason_key = pf_reason.split(":")[0]
+                _session["skip_reasons"].append(reason_key)
                 market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
+
+            _session["prefilter_pass"] += 1
 
             logger.info("Prefilter PASS — proceeding to news check")
 
@@ -310,6 +442,7 @@ def main():
             # ----------------------------------------------------------
             logger.info("Calling Claude for analysis...")
             db.update_agent_state({"status": "analysing", "last_analysis_time": datetime.now(timezone.utc).isoformat()})
+            _session["claude_called"] += 1
 
             analysis = claude.analyse(ctx)
             grade = analysis.get("grade", "SKIP")
@@ -347,6 +480,10 @@ def main():
                 decision_record["executed"] = False
                 db.log_decision(decision_record)
                 logger.info(f"SKIP: {analysis.get('skip_reason', 'No reason')}")
+                _session["skip_reasons"].append("claude_skip")
+                # Send Claude SKIP to Telegram
+                price_pos = ctx.get("price_position_pct", 0.0)
+                notifier.send_claude_skip(analysis, current_price, price_pos)
                 market.wait_for_next_m15(stop_check=lambda: _shutdown_requested)
                 continue
 
@@ -439,6 +576,7 @@ def main():
             if success:
                 decision_record["executed"] = True
                 decision_id = db.log_decision(decision_record)
+                _session["trades_taken"] += 1
 
                 # Log trade
                 db.log_trade({

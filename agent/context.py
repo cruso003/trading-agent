@@ -58,6 +58,7 @@ def build_context(
     recent_trades = db.get_recent_trades(n=3)
     daily_pnl = db.get_daily_pnl()
     open_positions_count = db.get_open_positions_count()
+    recent_sessions = db.get_recent_session_summaries(n=3)
 
     # Simplify decisions for context (remove noise)
     decisions_summary = []
@@ -152,6 +153,23 @@ def build_context(
         "calendar_events_next_60min": news_context.get("calendar_events", []),
         "perplexity_summary": news_context.get("summary") if news_context.get("source") == "perplexity" else None,
         "news_risk_level": news_context.get("risk_level", "LOW"),
+
+        # Recent session context (last 3 completed windows)
+        "recent_sessions": [
+            {
+                "date": s.get("date"),
+                "window": s.get("window_name"),
+                "session": s.get("session_label"),
+                "range_pts": s.get("range_pts"),
+                "high": s.get("session_high"),
+                "low": s.get("session_low"),
+                "character": s.get("character"),
+                "h4_direction": s.get("h4_direction"),
+                "trades": s.get("trades_taken"),
+                "pnl": s.get("session_pnl"),
+            }
+            for s in recent_sessions
+        ],
     }
 
     logger.debug(f"Context built: window={context['window_status']}, price={context['current_price']}")

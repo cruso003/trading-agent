@@ -149,6 +149,85 @@ class Notifier:
         return self.send_message(text)
 
     # ------------------------------------------------------------------
+    # Window Open
+    # ------------------------------------------------------------------
+
+    def send_window_open(self, window_name: str, session: str, price: float) -> bool:
+        """Send window open notification."""
+        text = (
+            f"📍 WINDOW OPEN — {window_name}\n"
+            f"Session: {session}\n"
+            f"XAUUSD: {price:.2f}\n"
+            f"Watching for setups..."
+        )
+        return self.send_message(text)
+
+    # ------------------------------------------------------------------
+    # Claude SKIP (called only when Claude actually analysed, not prefilter)
+    # ------------------------------------------------------------------
+
+    def send_claude_skip(self, analysis: dict, price: float, price_pos: float) -> bool:
+        """Send Claude SKIP notification with condensed reasoning."""
+        pillars = []
+        for p, label in [
+            ("pillar_trend", "Trend"),
+            ("pillar_momentum", "Mom"),
+            ("pillar_location", "Loc"),
+        ]:
+            val = analysis.get(p, "?")
+            pillars.append(f"{label}:{val}")
+
+        text = (
+            f"⚪ SKIP — {analysis.get('direction', 'WAIT')} | "
+            f"Conf:{analysis.get('confidence', 0)}%\n"
+            f"Price: {price:.2f} ({price_pos:.0f}% range)\n"
+            f"{' | '.join(pillars)}\n"
+            f"{analysis.get('skip_reason', '—')}"
+        )
+        return self.send_message(text)
+
+    # ------------------------------------------------------------------
+    # Session Digest (sent at window close)
+    # ------------------------------------------------------------------
+
+    def send_session_digest(self, digest: dict) -> bool:
+        """Send end-of-window session digest."""
+        window_name = digest.get("window_name", "?")
+        session_date = digest.get("date", "?")
+        cycles = digest.get("total_cycles", 0)
+        pf_pass = digest.get("prefilter_pass", 0)
+        claude_called = digest.get("claude_called", 0)
+        trades = digest.get("trades_taken", 0)
+        pnl = digest.get("session_pnl", 0.0)
+        high = digest.get("session_high", 0)
+        low = digest.get("session_low", 0)
+        rng = round(high - low, 2) if high and low else 0
+        character = digest.get("character", "—")
+        skip_reasons = digest.get("top_skip_reasons", [])
+
+        trade_line = ""
+        if trades > 0:
+            sign = "+" if pnl >= 0 else ""
+            trade_line = f"Trades: {trades} | PnL: {sign}${pnl:.2f}\n"
+        else:
+            trade_line = "Trades: 0 — no setup executed\n"
+
+        reasons_line = ""
+        if skip_reasons:
+            reasons_line = f"Top skips: {', '.join(skip_reasons)}\n"
+
+        text = (
+            f"📊 SESSION DIGEST — {window_name}\n"
+            f"{session_date}\n\n"
+            f"Range: {low:.2f} – {high:.2f} ({rng:.0f}pts)\n"
+            f"Character: {character}\n\n"
+            f"Cycles: {cycles} | PF pass: {pf_pass} | Claude: {claude_called}\n"
+            f"{trade_line}"
+            f"{reasons_line}"
+        )
+        return self.send_message(text)
+
+    # ------------------------------------------------------------------
     # Agent Status
     # ------------------------------------------------------------------
 

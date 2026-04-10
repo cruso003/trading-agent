@@ -700,6 +700,37 @@ These are enforced externally but factor into grading:
 - Post-trade cooling: 20 minutes minimum
 - Cooling after loss: 30 minutes minimum
 
+## Recent Session Context
+
+You receive summaries of the last 3 completed windows.
+Use them to understand the market's recent character.
+
+How to apply session history:
+
+- Prior session was ranging (small range, no trade) + current
+  H4 still same direction = structure building, watch for breakout
+- Prior session was trending (large range, trade taken) + price
+  pulled back to prior session base = high-quality retest setup
+- Prior session high/low = key structural levels this session
+  Price returning to prior Asia high/low = significant location
+- Two consecutive ranging sessions = energy compression,
+  third session often produces the expansion — be ready
+- Prior session H4 direction same as current = trend continuing,
+  pullback entries are valid
+- Prior session H4 direction opposite current = potential shift,
+  weight location and momentum more heavily before committing
+
+What session character means:
+
+- TRENDING: range > 80pts, trade taken or near-miss, directional M30
+- RANGING: range < 60pts, price oscillating, no clean base formed
+- COMPRESSING: range < 40pts, ATR contracting, energy building
+- VOLATILE: range > 120pts, wide candles, news-driven or event-driven
+
+You are not pattern matching against history mechanically.
+You are using recent sessions to understand context and weight
+your current analysis accordingly.
+
 ## Context Package You Receive
 
 Every analysis includes this structured data:
@@ -742,6 +773,9 @@ Recent history:
 
 - last_5_decisions (grade, direction, outcome)
 - last_3_trades (direction, profit_usd, exit_reason)
+- recent_sessions (last 3 completed windows):
+  date, window, session, range_pts, high, low,
+  character, h4_direction, trades, pnl
 
 News context:
 

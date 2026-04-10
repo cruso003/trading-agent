@@ -103,6 +103,29 @@ class Database:
                 UNIQUE(date, window_name)
             );
 
+            -- Session summaries for Claude context and Telegram digest
+            CREATE TABLE IF NOT EXISTS session_summaries (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT NOT NULL,
+                window_name TEXT NOT NULL,
+                session_label TEXT,
+                window_start TEXT,
+                window_end TEXT,
+                session_high REAL,
+                session_low REAL,
+                range_pts REAL,
+                character TEXT,
+                total_cycles INTEGER DEFAULT 0,
+                prefilter_pass INTEGER DEFAULT 0,
+                claude_called INTEGER DEFAULT 0,
+                trades_taken INTEGER DEFAULT 0,
+                session_pnl REAL DEFAULT 0.0,
+                top_skip_reasons TEXT,
+                h4_direction TEXT,
+                notes TEXT,
+                UNIQUE(date, window_name)
+            );
+
             -- Agent state for dashboard
             CREATE TABLE IF NOT EXISTS agent_state (
                 id INTEGER PRIMARY KEY,
@@ -351,6 +374,62 @@ class Database:
         except Exception as e:
             print(f"ERROR | database | update_window_performance failed: {e}")
             return False
+
+    # ------------------------------------------------------------------
+    # Session Summaries
+    # ------------------------------------------------------------------
+
+    def save_session_summary(self, summary: dict) -> bool:
+        """Upsert a session summary at window close."""
+        try:
+            fields = [
+                "date", "window_name", "session_label",
+                "window_start", "window_end",
+                "session_high", "session_low", "range_pts", "character",
+                "total_cycles", "prefilter_pass", "claude_called",
+                "trades_taken", "session_pnl",
+                "top_skip_reasons", "h4_direction", "notes",
+            ]
+            existing = self._conn.execute(
+                "SELECT id FROM session_summaries WHERE date = ? AND window_name = ?",
+                (summary.get("date"), summary.get("window_name"))
+            ).fetchone()
+
+            if existing:
+                sets = ", ".join([f"{f} = ?" for f in fields])
+                values = [summary.get(f) for f in fields]
+                values += [summary.get("date"), summary.get("window_name")]
+                self._conn.execute(
+                    f"UPDATE session_summaries SET {sets} "
+                    f"WHERE date = ? AND window_name = ?",
+                    values
+                )
+            else:
+                columns = ", ".join(fields)
+                placeholders = ", ".join(["?"] * len(fields))
+                values = [summary.get(f) for f in fields]
+                self._conn.execute(
+                    f"INSERT INTO session_summaries ({columns}) VALUES ({placeholders})",
+                    values
+                )
+            self._conn.commit()
+            return True
+        except Exception as e:
+            print(f"ERROR | database | save_session_summary failed: {e}")
+            return False
+
+    def get_recent_session_summaries(self, n: int = 3) -> list:
+        """Get last N session summaries, newest first."""
+        try:
+            cursor = self._conn.execute(
+                """SELECT * FROM session_summaries
+                   ORDER BY date DESC, id DESC LIMIT ?""",
+                (n,)
+            )
+            return [dict(row) for row in cursor.fetchall()]
+        except Exception as e:
+            print(f"ERROR | database | get_recent_session_summaries failed: {e}")
+            return []
 
     # ------------------------------------------------------------------
     # Cleanup
