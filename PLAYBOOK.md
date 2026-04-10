@@ -54,29 +54,44 @@ Every setup must satisfy all three pillars.
 If any single pillar fails: grade is SKIP.
 No exceptions. No partial credit.
 
-### Pillar 1: Trend (Context Only — Never Entry Signal)
+### Pillar 1: Trend (Permission Side — Never Entry Signal)
 
 Timeframes: H4 and H1
 
 H4 (4-hour):
 
-- Context only. Lags up to 6.7 days (40 bar lookback).
-- Never blocks an entry alone.
-- Never triggers an entry alone.
-- Tells us the macro backdrop and nothing more.
-- Strong H4 BUY does not justify buying mid-range.
-- Weak H4 does not justify skipping clean structure.
+- Permission side only. H4=BUY means only take BUY setups.
+  H4=SELL means only take SELL setups. That is its only job.
+- EMA 9/21 on H4. Effective lag: 8-20 hours from when a move
+  actually started. By the time H4 flips, the impulse is done.
+- Never use H4 direction as entry confirmation.
+- Never use H4 direction as a reason to chase.
+- If H4 and M15 are both in the same direction with strong M30
+  bodies, the move is likely extended — do not enter.
+- Strong H4 BUY does not justify buying at session highs.
+- Valid entries occur when H1 or M30 is pulling back WITHIN
+  the H4 trend, not when everything is already aligned.
 
 H1 (1-hour):
 
-- More responsive but still lags (50 bar lookback).
-- Gives session bias direction.
-- Can align or warn but cannot decide alone.
-- H1 and H4 agreeing adds confidence but is not sufficient.
+- Intermediate confirmation layer. Responds faster than H4.
+- H1 pulling back counter to H4 = pullback in progress, watch.
+- H1 neutral while H4 has direction = base potentially forming.
+- H1 realigning with H4 after pullback = entry signal region.
+- H1 and H4 fully agreeing = may be mid-move, check location.
+
+The best setups look like this:
+H4=BUY + H1 pulled back or neutral + M30 base forming
++ M15 first close back in BUY direction = entry.
+
+The worst setups look like this:
+H4=BUY + H1=BUY + M30=5 bullish bars + M15=BUY
+= everyone agrees = the move already happened.
 
 Trend pillar PASSES when:
 
 - H1 direction aligns with intended trade direction
+- OR H1 is neutral/recovering from a pullback toward H4 direction
 - H4 does not strongly oppose (neutral or aligned)
 
 Trend pillar WARNS when:
@@ -113,9 +128,14 @@ M15 RSI rules:
 M30 candle sequence rules:
 
 - 3+ consecutive same direction candles = momentum confirmed
+  BUT if all 3+ are in H4 direction = likely extended, not entry
+- 1-2 counter-H4 candles followed by H4-direction recovery
+  = pullback complete, this is the entry region
 - 3+ consecutive candles with shrinking bodies = exhaustion
 - Alternating bull/bear sequence = chop, no trade
 - Long wicks dominating = absorption or stop hunt in progress
+- 4+/5 M30 bars in H4 direction = the prefilter catches this,
+  but if it slips through: location must be perfect or SKIP
 
 MACD rules:
 
@@ -191,48 +211,52 @@ Do not analyse further. Do not waste reasoning.
 
 ### Window 1: Asia Open
 
-Time: 23:00 – 01:00 GMT+0
+Time: 23:00 – 07:00 GMT+0
 
 Character:
 
-- Early session intent and liquidity reset
-- NY positions being unwound or extended
-- Clean fast moves with less noise
-- Thinner liquidity means sharper reactions
+- Full Asia session: early directional intent through Asia range build
+- 23:00-01:00: NY positions unwinding or extending, sharp fast moves
+- 01:00-05:00: True Asia range forming, slower and more deliberate
+- 05:00-07:00: Asia closing, early London positioning begins
+- Liquidity thinner than London — reactions are sharper but can reverse
 
 Best setups:
 
-- Breakout from NY closing range
-- Correction of NY session inefficiency
-- Clean sweep of Asia range extreme then reversal
-- First directional commitment of new day
+- Breakout from NY closing range (early window, 23:00-01:00)
+- Clean sweep of Asia range extreme then reversal (mid-window)
+- Defended base at Asia high or low as range matures
+- Pullback to base after first Asia impulse
 
 Entry style: Both anticipatory and confirmation valid
-Risk note: Moves can be sharp, use structure stops not tight stops
+Risk note: Early window moves can be sharp and reverse fast.
+Use structure stops. Do not force entries in the 01:00-03:00
+consolidation phase if no clear base has formed.
 
-### Window 2: London-NY Overlap
+### Window 2: London Session
 
-Time: 12:00 – 14:00 GMT+0
+Time: 08:00 – 16:00 GMT+0
 
 Character:
 
-- Highest probability window of the day
-- Real institutional money entering
-- London profit-taking meeting NY fresh positioning
-- True direction often revealed here
+- 08:00-09:30: London open, highest probability of sweep or trap
+- 09:30-12:00: True London direction establishing after initial trap
+- 12:00-14:00: London-NY overlap — highest volume, best R:R window
+- 14:00-16:00: NY continuation or reversal of London
 
 Best setups:
 
-- London absorption ending, first NY impulse pullback
-- Defended base continuation into NY liquidity
-- London trap reversal (London went one way, NY reverses)
-- Session handover displacement with clean retest
+- London sweep of Asia high or low, then reversal (08:00-09:30)
+- First confirmed London direction after the opening trap clears
+- London-NY overlap: first NY impulse pullback to base (12:00-14:00)
+- London trap reversal: London went one way, NY reverses it
 
-Entry style: Confirmation preferred
-Anticipatory only on very clear structure with multiple
-confluence factors
-Risk note: Can still fake before committing,
-wait for first NY candle to show intent
+Entry style: Confirmation preferred throughout.
+The 12:00-14:00 sub-window is the highest conviction zone —
+if a setup hasn't formed by 14:00, lower expectations for
+the rest of the window.
+Risk note: First London move (08:00-08:45) is frequently a trap.
+Do not trade it unless location is extreme and the sweep is clean.
 
 ### Outside Windows
 
@@ -267,7 +291,8 @@ London-NY Overlap (12:00 – 16:00 GMT+0):
 - Highest volume and conviction
 - Where trapped positions get cleared
 - Best R:R setups of the day
-- Our Window 2 captures the opening of this zone
+- Our Window 2 covers the full London session including this zone
+- The overlap sub-window (12:00-14:00) is the priority zone within it
 
 NY (13:00 – 21:00 GMT+0):
 
@@ -577,6 +602,11 @@ These are absolute rules. No exceptions.
 - Never trade outside the two windows
 - Never widen a stop loss after entry
 - Never chase a move that already ran 30+ points
+- Never enter when H4, H1, M30, and M15 all agree on the same
+  direction simultaneously — that is not a setup, that is the
+  middle of a move. Wait for the pullback.
+- Never use full timeframe agreement as a reason to enter.
+  Full agreement = the opportunity already passed.
 - Never convert a scalp into a swing trade emotionally
 - Never trade to recover losses
 - Never take a second entry if first was stopped out

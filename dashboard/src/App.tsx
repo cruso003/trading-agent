@@ -1,79 +1,91 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import { LayoutDashboard, BarChart3, Zap } from 'lucide-react';
-import Dashboard from './pages/Dashboard';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
+import AppShell from './components/AppShell';
+
+// Public pages
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Apply from './pages/Apply';
+import Register from './pages/Register';
+
+// Owner pages
+import OwnerDashboard from './pages/OwnerDashboard';
 import Analytics from './pages/Analytics';
-import './App.css';
+import ManageUsers from './pages/ManageUsers';
 
-function UtcClock() {
-  const [time, setTime] = useState('');
+// Shared authenticated pages
+import Broadcasts from './pages/Broadcasts';
 
-  useEffect(() => {
-    const update = () => {
-      const now = new Date();
-      const hh = String(now.getUTCHours()).padStart(2, '0');
-      const mm = String(now.getUTCMinutes()).padStart(2, '0');
-      const ss = String(now.getUTCSeconds()).padStart(2, '0');
-      setTime(`${hh}:${mm}:${ss}`);
-    };
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
-  }, []);
+// Mentee pages
+import MenteeDashboard from './pages/MenteeDashboard';
+import Academy from './pages/Academy';
 
-  return (
-    <div className="nav-clock">
-      <span className="nav-clock-label">UTC</span>
-      <span className="nav-clock-time mono">{time}</span>
-    </div>
-  );
-}
-
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <div className="app">
-        <header className="topbar">
-          <div className="topbar-left">
-            <span className="topbar-icon"><Zap size={14} /></span>
-            <div className="topbar-brand">
-              <span className="topbar-name mono">GOLDTRADER</span>
-              <span className="topbar-sub">XAUUSD</span>
-            </div>
-            <div className="topbar-divider" />
-            <nav className="topbar-nav">
-              <NavLink
-                to="/"
-                end
-                className={({ isActive }) => `topbar-link${isActive ? ' active' : ''}`}
-              >
-                <LayoutDashboard size={13} />
-                <span>Monitor</span>
-              </NavLink>
-              <NavLink
-                to="/analytics"
-                className={({ isActive }) => `topbar-link${isActive ? ' active' : ''}`}
-              >
-                <BarChart3 size={13} />
-                <span>Analytics</span>
-              </NavLink>
-            </nav>
-          </div>
+      <AuthProvider>
+        <Routes>
 
-          <div className="topbar-right">
-            <UtcClock />
-          </div>
-        </header>
+          {/* ── Public routes ─────────────────────────────────────── */}
+          <Route path="/" element={
+            <PublicRoute><Landing /></PublicRoute>
+          } />
+          <Route path="/login" element={
+            <PublicRoute><Login /></PublicRoute>
+          } />
+          <Route path="/apply" element={
+            <PublicRoute><Apply /></PublicRoute>
+          } />
+          <Route path="/register" element={
+            <PublicRoute><Register /></PublicRoute>
+          } />
 
-        <main className="app-content">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/analytics" element={<Analytics />} />
-          </Routes>
-        </main>
-      </div>
+          {/* ── Owner routes ───────────────────────────────────────── */}
+          <Route path="/monitor" element={
+            <ProtectedRoute role="owner">
+              <AppShell><OwnerDashboard /></AppShell>
+            </ProtectedRoute>
+          } />
+          <Route path="/analytics" element={
+            <ProtectedRoute role="owner">
+              <AppShell><Analytics /></AppShell>
+            </ProtectedRoute>
+          } />
+          <Route path="/manage" element={
+            <ProtectedRoute role="owner">
+              <AppShell><ManageUsers /></AppShell>
+            </ProtectedRoute>
+          } />
+          <Route path="/broadcasts" element={
+            <ProtectedRoute role="owner">
+              <AppShell><Broadcasts /></AppShell>
+            </ProtectedRoute>
+          } />
+
+          {/* ── Mentee routes ──────────────────────────────────────── */}
+          <Route path="/home" element={
+            <ProtectedRoute role="mentee">
+              <AppShell><MenteeDashboard /></AppShell>
+            </ProtectedRoute>
+          } />
+          <Route path="/academy" element={
+            <ProtectedRoute role="mentee">
+              <AppShell><Academy /></AppShell>
+            </ProtectedRoute>
+          } />
+          <Route path="/updates" element={
+            <ProtectedRoute role="mentee">
+              <AppShell><Broadcasts /></AppShell>
+            </ProtectedRoute>
+          } />
+
+          {/* ── Fallback ───────────────────────────────────────────── */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
-
-export default App;

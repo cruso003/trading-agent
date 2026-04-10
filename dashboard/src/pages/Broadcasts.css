@@ -1,0 +1,238 @@
+.bc-page {
+  height: 100%;
+  overflow-y: auto;
+  padding: 28px 28px 60px;
+}
+
+.bc-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.bc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.bc-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.bc-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.bc-refresh:hover {
+  color: var(--text);
+  border-color: var(--border-hi);
+}
+
+/* Layout: compose + feed side by side for owner */
+.bc-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Compose panel */
+.bc-compose-panel {
+  width: 320px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.bc-compose-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.bc-compose-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bc-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.bc-field-optional {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-3);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.bc-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: var(--sans);
+  transition: border-color 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bc-textarea {
+  resize: vertical;
+  min-height: 90px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bc-input::placeholder { color: var(--text-3); }
+.bc-input:focus { outline: none; border-color: var(--gold); }
+
+.bc-error {
+  background: rgba(220,38,38,0.08);
+  border: 1px solid rgba(220,38,38,0.3);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  color: var(--red);
+}
+
+.bc-success {
+  background: rgba(22,163,74,0.08);
+  border: 1px solid rgba(22,163,74,0.25);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  color: var(--green);
+}
+
+.bc-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--gold);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  width: 100%;
+}
+
+.bc-send-btn:hover:not(:disabled) { opacity: 0.88; }
+.bc-send-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Feed */
+.bc-feed {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bc-empty {
+  color: var(--text-2);
+  font-size: 14px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.bc-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bc-trade-context {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  background: rgba(232,160,32,0.1);
+  border: 1px solid rgba(232,160,32,0.2);
+  border-radius: 4px;
+  align-self: flex-start;
+}
+
+.bc-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.bc-card-message {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.bc-card-note {
+  font-size: 12px;
+  color: var(--text-3);
+  font-style: italic;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.bc-note-label {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.bc-card-time {
+  font-size: 11px;
+  color: var(--text-3);
+  font-family: var(--mono);
+}
+
+/* Mentee view: no compose panel, full-width feed */
+.bc-feed:only-child {
+  width: 100%;
+}

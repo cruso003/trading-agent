@@ -6,8 +6,8 @@ import {
   Users,
   Megaphone,
   Home,
-  TrendingUp,
   GraduationCap,
+  Bell,
   LogOut,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -95,18 +95,18 @@ export default function AppShell({ children }: Props) {
                   <span>Home</span>
                 </NavLink>
                 <NavLink
-                  to="/signals"
-                  className={({ isActive }) => `shell-link${isActive ? ' active' : ''}`}
-                >
-                  <TrendingUp size={13} />
-                  <span>Signals</span>
-                </NavLink>
-                <NavLink
                   to="/academy"
                   className={({ isActive }) => `shell-link${isActive ? ' active' : ''}`}
                 >
                   <GraduationCap size={13} />
                   <span>Academy</span>
+                </NavLink>
+                <NavLink
+                  to="/updates"
+                  className={({ isActive }) => `shell-link${isActive ? ' active' : ''}`}
+                >
+                  <Bell size={13} />
+                  <span>Updates</span>
                 </NavLink>
               </>
             )}
