@@ -7,6 +7,7 @@ Reference: ARCHITECTURE.md Section 2, Section 14, Section 16
 
 import json
 import logging
+import re
 import time
 from pathlib import Path
 from typing import Optional
@@ -156,19 +157,15 @@ class ClaudeAgent:
         except json.JSONDecodeError:
             pass
 
-        # Try extracting from code block
-        if "```" in raw_text:
-            start = raw_text.find("```")
-            # Skip the language identifier line
-            content_start = raw_text.find("\n", start) + 1
-            end = raw_text.find("```", content_start)
-            if content_start > 0 and end > content_start:
-                try:
-                    return json.loads(raw_text[content_start:end].strip())
-                except json.JSONDecodeError:
-                    pass
+        # Try extracting from code fence: ```json ... ``` or ``` ... ```
+        fence_match = re.search(r'```(?:json)?\s*\n([\s\S]*?)\n```', raw_text)
+        if fence_match:
+            try:
+                return json.loads(fence_match.group(1).strip())
+            except json.JSONDecodeError:
+                pass
 
-        # Try finding JSON object in text
+        # Try finding JSON object in text (first { to last })
         start = raw_text.find("{")
         end = raw_text.rfind("}") + 1
         if start >= 0 and end > start:
@@ -177,7 +174,10 @@ class ClaudeAgent:
             except json.JSONDecodeError:
                 pass
 
-        logger.error(f"Could not parse JSON from Claude response: {raw_text[:200]}")
+        logger.error(
+            f"Could not parse JSON from Claude response (len={len(raw_text)}): "
+            f"{raw_text[:500]}"
+        )
         return None
 
     def _validate_response(self, parsed: dict) -> tuple:
