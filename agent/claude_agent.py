@@ -7,7 +7,6 @@ Reference: ARCHITECTURE.md Section 2, Section 14, Section 16
 
 import json
 import logging
-import re
 import time
 from pathlib import Path
 from typing import Optional
@@ -151,29 +150,43 @@ class ClaudeAgent:
 
     def _parse_response(self, raw_text: str) -> Optional[dict]:
         """Extract JSON from Claude's response text."""
-        # Try direct parse
-        try:
-            return json.loads(raw_text)
-        except json.JSONDecodeError:
-            pass
 
-        # Try extracting from code fence: ```json ... ``` or ``` ... ```
-        # Use [^\n]* (not \s*) so we don't accidentally consume the newline delimiter
-        fence_match = re.search(r'```(?:json)?[^\n]*\n([\s\S]*?)\n```', raw_text)
-        if fence_match:
+        def _try(text: str) -> Optional[dict]:
             try:
-                return json.loads(fence_match.group(1).strip())
-            except json.JSONDecodeError:
-                pass
+                return json.loads(text)
+            except (json.JSONDecodeError, ValueError):
+                return None
 
-        # Try finding JSON object in text (first { to last })
+        # 1. Direct parse
+        result = _try(raw_text.strip())
+        if result is not None:
+            return result
+
+        # 2. Strip markdown code fences (handles \r\n via splitlines())
+        stripped = raw_text.strip()
+        if stripped.startswith("```"):
+            lines = stripped.splitlines()
+            # Find closing fence from the end
+            close_idx = None
+            for i in range(len(lines) - 1, 0, -1):
+                if lines[i].strip() == "```":
+                    close_idx = i
+                    break
+            if close_idx is not None and close_idx > 1:
+                content = "\n".join(lines[1:close_idx])
+            else:
+                content = "\n".join(lines[1:])  # at least drop opening fence
+            result = _try(content.strip())
+            if result is not None:
+                return result
+
+        # 3. Brace extraction fallback (first { to last })
         start = raw_text.find("{")
         end = raw_text.rfind("}") + 1
         if start >= 0 and end > start:
-            try:
-                return json.loads(raw_text[start:end])
-            except json.JSONDecodeError:
-                pass
+            result = _try(raw_text[start:end])
+            if result is not None:
+                return result
 
         logger.error(
             f"Could not parse JSON from Claude response (len={len(raw_text)}): "
