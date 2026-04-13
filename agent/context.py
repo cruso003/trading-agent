@@ -82,10 +82,18 @@ def build_context(
             "timestamp_open": t.get("timestamp_open"),
         })
 
+    # Week/day context
+    now = datetime.now(timezone.utc)
+    day_of_week = now.strftime("%A")
+    # Week open = Monday and still in the first 8 hours (full Asia session)
+    is_week_open = (now.weekday() == 0 and now.hour < 8)
+
     # Build the context package (matches PLAYBOOK.md exactly)
     context = {
         # Market data
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": now.isoformat(),
+        "day_of_week": day_of_week,
+        "is_week_open_session": is_week_open,
         "session": window_status.get("session", "UNKNOWN"),
         "window_status": window_status.get("window", "OUTSIDE"),
         "minutes_into_window": window_status.get("minutes_into_window", 0),

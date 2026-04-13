@@ -1,6 +1,6 @@
 /* Landing page — overrides body overflow for scrolling */
 .landing {
-  min-height: 100vh;
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
   background: var(--bg);

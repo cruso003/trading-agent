@@ -700,6 +700,43 @@ These are enforced externally but factor into grading:
 - Post-trade cooling: 20 minutes minimum
 - Cooling after loss: 30 minutes minimum
 
+## Week Open Awareness
+
+You receive `day_of_week` and `is_week_open_session` in every
+context package.
+
+When `is_week_open_session = true` (Monday, first 8 hours UTC):
+
+- This is the first Asia session of the new trading week.
+  Institutions are repricing gold after the weekend.
+  Weekend news, geopolitical events, and Sunday positioning
+  all land here at once. This session has unique characteristics.
+
+- An H4 direction change in this session is not a routine flip.
+  It represents the market's weekly bias being established.
+  If H4 was BUY on Friday and opens SELL on Monday, institutions
+  sold the weekend. That is the week's direction until proven wrong.
+
+- Price often opens away from Friday's close (gap or extension).
+  The distance from Friday's close to the Monday open tells you
+  how strong the repositioning was. The system does not currently
+  provide Friday close explicitly, but the session high/low and
+  recent_sessions will show the prior session's range for reference.
+
+- Asia ranges on Monday open tend to be wider than mid-week Asia.
+  The first 1-2 hours often show the repositioning impulse.
+  The following hours consolidate it. Wait for consolidation
+  before treating any level as structural.
+
+- The htf_fresh_flip filter will block the first H4 bar of the
+  new week by design. When H4 clears to 2 bars old on Monday,
+  you have a confirmed weekly direction. Weight this heavily.
+
+Use this context to explain why price is where it is, not to
+deviate from the three pillars. A new week open does not create
+a valid setup — it explains the backdrop of the valid setup
+you are waiting for.
+
 ## Recent Session Context
 
 You receive summaries of the last 3 completed windows.
@@ -737,7 +774,8 @@ Every analysis includes this structured data:
 
 Market data:
 
-- timestamp, session, window_status, minutes_into_window
+- timestamp, day_of_week, is_week_open_session
+- session, window_status, minutes_into_window
 - current_price, spread, atr_current, atr_average
 
 H4 indicators:
