@@ -158,7 +158,8 @@ class ClaudeAgent:
             pass
 
         # Try extracting from code fence: ```json ... ``` or ``` ... ```
-        fence_match = re.search(r'```(?:json)?\s*\n([\s\S]*?)\n```', raw_text)
+        # Use [^\n]* (not \s*) so we don't accidentally consume the newline delimiter
+        fence_match = re.search(r'```(?:json)?[^\n]*\n([\s\S]*?)\n```', raw_text)
         if fence_match:
             try:
                 return json.loads(fence_match.group(1).strip())
