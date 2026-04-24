@@ -22,13 +22,13 @@ logger = logging.getLogger("claude_agent")
 REQUIRED_ALWAYS = [
     "grade", "direction", "confidence",
     "window", "pillar_trend", "pillar_momentum",
-    "pillar_location", "reasoning", "session_context",
+    "pillar_structure", "reasoning", "session_context",
 ]
 
 REQUIRED_IF_TRADEABLE = [
     "entry_price", "entry_zone", "sl",
     "tp1", "tp2", "invalidation",
-    "base_zone", "setup_type",
+    "m15_swing_ref", "setup_type",
 ]
 
 REQUIRED_IF_SKIP = ["skip_reason"]
@@ -38,10 +38,15 @@ VALID_DIRECTIONS = ["BUY", "SELL", "WAIT"]
 VALID_PILLARS = ["PASS", "WARN", "FAIL"]
 VALID_WINDOWS = ["WINDOW_1", "WINDOW_2", "OUTSIDE"]
 VALID_SETUP_TYPES = [
-    "base_retest", "session_extreme",
-    "breakout_retest", "stop_hunt_reversal",
-    "absorption_expansion",
+    "momentum_continuation", "pullback_entry",
+    "rejection_reversal", "breakout_retest",
+    "sweep_reversal",
 ]
+
+# SL distance bounds in points (1 point = $0.01 on XAUUSD).
+# Must match PLAYBOOK.md v2.0 and risk.py config defaults.
+SL_MIN_POINTS = 8
+SL_MAX_POINTS = 30
 
 
 class ClaudeAgent:
@@ -215,8 +220,8 @@ class ClaudeAgent:
         if direction not in VALID_DIRECTIONS:
             return (False, f"Invalid direction: {direction}")
 
-        # Validate pillars
-        for pillar in ["pillar_trend", "pillar_momentum", "pillar_location"]:
+        # Validate pillars (pillar_structure replaces pillar_location in v2.0)
+        for pillar in ["pillar_trend", "pillar_momentum", "pillar_structure"]:
             if parsed.get(pillar) not in VALID_PILLARS:
                 return (False, f"Invalid {pillar}: {parsed.get(pillar)}")
 
@@ -260,10 +265,14 @@ class ClaudeAgent:
                 if tp2 >= tp1:
                     return (False, f"SELL: TP2 ({tp2}) must be below TP1 ({tp1})")
 
-            # Validate SL distance (8-50 points, 1 point = $0.01)
+            # Validate SL distance (quick-scalp range, 1 point = $0.01)
             sl_points = abs(entry - sl) * 100
-            if sl_points < 8 or sl_points > 50:
-                return (False, f"SL distance {sl_points:.0f} points outside 8-50 range")
+            if sl_points < SL_MIN_POINTS or sl_points > SL_MAX_POINTS:
+                return (
+                    False,
+                    f"SL distance {sl_points:.0f} points outside "
+                    f"{SL_MIN_POINTS}-{SL_MAX_POINTS} range"
+                )
 
         # Conditional: SKIP
         if grade == "SKIP":
@@ -282,7 +291,7 @@ class ClaudeAgent:
             "window": "OUTSIDE",
             "pillar_trend": "FAIL",
             "pillar_momentum": "FAIL",
-            "pillar_location": "FAIL",
+            "pillar_structure": "FAIL",
             "reasoning": reason,
             "session_context": "Error condition",
             "skip_reason": reason,
@@ -292,6 +301,6 @@ class ClaudeAgent:
             "tp1": None,
             "tp2": None,
             "invalidation": None,
-            "base_zone": None,
+            "m15_swing_ref": None,
             "setup_type": None,
         }
