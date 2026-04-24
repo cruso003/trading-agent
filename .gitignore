@@ -7,7 +7,7 @@ agent/data/*.db-wal
 agent/data/*.db-shm
 
 # Logs
-agent/logs/
+#agent/logs/
 
 # Python
 __pycache__/

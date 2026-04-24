@@ -1,0 +1,169 @@
+2026-04-12 16:52:28 | INFO | main | ----------------------------------------
+2026-04-12 16:52:28 | INFO | main | WINDOW: London-NY Overlap (08:00-18:00) | 532min in | session=NEW_YORK
+2026-04-12 16:52:28 | INFO | main | Fetching market data...
+2026-04-12 16:52:28 | INFO | main | Calculating indicators...
+2026-04-12 16:52:28 | INFO | main | Running prefilter...
+2026-04-12 16:52:28 | INFO | prefilter | PASS | H4=BUY(30bars), H1=BUY, M30_body=33.4%, price_pos=42.7%
+2026-04-12 16:52:28 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 16:52:28 | INFO | main | Checking news context...
+2026-04-12 16:52:28 | INFO | main | News OK: risk=LOW
+2026-04-12 16:52:28 | INFO | main | Building context package...
+2026-04-12 16:52:28 | INFO | main | Calling Claude for analysis...
+2026-04-12 16:52:28 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.439264 seconds
+2026-04-12 16:52:28 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.814454 seconds
+2026-04-12 16:52:29 | WARNING | claude_agent | Claude API error (attempt 1/3), waiting 2s: Connection error.
+2026-04-12 16:52:31 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.422043 seconds
+2026-04-12 16:52:32 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.848744 seconds
+2026-04-12 16:52:33 | WARNING | claude_agent | Claude API error (attempt 2/3), waiting 4s: Connection error.
+2026-04-12 16:52:37 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.380707 seconds
+2026-04-12 16:52:37 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.872383 seconds
+2026-04-12 16:52:38 | WARNING | claude_agent | Claude API error (attempt 3/3), waiting 8s: Connection error.
+2026-04-12 16:52:46 | ERROR | claude_agent | Claude API unavailable after 3 attempts
+2026-04-12 16:52:46 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=0
+2026-04-12 16:52:46 | INFO | main | SKIP: Claude API unavailable
+2026-04-12 16:52:46 | WARNING | notifier | Telegram send failed: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage (Caused by NameResolutionError("HTTPSConnection(host='api.telegram.org', port=443): Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 17:00:02 | INFO | main | ----------------------------------------
+2026-04-12 17:00:02 | INFO | main | WINDOW: London-NY Overlap (08:00-18:00) | 540min in | session=NEW_YORK
+2026-04-12 17:00:02 | INFO | main | Fetching market data...
+2026-04-12 17:00:02 | INFO | main | Calculating indicators...
+2026-04-12 17:00:02 | INFO | main | Running prefilter...
+2026-04-12 17:00:02 | INFO | prefilter | PASS | H4=BUY(30bars), H1=BUY, M30_body=33.4%, price_pos=42.7%
+2026-04-12 17:00:02 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 17:00:02 | INFO | main | Checking news context...
+2026-04-12 17:00:02 | INFO | main | News OK: risk=LOW
+2026-04-12 17:00:02 | INFO | main | Building context package...
+2026-04-12 17:00:02 | INFO | main | Calling Claude for analysis...
+2026-04-12 17:00:02 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.411202 seconds
+2026-04-12 17:00:03 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.832135 seconds
+2026-04-12 17:00:03 | WARNING | claude_agent | Claude API error (attempt 1/3), waiting 2s: Connection error.
+2026-04-12 17:00:05 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.453002 seconds
+2026-04-12 17:00:06 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.990887 seconds
+2026-04-12 17:00:07 | WARNING | claude_agent | Claude API error (attempt 2/3), waiting 4s: Connection error.
+2026-04-12 17:00:11 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.389163 seconds
+2026-04-12 17:00:11 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.838120 seconds
+2026-04-12 17:00:12 | WARNING | claude_agent | Claude API error (attempt 3/3), waiting 8s: Connection error.
+2026-04-12 17:00:20 | ERROR | claude_agent | Claude API unavailable after 3 attempts
+2026-04-12 17:00:20 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=0
+2026-04-12 17:00:20 | INFO | main | SKIP: Claude API unavailable
+2026-04-12 17:00:20 | WARNING | notifier | Telegram send failed: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage (Caused by NameResolutionError("HTTPSConnection(host='api.telegram.org', port=443): Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 17:21:54 | INFO | main | ----------------------------------------
+2026-04-12 17:21:54 | INFO | main | WINDOW: London-NY Overlap (08:00-18:00) | 561min in | session=NEW_YORK
+2026-04-12 17:21:54 | INFO | main | Fetching market data...
+2026-04-12 17:21:54 | INFO | main | Calculating indicators...
+2026-04-12 17:21:54 | INFO | main | Running prefilter...
+2026-04-12 17:21:54 | INFO | prefilter | PASS | H4=BUY(30bars), H1=BUY, M30_body=33.4%, price_pos=42.7%
+2026-04-12 17:21:54 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 17:21:54 | INFO | main | Checking news context...
+2026-04-12 17:21:54 | INFO | main | News OK: risk=LOW
+2026-04-12 17:21:54 | INFO | main | Building context package...
+2026-04-12 17:21:54 | INFO | main | Calling Claude for analysis...
+2026-04-12 17:21:54 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.474609 seconds
+2026-04-12 17:21:54 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.979430 seconds
+2026-04-12 17:21:55 | WARNING | claude_agent | Claude API error (attempt 1/3), waiting 2s: Connection error.
+2026-04-12 17:21:57 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.422352 seconds
+2026-04-12 17:21:58 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.800491 seconds
+2026-04-12 17:21:58 | WARNING | claude_agent | Claude API error (attempt 2/3), waiting 4s: Connection error.
+2026-04-12 17:22:02 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.474758 seconds
+2026-04-12 17:22:03 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.756106 seconds
+2026-04-12 17:22:04 | WARNING | claude_agent | Claude API error (attempt 3/3), waiting 8s: Connection error.
+2026-04-12 17:22:12 | ERROR | claude_agent | Claude API unavailable after 3 attempts
+2026-04-12 17:22:12 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=0
+2026-04-12 17:22:12 | INFO | main | SKIP: Claude API unavailable
+2026-04-12 17:22:12 | WARNING | notifier | Telegram send failed: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage (Caused by NameResolutionError("HTTPSConnection(host='api.telegram.org', port=443): Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 17:30:02 | INFO | main | ----------------------------------------
+2026-04-12 17:30:02 | INFO | main | WINDOW: London-NY Overlap (08:00-18:00) | 570min in | session=NEW_YORK
+2026-04-12 17:30:02 | INFO | main | Fetching market data...
+2026-04-12 17:30:02 | INFO | main | Calculating indicators...
+2026-04-12 17:30:02 | INFO | main | Running prefilter...
+2026-04-12 17:30:02 | INFO | prefilter | PASS | H4=BUY(30bars), H1=BUY, M30_body=33.4%, price_pos=42.7%
+2026-04-12 17:30:02 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 17:30:02 | INFO | main | Checking news context...
+2026-04-12 17:30:02 | INFO | main | News OK: risk=LOW
+2026-04-12 17:30:02 | INFO | main | Building context package...
+2026-04-12 17:30:02 | INFO | main | Calling Claude for analysis...
+2026-04-12 17:30:02 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.461578 seconds
+2026-04-12 17:30:02 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.838958 seconds
+2026-04-12 17:30:03 | WARNING | claude_agent | Claude API error (attempt 1/3), waiting 2s: Connection error.
+2026-04-12 17:30:05 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.379396 seconds
+2026-04-12 17:30:06 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.788177 seconds
+2026-04-12 17:30:06 | WARNING | claude_agent | Claude API error (attempt 2/3), waiting 4s: Connection error.
+2026-04-12 17:30:11 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.481260 seconds
+2026-04-12 17:30:11 | INFO | anthropic._base_client | Retrying request to /v1/messages in 0.866090 seconds
+2026-04-12 17:30:12 | WARNING | claude_agent | Claude API error (attempt 3/3), waiting 8s: Connection error.
+2026-04-12 17:30:20 | ERROR | claude_agent | Claude API unavailable after 3 attempts
+2026-04-12 17:30:20 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=0
+2026-04-12 17:30:20 | INFO | main | SKIP: Claude API unavailable
+2026-04-12 17:30:20 | WARNING | notifier | Telegram send failed: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage (Caused by NameResolutionError("HTTPSConnection(host='api.telegram.org', port=443): Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 18:25:53 | INFO | main | ----------------------------------------
+2026-04-12 18:25:53 | WARNING | notifier | Telegram send failed: HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded with url: /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage (Caused by NameResolutionError("HTTPSConnection(host='api.telegram.org', port=443): Failed to resolve 'api.telegram.org' ([Errno 11001] getaddrinfo failed)"))
+2026-04-12 18:25:53 | INFO | main | Session digest sent: COMPRESSING, range=24.09pts
+2026-04-12 18:25:53 | INFO | main | Outside windows. Next: WINDOW_1 in 275min — sleeping 274min
+2026-04-12 23:00:00 | INFO | main | ----------------------------------------
+2026-04-12 23:00:00 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 0min in | session=ASIA
+2026-04-12 23:00:01 | INFO | main | Fetching market data...
+2026-04-12 23:00:01 | INFO | main | Calculating indicators...
+2026-04-12 23:00:01 | INFO | main | Running prefilter...
+2026-04-12 23:00:01 | INFO | prefilter | FAIL | dead_zone: M30 body_ratio=54.6%
+2026-04-12 23:00:01 | INFO | main | Prefilter FAIL: dead_zone: M30 body_ratio=54.6%
+2026-04-12 23:13:46 | INFO | main | ============================================================
+2026-04-12 23:13:46 | INFO | main | GoldTrader AI Agent starting
+2026-04-12 23:13:46 | INFO | main | Account: demo
+2026-04-12 23:13:46 | INFO | main | Symbol: XAUUSDm
+2026-04-12 23:13:46 | INFO | main | Claude model: claude-sonnet-4-6
+2026-04-12 23:13:46 | INFO | main | GPT model: gpt-4o
+2026-04-12 23:13:46 | INFO | main | ============================================================
+2026-04-12 23:13:46 | INFO | claude_agent | Loaded playbook: 24539 chars from C:\Users\Dev-Temp01\Desktop\fx\trading-agent\PLAYBOOK.md
+2026-04-12 23:13:46 | INFO | main | Connecting to MT5...
+2026-04-12 23:13:46 | INFO | market | MT5 connected successfully
+2026-04-12 23:13:46 | INFO | main | ----------------------------------------
+2026-04-12 23:13:46 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 13min in | session=ASIA
+2026-04-12 23:13:47 | INFO | main | Fetching market data...
+2026-04-12 23:13:47 | INFO | main | Calculating indicators...
+2026-04-12 23:13:47 | INFO | main | Running prefilter...
+2026-04-12 23:13:47 | INFO | prefilter | PASS | H4=BUY(20bars), H1=SELL, M30_body=8.7%, price_pos=8.5%
+2026-04-12 23:13:47 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 23:13:47 | INFO | main | Checking news context...
+2026-04-12 23:13:47 | INFO | main | News OK: risk=LOW
+2026-04-12 23:13:47 | INFO | main | Building context package...
+2026-04-12 23:13:47 | INFO | main | Calling Claude for analysis...
+2026-04-12 23:14:06 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-12 23:14:07 | INFO | claude_agent | SKIP | direction=WAIT, confidence=18
+2026-04-12 23:14:07 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=18
+2026-04-12 23:14:07 | INFO | main | SKIP: Momentum pillar fails: M30 body_strength_ratio at 8.7% is critically below the 55% minimum threshold — automatic SKIP. Trend pillar fails: H1 is SELL direction with MACD histogram expanding bearishly at -11.19, directly opposing any BUY consideration; H4 direction is labeled BUY but strength is 0.0 and H4 RSI at 39.94 with MACD histogram deeply negative (-9.22) and expanding bearish slope means H4 is structurally weakening, not supporting BUY permission. Location is borderline WARN at 8.5% of session range (near session low), but location alone cannot override two failing pillars. No identifiable base structure: the M30 sequence shows a 101-point drop from Asia high with alternating large candles and a final 8.7% body doji — this is post-expansion noise, not a clean absorption cluster. Do not attempt to catch this knife. Wait for price to either form a tight 2-5 candle compression cluster at or near the 4644-4652 zone with shrinking volatility and wicks on both sides, followed by the first M15 bullish close reclaiming structure from inside that zone, before reassessing.
+2026-04-12 23:15:02 | INFO | main | ----------------------------------------
+2026-04-12 23:15:02 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 15min in | session=ASIA
+2026-04-12 23:15:02 | INFO | main | Fetching market data...
+2026-04-12 23:15:02 | INFO | main | Calculating indicators...
+2026-04-12 23:15:02 | INFO | main | Running prefilter...
+2026-04-12 23:15:02 | INFO | prefilter | PASS | H4=BUY(20bars), H1=SELL, M30_body=8.1%, price_pos=8.5%
+2026-04-12 23:15:02 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 23:15:02 | INFO | main | Checking news context...
+2026-04-12 23:15:02 | INFO | main | News OK: risk=LOW
+2026-04-12 23:15:02 | INFO | main | Building context package...
+2026-04-12 23:15:02 | INFO | main | Calling Claude for analysis...
+2026-04-12 23:15:14 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-12 23:15:14 | INFO | claude_agent | SKIP | direction=WAIT, confidence=12
+2026-04-12 23:15:14 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=12
+2026-04-12 23:15:14 | INFO | main | SKIP: Momentum pillar fails: M30 body_strength_ratio at 8.1% is far below the 55% minimum — the last candle is a near-doji with no directional conviction. Trend pillar fails: H1 is SELL with strength 1.6 and MACD histogram expanding bearishly at -11.19, directly opposing any BUY consideration; H4 direction label is BUY but strength is 0.0 and H4 RSI at 39.95 with MACD histogram -9.22 expanding bearish means H4 has no active BUY permission to grant. No valid base identified: the M30 sequence reflects a violent 101-point impulsive sell from 4749 followed by a single large 74% bull recovery candle and then a doji — this is not a compression cluster, it is post-expansion noise. Price is near session low at 8.5% of range (WARN on location) but location alone cannot override two failed pillars. Wait for a tight 2-5 candle absorption cluster to form at or near the 4644-4655 zone with shrinking bodies, wicks on both sides, and then the first M15 bullish close reclaiming structure from inside that zone before reassessing.
+2026-04-12 23:30:03 | INFO | main | ----------------------------------------
+2026-04-12 23:30:03 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 30min in | session=ASIA
+2026-04-12 23:30:03 | INFO | main | Fetching market data...
+2026-04-12 23:30:03 | INFO | main | Calculating indicators...
+2026-04-12 23:30:03 | INFO | main | Running prefilter...
+2026-04-12 23:30:03 | INFO | prefilter | FAIL | htf_fresh_flip: H4=SELL only 1 bar(s) old
+2026-04-12 23:30:03 | INFO | main | Prefilter FAIL: htf_fresh_flip: H4=SELL only 1 bar(s) old
+2026-04-12 23:45:02 | INFO | main | ----------------------------------------
+2026-04-12 23:45:02 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 45min in | session=ASIA
+2026-04-12 23:45:02 | INFO | main | Fetching market data...
+2026-04-12 23:45:02 | INFO | main | Calculating indicators...
+2026-04-12 23:45:02 | INFO | main | Running prefilter...
+2026-04-12 23:45:02 | INFO | prefilter | PASS | H4=BUY(20bars), H1=SELL, M30_body=28.9%, price_pos=7.2%
+2026-04-12 23:45:02 | INFO | main | Prefilter PASS — proceeding to news check
+2026-04-12 23:45:02 | INFO | main | Checking news context...
+2026-04-12 23:45:02 | INFO | main | News OK: risk=LOW
+2026-04-12 23:45:02 | INFO | main | Building context package...
+2026-04-12 23:45:02 | INFO | main | Calling Claude for analysis...
+2026-04-12 23:45:15 | INFO | httpx | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-12 23:45:15 | INFO | claude_agent | SKIP | direction=WAIT, confidence=15
+2026-04-12 23:45:15 | INFO | main | Claude: grade=SKIP, direction=WAIT, confidence=15
+2026-04-12 23:45:15 | INFO | main | SKIP: Momentum pillar fails: M30 body_strength_ratio at 28.9% is critically below the 55% minimum threshold. Trend pillar fails: H1 SELL with expanding bearish MACD directly opposes BUY; H4 BUY label is structurally invalid with 0.0 strength, RSI 39.72, and expanding negative MACD histogram. No valid base identified: M30 sequence reflects post-expansion noise (violent 101-point impulse sell followed by alternating candles) with no compression cluster present. Two pillars failing simultaneously is an automatic SKIP regardless of location proximity to session low.

@@ -1,0 +1,1020 @@
+2026-04-06 00:40:56 | INFO | main | ============================================================
+2026-04-06 00:40:56 | INFO | main | GoldTrader AI Agent starting
+2026-04-06 00:40:56 | INFO | main | Account: demo
+2026-04-06 00:40:56 | INFO | main | Claude model: claude-sonnet-4-6
+2026-04-06 00:40:56 | INFO | main | GPT model: gpt-4o
+2026-04-06 00:40:56 | INFO | main | *** DRY RUN MODE — no trades will be executed ***
+2026-04-06 00:40:56 | INFO | main | ============================================================
+2026-04-06 00:40:56 | INFO | claude_agent | Loaded playbook: 20993 chars from C:\Users\Dev-Temp01\Desktop\fx\trading-agent\PLAYBOOK.md
+2026-04-06 00:40:56 | INFO | main | Connecting to MT5...
+2026-04-06 00:40:56 | INFO | market | MT5 connected successfully
+2026-04-06 00:40:56 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 00:41:00 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 400 73
+2026-04-06 00:41:00 | WARNING | notifier | Telegram HTTP 400: {"ok":false,"error_code":400,"description":"Bad Request: chat not found"}
+2026-04-06 00:41:00 | INFO | main | ----------------------------------------
+2026-04-06 00:41:00 | INFO | main | Fetching market data...
+2026-04-06 00:41:00 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:41:00 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:41:00 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:41:00 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:41:00 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:41:00 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:42:00 | INFO | main | ----------------------------------------
+2026-04-06 00:42:00 | INFO | main | Fetching market data...
+2026-04-06 00:42:00 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:42:00 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:42:00 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:42:00 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:42:00 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:42:00 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:43:00 | INFO | main | Shutting down...
+2026-04-06 00:43:00 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 00:43:00 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 400 73
+2026-04-06 00:43:00 | WARNING | notifier | Telegram HTTP 400: {"ok":false,"error_code":400,"description":"Bad Request: chat not found"}
+2026-04-06 00:43:00 | INFO | market | MT5 disconnected
+2026-04-06 00:43:00 | INFO | main | GoldTrader AI Agent stopped
+2026-04-06 00:43:23 | INFO | main | ============================================================
+2026-04-06 00:43:23 | INFO | main | GoldTrader AI Agent starting
+2026-04-06 00:43:23 | INFO | main | Account: demo
+2026-04-06 00:43:23 | INFO | main | Claude model: claude-sonnet-4-6
+2026-04-06 00:43:23 | INFO | main | GPT model: gpt-4o
+2026-04-06 00:43:23 | INFO | main | *** DRY RUN MODE — no trades will be executed ***
+2026-04-06 00:43:23 | INFO | main | ============================================================
+2026-04-06 00:43:23 | INFO | claude_agent | Loaded playbook: 20993 chars from C:\Users\Dev-Temp01\Desktop\fx\trading-agent\PLAYBOOK.md
+2026-04-06 00:43:23 | INFO | main | Connecting to MT5...
+2026-04-06 00:43:23 | INFO | market | MT5 connected successfully
+2026-04-06 00:43:23 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 00:43:24 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 400 73
+2026-04-06 00:43:24 | WARNING | notifier | Telegram HTTP 400: {"ok":false,"error_code":400,"description":"Bad Request: chat not found"}
+2026-04-06 00:43:24 | INFO | main | ----------------------------------------
+2026-04-06 00:43:24 | INFO | main | Fetching market data...
+2026-04-06 00:43:24 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:43:24 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:43:24 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:43:24 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:43:24 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:43:24 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:44:24 | INFO | main | ----------------------------------------
+2026-04-06 00:44:24 | INFO | main | Fetching market data...
+2026-04-06 00:44:24 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:44:24 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:44:24 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:44:24 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:44:24 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:44:24 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:45:24 | INFO | main | ----------------------------------------
+2026-04-06 00:45:24 | INFO | main | Fetching market data...
+2026-04-06 00:45:24 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:45:24 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:45:24 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:45:24 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:45:24 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:45:24 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:46:24 | INFO | main | ----------------------------------------
+2026-04-06 00:46:24 | INFO | main | Fetching market data...
+2026-04-06 00:46:24 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:46:24 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:46:24 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:46:24 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:46:24 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:46:24 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:47:24 | INFO | main | ----------------------------------------
+2026-04-06 00:47:24 | INFO | main | Fetching market data...
+2026-04-06 00:47:24 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:47:24 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:47:24 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:47:24 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:47:24 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:47:24 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:48:24 | INFO | main | ----------------------------------------
+2026-04-06 00:48:24 | INFO | main | Fetching market data...
+2026-04-06 00:48:24 | WARNING | market | No candles returned for XAUUSD H4
+2026-04-06 00:48:24 | WARNING | market | No candles returned for XAUUSD H1
+2026-04-06 00:48:24 | WARNING | market | No candles returned for XAUUSD M30
+2026-04-06 00:48:24 | WARNING | market | No candles returned for XAUUSD M15
+2026-04-06 00:48:24 | WARNING | market | No tick data for XAUUSD
+2026-04-06 00:48:24 | WARNING | main | No market data available, sleeping 60s
+2026-04-06 00:49:24 | INFO | main | Shutting down...
+2026-04-06 00:49:24 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 00:49:24 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 400 73
+2026-04-06 00:49:24 | WARNING | notifier | Telegram HTTP 400: {"ok":false,"error_code":400,"description":"Bad Request: chat not found"}
+2026-04-06 00:49:24 | INFO | market | MT5 disconnected
+2026-04-06 00:49:24 | INFO | main | GoldTrader AI Agent stopped
+2026-04-06 00:50:49 | INFO | main | ============================================================
+2026-04-06 00:50:49 | INFO | main | GoldTrader AI Agent starting
+2026-04-06 00:50:49 | INFO | main | Account: demo
+2026-04-06 00:50:49 | INFO | main | Symbol: XAUUSDm
+2026-04-06 00:50:49 | INFO | main | Claude model: claude-sonnet-4-6
+2026-04-06 00:50:49 | INFO | main | GPT model: gpt-4o
+2026-04-06 00:50:49 | INFO | main | *** DRY RUN MODE — no trades will be executed ***
+2026-04-06 00:50:49 | INFO | main | ============================================================
+2026-04-06 00:50:49 | INFO | claude_agent | Loaded playbook: 20993 chars from C:\Users\Dev-Temp01\Desktop\fx\trading-agent\PLAYBOOK.md
+2026-04-06 00:50:49 | INFO | main | Connecting to MT5...
+2026-04-06 00:50:49 | INFO | market | MT5 connected successfully
+2026-04-06 00:50:49 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 00:50:50 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 200 278
+2026-04-06 00:50:50 | INFO | main | ----------------------------------------
+2026-04-06 00:50:50 | INFO | main | Fetching market data...
+2026-04-06 00:50:50 | INFO | main | Calculating indicators...
+2026-04-06 00:50:50 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 110min in | session=ASIA
+2026-04-06 00:50:50 | INFO | main | Running prefilter...
+2026-04-06 00:50:50 | INFO | prefilter | FAIL | htf_conflict: H4=BUY, H1=SELL
+2026-04-06 00:50:50 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY, H1=SELL
+2026-04-06 00:50:50 | DEBUG | market | Waiting 552s for next M15 close
+2026-04-06 01:00:02 | INFO | main | ----------------------------------------
+2026-04-06 01:00:02 | INFO | main | Fetching market data...
+2026-04-06 01:00:02 | INFO | main | Calculating indicators...
+2026-04-06 01:00:02 | INFO | main | Outside windows. Next: WINDOW_2 in 660min
+2026-04-06 01:01:02 | INFO | main | ----------------------------------------
+2026-04-06 01:01:02 | INFO | main | Fetching market data...
+2026-04-06 01:01:02 | INFO | main | Calculating indicators...
+2026-04-06 01:01:02 | INFO | main | Outside windows. Next: WINDOW_2 in 659min
+2026-04-06 01:02:02 | INFO | main | ----------------------------------------
+2026-04-06 01:02:02 | INFO | main | Fetching market data...
+2026-04-06 01:02:02 | INFO | main | Calculating indicators...
+2026-04-06 01:02:02 | INFO | main | Outside windows. Next: WINDOW_2 in 658min
+2026-04-06 01:03:02 | INFO | main | ----------------------------------------
+2026-04-06 01:03:02 | INFO | main | Fetching market data...
+2026-04-06 01:03:02 | INFO | main | Calculating indicators...
+2026-04-06 01:03:02 | INFO | main | Outside windows. Next: WINDOW_2 in 657min
+2026-04-06 01:04:02 | INFO | main | ----------------------------------------
+2026-04-06 01:04:02 | INFO | main | Fetching market data...
+2026-04-06 01:04:02 | INFO | main | Calculating indicators...
+2026-04-06 01:04:02 | INFO | main | Outside windows. Next: WINDOW_2 in 656min
+2026-04-06 01:05:02 | INFO | main | ----------------------------------------
+2026-04-06 01:05:02 | INFO | main | Fetching market data...
+2026-04-06 01:05:02 | INFO | main | Calculating indicators...
+2026-04-06 01:05:02 | INFO | main | Outside windows. Next: WINDOW_2 in 655min
+2026-04-06 01:06:02 | INFO | main | ----------------------------------------
+2026-04-06 01:06:02 | INFO | main | Fetching market data...
+2026-04-06 01:06:02 | INFO | main | Calculating indicators...
+2026-04-06 01:06:02 | INFO | main | Outside windows. Next: WINDOW_2 in 654min
+2026-04-06 01:07:02 | INFO | main | ----------------------------------------
+2026-04-06 01:07:02 | INFO | main | Fetching market data...
+2026-04-06 01:07:02 | INFO | main | Calculating indicators...
+2026-04-06 01:07:02 | INFO | main | Outside windows. Next: WINDOW_2 in 653min
+2026-04-06 01:08:02 | INFO | main | ----------------------------------------
+2026-04-06 01:08:02 | INFO | main | Fetching market data...
+2026-04-06 01:08:02 | INFO | main | Calculating indicators...
+2026-04-06 01:08:02 | INFO | main | Outside windows. Next: WINDOW_2 in 652min
+2026-04-06 01:09:02 | INFO | main | ----------------------------------------
+2026-04-06 01:09:02 | INFO | main | Fetching market data...
+2026-04-06 01:09:02 | INFO | main | Calculating indicators...
+2026-04-06 01:09:02 | INFO | main | Outside windows. Next: WINDOW_2 in 651min
+2026-04-06 01:10:02 | INFO | main | ----------------------------------------
+2026-04-06 01:10:02 | INFO | main | Fetching market data...
+2026-04-06 01:10:02 | INFO | main | Calculating indicators...
+2026-04-06 01:10:02 | INFO | main | Outside windows. Next: WINDOW_2 in 650min
+2026-04-06 01:11:02 | INFO | main | ----------------------------------------
+2026-04-06 01:11:02 | INFO | main | Fetching market data...
+2026-04-06 01:11:02 | INFO | main | Calculating indicators...
+2026-04-06 01:11:02 | INFO | main | Outside windows. Next: WINDOW_2 in 649min
+2026-04-06 01:12:02 | INFO | main | ----------------------------------------
+2026-04-06 01:12:02 | INFO | main | Fetching market data...
+2026-04-06 01:12:02 | INFO | main | Calculating indicators...
+2026-04-06 01:12:02 | INFO | main | Outside windows. Next: WINDOW_2 in 648min
+2026-04-06 01:13:02 | INFO | main | ----------------------------------------
+2026-04-06 01:13:02 | INFO | main | Fetching market data...
+2026-04-06 01:13:02 | INFO | main | Calculating indicators...
+2026-04-06 01:13:02 | INFO | main | Outside windows. Next: WINDOW_2 in 647min
+2026-04-06 01:14:02 | INFO | main | ----------------------------------------
+2026-04-06 01:14:02 | INFO | main | Fetching market data...
+2026-04-06 01:14:02 | INFO | main | Calculating indicators...
+2026-04-06 01:14:02 | INFO | main | Outside windows. Next: WINDOW_2 in 646min
+2026-04-06 01:15:02 | INFO | main | Shutting down...
+2026-04-06 01:15:02 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 01:15:03 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 200 279
+2026-04-06 01:15:03 | INFO | market | MT5 disconnected
+2026-04-06 01:15:03 | INFO | main | GoldTrader AI Agent stopped
+2026-04-06 01:15:22 | INFO | main | ============================================================
+2026-04-06 01:15:22 | INFO | main | GoldTrader AI Agent starting
+2026-04-06 01:15:22 | INFO | main | Account: demo
+2026-04-06 01:15:22 | INFO | main | Symbol: XAUUSDm
+2026-04-06 01:15:22 | INFO | main | Claude model: claude-sonnet-4-6
+2026-04-06 01:15:22 | INFO | main | GPT model: gpt-4o
+2026-04-06 01:15:22 | INFO | main | *** DRY RUN MODE — no trades will be executed ***
+2026-04-06 01:15:22 | INFO | main | ============================================================
+2026-04-06 01:15:22 | INFO | claude_agent | Loaded playbook: 20993 chars from C:\Users\Dev-Temp01\Desktop\fx\trading-agent\PLAYBOOK.md
+2026-04-06 01:15:22 | INFO | main | Connecting to MT5...
+2026-04-06 01:15:22 | INFO | market | MT5 connected successfully
+2026-04-06 01:15:22 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 01:15:23 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 200 278
+2026-04-06 01:15:23 | INFO | main | ----------------------------------------
+2026-04-06 01:15:23 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 135min in | session=ASIA
+2026-04-06 01:15:23 | INFO | main | Fetching market data...
+2026-04-06 01:15:23 | INFO | main | Calculating indicators...
+2026-04-06 01:15:23 | INFO | main | Running prefilter...
+2026-04-06 01:15:23 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 01:15:23 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 01:15:23 | DEBUG | market | Waiting 879s for next M15 close
+2026-04-06 01:30:02 | INFO | main | ----------------------------------------
+2026-04-06 01:30:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 150min in | session=ASIA
+2026-04-06 01:30:02 | INFO | main | Fetching market data...
+2026-04-06 01:30:02 | INFO | main | Calculating indicators...
+2026-04-06 01:30:02 | INFO | main | Running prefilter...
+2026-04-06 01:30:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 01:30:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 01:30:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 01:45:02 | INFO | main | ----------------------------------------
+2026-04-06 01:45:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 165min in | session=ASIA
+2026-04-06 01:45:02 | INFO | main | Fetching market data...
+2026-04-06 01:45:02 | INFO | main | Calculating indicators...
+2026-04-06 01:45:02 | INFO | main | Running prefilter...
+2026-04-06 01:45:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 01:45:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 01:45:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 02:00:02 | INFO | main | ----------------------------------------
+2026-04-06 02:00:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 180min in | session=ASIA
+2026-04-06 02:00:02 | INFO | main | Fetching market data...
+2026-04-06 02:00:02 | INFO | main | Calculating indicators...
+2026-04-06 02:00:02 | INFO | main | Running prefilter...
+2026-04-06 02:00:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:00:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:00:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 02:15:02 | INFO | main | ----------------------------------------
+2026-04-06 02:15:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 195min in | session=ASIA
+2026-04-06 02:15:02 | INFO | main | Fetching market data...
+2026-04-06 02:15:02 | INFO | main | Calculating indicators...
+2026-04-06 02:15:02 | INFO | main | Running prefilter...
+2026-04-06 02:15:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:15:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:15:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 02:30:02 | INFO | main | ----------------------------------------
+2026-04-06 02:30:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 210min in | session=ASIA
+2026-04-06 02:30:02 | INFO | main | Fetching market data...
+2026-04-06 02:30:02 | INFO | main | Calculating indicators...
+2026-04-06 02:30:02 | INFO | main | Running prefilter...
+2026-04-06 02:30:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:30:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:30:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 02:45:02 | INFO | main | ----------------------------------------
+2026-04-06 02:45:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 225min in | session=ASIA
+2026-04-06 02:45:02 | INFO | main | Fetching market data...
+2026-04-06 02:45:02 | INFO | main | Calculating indicators...
+2026-04-06 02:45:02 | INFO | main | Running prefilter...
+2026-04-06 02:45:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:45:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 02:45:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 03:00:02 | INFO | main | ----------------------------------------
+2026-04-06 03:00:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 240min in | session=ASIA
+2026-04-06 03:00:02 | INFO | main | Fetching market data...
+2026-04-06 03:00:02 | INFO | main | Calculating indicators...
+2026-04-06 03:00:02 | INFO | main | Running prefilter...
+2026-04-06 03:00:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:00:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:00:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 03:15:02 | INFO | main | ----------------------------------------
+2026-04-06 03:15:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 255min in | session=ASIA
+2026-04-06 03:15:02 | INFO | main | Fetching market data...
+2026-04-06 03:15:02 | INFO | main | Calculating indicators...
+2026-04-06 03:15:02 | INFO | main | Running prefilter...
+2026-04-06 03:15:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:15:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:15:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 03:30:02 | INFO | main | ----------------------------------------
+2026-04-06 03:30:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 270min in | session=ASIA
+2026-04-06 03:30:02 | INFO | main | Fetching market data...
+2026-04-06 03:30:02 | INFO | main | Calculating indicators...
+2026-04-06 03:30:02 | INFO | main | Running prefilter...
+2026-04-06 03:30:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:30:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:30:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 03:45:02 | INFO | main | ----------------------------------------
+2026-04-06 03:45:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 285min in | session=ASIA
+2026-04-06 03:45:02 | INFO | main | Fetching market data...
+2026-04-06 03:45:02 | INFO | main | Calculating indicators...
+2026-04-06 03:45:02 | INFO | main | Running prefilter...
+2026-04-06 03:45:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:45:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 03:45:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 04:00:02 | INFO | main | ----------------------------------------
+2026-04-06 04:00:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 300min in | session=ASIA
+2026-04-06 04:00:02 | INFO | main | Fetching market data...
+2026-04-06 04:00:02 | INFO | main | Calculating indicators...
+2026-04-06 04:00:02 | INFO | main | Running prefilter...
+2026-04-06 04:00:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 04:00:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 04:00:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 04:15:02 | INFO | main | ----------------------------------------
+2026-04-06 04:15:02 | INFO | main | WINDOW: Asia Open (23:00-01:00) | 315min in | session=ASIA
+2026-04-06 04:15:02 | INFO | main | Fetching market data...
+2026-04-06 04:15:02 | INFO | main | Calculating indicators...
+2026-04-06 04:15:02 | INFO | main | Running prefilter...
+2026-04-06 04:15:02 | INFO | prefilter | FAIL | mid_range: position_pct=36.4%
+2026-04-06 04:15:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=36.4%
+2026-04-06 04:15:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 08:29:57 | INFO | main | ----------------------------------------
+2026-04-06 08:29:57 | INFO | main | WINDOW: London-NY Overlap (12:00-14:00) | 29min in | session=LONDON
+2026-04-06 08:29:57 | INFO | main | Fetching market data...
+2026-04-06 08:29:57 | INFO | main | Calculating indicators...
+2026-04-06 08:29:57 | INFO | main | Running prefilter...
+2026-04-06 08:29:58 | INFO | prefilter | FAIL | dead_zone: M30 body_ratio=46.0%
+2026-04-06 08:29:58 | INFO | main | Prefilter FAIL: dead_zone: M30 body_ratio=46.0%
+2026-04-06 08:29:58 | DEBUG | market | Waiting 4s for next M15 close
+2026-04-06 08:30:02 | INFO | main | ----------------------------------------
+2026-04-06 08:30:02 | INFO | main | WINDOW: London-NY Overlap (12:00-14:00) | 30min in | session=LONDON
+2026-04-06 08:30:02 | INFO | main | Fetching market data...
+2026-04-06 08:30:02 | INFO | main | Calculating indicators...
+2026-04-06 08:30:02 | INFO | main | Running prefilter...
+2026-04-06 08:30:02 | INFO | prefilter | FAIL | mid_range: position_pct=55.4%
+2026-04-06 08:30:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=55.4%
+2026-04-06 08:30:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 08:45:02 | INFO | main | ----------------------------------------
+2026-04-06 08:45:02 | INFO | main | WINDOW: London-NY Overlap (12:00-14:00) | 45min in | session=LONDON
+2026-04-06 08:45:02 | INFO | main | Fetching market data...
+2026-04-06 08:45:02 | INFO | main | Calculating indicators...
+2026-04-06 08:45:02 | INFO | main | Running prefilter...
+2026-04-06 08:45:02 | INFO | prefilter | FAIL | mid_range: position_pct=56.4%
+2026-04-06 08:45:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=56.4%
+2026-04-06 08:45:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 09:00:02 | INFO | main | ----------------------------------------
+2026-04-06 09:00:02 | INFO | main | WINDOW: London-NY Overlap (12:00-14:00) | 60min in | session=LONDON
+2026-04-06 09:00:02 | INFO | main | Fetching market data...
+2026-04-06 09:00:02 | INFO | main | Calculating indicators...
+2026-04-06 09:00:02 | INFO | main | Running prefilter...
+2026-04-06 09:00:02 | INFO | prefilter | FAIL | mid_range: position_pct=58.1%
+2026-04-06 09:00:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=58.1%
+2026-04-06 09:00:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 09:15:02 | INFO | main | ----------------------------------------
+2026-04-06 09:15:02 | INFO | main | WINDOW: London-NY Overlap (12:00-14:00) | 75min in | session=LONDON
+2026-04-06 09:15:02 | INFO | main | Fetching market data...
+2026-04-06 09:15:02 | INFO | main | Calculating indicators...
+2026-04-06 09:15:02 | INFO | main | Running prefilter...
+2026-04-06 09:15:02 | INFO | prefilter | FAIL | mid_range: position_pct=59.8%
+2026-04-06 09:15:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=59.8%
+2026-04-06 09:15:02 | DEBUG | market | Waiting 900s for next M15 close
+2026-04-06 09:30:02 | INFO | main | Shutting down...
+2026-04-06 09:30:02 | DEBUG | urllib3.connectionpool | Starting new HTTPS connection (1): api.telegram.org:443
+2026-04-06 09:30:03 | DEBUG | urllib3.connectionpool | https://api.telegram.org:443 "POST /bot8764763165:AAEVznJQPpZ5gRlpcTETm81UDIkb6OuO-b8/sendMessage HTTP/1.1" 200 279
+2026-04-06 09:30:03 | INFO | market | MT5 disconnected
+2026-04-06 09:30:03 | INFO | main | GoldTrader AI Agent stopped
+2026-04-06 09:34:51 | INFO | main | ============================================================
+2026-04-06 09:34:51 | INFO | main | GoldTrader AI Agent starting
+2026-04-06 09:34:51 | INFO | main | Account: demo
+2026-04-06 09:34:51 | INFO | main | Symbol: XAUUSDm
+2026-04-06 09:34:51 | INFO | main | Claude model: claude-sonnet-4-6
+2026-04-06 09:34:51 | INFO | main | GPT model: gpt-4o
+2026-04-06 09:34:51 | INFO | main | ============================================================
+2026-04-06 09:34:51 | INFO | claude_agent | Loaded playbook: 20993 chars from C:\Users\Dev-Temp01\Desktop\fx\trading-agent\PLAYBOOK.md
+2026-04-06 09:34:51 | INFO | main | Connecting to MT5...
+2026-04-06 09:34:51 | INFO | market | MT5 connected successfully
+2026-04-06 09:34:51 | INFO | main | ----------------------------------------
+2026-04-06 09:34:51 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 94min in | session=LONDON
+2026-04-06 09:34:51 | INFO | main | Fetching market data...
+2026-04-06 09:34:51 | INFO | main | Calculating indicators...
+2026-04-06 09:34:51 | INFO | main | Running prefilter...
+2026-04-06 09:34:51 | INFO | prefilter | FAIL | mid_range: position_pct=60.7%
+2026-04-06 09:34:51 | INFO | main | Prefilter FAIL: mid_range: position_pct=60.7%
+2026-04-06 09:45:03 | INFO | main | ----------------------------------------
+2026-04-06 09:45:03 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 105min in | session=LONDON
+2026-04-06 09:45:03 | INFO | main | Fetching market data...
+2026-04-06 09:45:03 | INFO | main | Calculating indicators...
+2026-04-06 09:45:03 | INFO | main | Running prefilter...
+2026-04-06 09:45:03 | INFO | prefilter | FAIL | mid_range: position_pct=60.6%
+2026-04-06 09:45:03 | INFO | main | Prefilter FAIL: mid_range: position_pct=60.6%
+2026-04-06 10:00:02 | INFO | main | ----------------------------------------
+2026-04-06 10:00:02 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 120min in | session=LONDON
+2026-04-06 10:00:02 | INFO | main | Fetching market data...
+2026-04-06 10:00:02 | INFO | main | Calculating indicators...
+2026-04-06 10:00:02 | INFO | main | Running prefilter...
+2026-04-06 10:00:02 | INFO | prefilter | FAIL | mid_range: position_pct=56.8%
+2026-04-06 10:00:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=56.8%
+2026-04-06 10:15:03 | INFO | main | ----------------------------------------
+2026-04-06 10:15:03 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 135min in | session=LONDON
+2026-04-06 10:15:03 | INFO | main | Fetching market data...
+2026-04-06 10:15:03 | INFO | main | Calculating indicators...
+2026-04-06 10:15:03 | INFO | main | Running prefilter...
+2026-04-06 10:15:03 | INFO | prefilter | FAIL | mid_range: position_pct=54.0%
+2026-04-06 10:15:03 | INFO | main | Prefilter FAIL: mid_range: position_pct=54.0%
+2026-04-06 10:30:02 | INFO | main | ----------------------------------------
+2026-04-06 10:30:02 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 150min in | session=LONDON
+2026-04-06 10:30:02 | INFO | main | Fetching market data...
+2026-04-06 10:30:02 | INFO | main | Calculating indicators...
+2026-04-06 10:30:02 | INFO | main | Running prefilter...
+2026-04-06 10:30:02 | INFO | prefilter | FAIL | mid_range: position_pct=54.9%
+2026-04-06 10:30:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=54.9%
+2026-04-06 10:45:03 | INFO | main | ----------------------------------------
+2026-04-06 10:45:03 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 165min in | session=LONDON
+2026-04-06 10:45:03 | INFO | main | Fetching market data...
+2026-04-06 10:45:03 | INFO | main | Calculating indicators...
+2026-04-06 10:45:03 | INFO | main | Running prefilter...
+2026-04-06 10:45:03 | INFO | prefilter | FAIL | mid_range: position_pct=57.5%
+2026-04-06 10:45:03 | INFO | main | Prefilter FAIL: mid_range: position_pct=57.5%
+2026-04-06 11:00:02 | INFO | main | ----------------------------------------
+2026-04-06 11:00:02 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 180min in | session=LONDON
+2026-04-06 11:00:02 | INFO | main | Fetching market data...
+2026-04-06 11:00:02 | INFO | main | Calculating indicators...
+2026-04-06 11:00:02 | INFO | main | Running prefilter...
+2026-04-06 11:00:02 | INFO | prefilter | FAIL | dead_zone: M30 body_ratio=51.1%
+2026-04-06 11:00:02 | INFO | main | Prefilter FAIL: dead_zone: M30 body_ratio=51.1%
+2026-04-06 11:15:03 | INFO | main | ----------------------------------------
+2026-04-06 11:15:03 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 195min in | session=LONDON
+2026-04-06 11:15:03 | INFO | main | Fetching market data...
+2026-04-06 11:15:03 | INFO | main | Calculating indicators...
+2026-04-06 11:15:03 | INFO | main | Running prefilter...
+2026-04-06 11:15:03 | INFO | prefilter | FAIL | mid_range: position_pct=55.0%
+2026-04-06 11:15:03 | INFO | main | Prefilter FAIL: mid_range: position_pct=55.0%
+2026-04-06 11:30:03 | INFO | main | ----------------------------------------
+2026-04-06 11:30:03 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 210min in | session=LONDON
+2026-04-06 11:30:03 | INFO | main | Fetching market data...
+2026-04-06 11:30:03 | INFO | main | Calculating indicators...
+2026-04-06 11:30:03 | INFO | main | Running prefilter...
+2026-04-06 11:30:03 | INFO | prefilter | FAIL | mid_range: position_pct=54.7%
+2026-04-06 11:30:03 | INFO | main | Prefilter FAIL: mid_range: position_pct=54.7%
+2026-04-06 11:45:02 | INFO | main | ----------------------------------------
+2026-04-06 11:45:02 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 225min in | session=LONDON
+2026-04-06 11:45:02 | INFO | main | Fetching market data...
+2026-04-06 11:45:02 | INFO | main | Calculating indicators...
+2026-04-06 11:45:02 | INFO | main | Running prefilter...
+2026-04-06 11:45:02 | INFO | prefilter | FAIL | dead_zone: M30 body_ratio=40.2%
+2026-04-06 11:45:02 | INFO | main | Prefilter FAIL: dead_zone: M30 body_ratio=40.2%
+2026-04-06 12:00:03 | INFO | main | ----------------------------------------
+2026-04-06 12:00:03 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 240min in | session=LONDON_NY_OVERLAP
+2026-04-06 12:00:03 | INFO | main | Fetching market data...
+2026-04-06 12:00:03 | INFO | main | Calculating indicators...
+2026-04-06 12:00:03 | INFO | main | Running prefilter...
+2026-04-06 12:00:03 | INFO | prefilter | FAIL | mid_range: position_pct=50.8%
+2026-04-06 12:00:03 | INFO | main | Prefilter FAIL: mid_range: position_pct=50.8%
+2026-04-06 12:15:02 | INFO | main | ----------------------------------------
+2026-04-06 12:15:02 | INFO | main | WINDOW: London-NY Overlap (08:00-16:00) | 255min in | session=LONDON_NY_OVERLAP
+2026-04-06 12:15:02 | INFO | main | Fetching market data...
+2026-04-06 12:15:02 | INFO | main | Calculating indicators...
+2026-04-06 12:15:02 | INFO | main | Running prefilter...
+2026-04-06 12:15:02 | INFO | prefilter | FAIL | mid_range: position_pct=48.1%
+2026-04-06 12:15:02 | INFO | main | Prefilter FAIL: mid_range: position_pct=48.1%
+2026-04-06 18:26:05 | INFO | main | ----------------------------------------
+2026-04-06 18:26:05 | INFO | main | Outside windows. Next: WINDOW_1 in 274min
+2026-04-06 18:27:05 | INFO | main | ----------------------------------------
+2026-04-06 18:27:05 | INFO | main | Outside windows. Next: WINDOW_1 in 273min
+2026-04-06 18:28:06 | INFO | main | ----------------------------------------
+2026-04-06 18:28:06 | INFO | main | Outside windows. Next: WINDOW_1 in 272min
+2026-04-06 18:29:06 | INFO | main | ----------------------------------------
+2026-04-06 18:29:06 | INFO | main | Outside windows. Next: WINDOW_1 in 271min
+2026-04-06 18:30:06 | INFO | main | ----------------------------------------
+2026-04-06 18:30:06 | INFO | main | Outside windows. Next: WINDOW_1 in 270min
+2026-04-06 18:31:06 | INFO | main | ----------------------------------------
+2026-04-06 18:31:06 | INFO | main | Outside windows. Next: WINDOW_1 in 269min
+2026-04-06 18:32:06 | INFO | main | ----------------------------------------
+2026-04-06 18:32:06 | INFO | main | Outside windows. Next: WINDOW_1 in 268min
+2026-04-06 18:33:06 | INFO | main | ----------------------------------------
+2026-04-06 18:33:06 | INFO | main | Outside windows. Next: WINDOW_1 in 267min
+2026-04-06 18:34:06 | INFO | main | ----------------------------------------
+2026-04-06 18:34:06 | INFO | main | Outside windows. Next: WINDOW_1 in 266min
+2026-04-06 18:35:06 | INFO | main | ----------------------------------------
+2026-04-06 18:35:06 | INFO | main | Outside windows. Next: WINDOW_1 in 265min
+2026-04-06 18:36:06 | INFO | main | ----------------------------------------
+2026-04-06 18:36:06 | INFO | main | Outside windows. Next: WINDOW_1 in 264min
+2026-04-06 18:37:06 | INFO | main | ----------------------------------------
+2026-04-06 18:37:06 | INFO | main | Outside windows. Next: WINDOW_1 in 263min
+2026-04-06 18:38:06 | INFO | main | ----------------------------------------
+2026-04-06 18:38:06 | INFO | main | Outside windows. Next: WINDOW_1 in 262min
+2026-04-06 18:39:06 | INFO | main | ----------------------------------------
+2026-04-06 18:39:06 | INFO | main | Outside windows. Next: WINDOW_1 in 261min
+2026-04-06 18:40:06 | INFO | main | ----------------------------------------
+2026-04-06 18:40:06 | INFO | main | Outside windows. Next: WINDOW_1 in 260min
+2026-04-06 18:41:06 | INFO | main | ----------------------------------------
+2026-04-06 18:41:06 | INFO | main | Outside windows. Next: WINDOW_1 in 259min
+2026-04-06 18:42:06 | INFO | main | ----------------------------------------
+2026-04-06 18:42:06 | INFO | main | Outside windows. Next: WINDOW_1 in 258min
+2026-04-06 18:43:06 | INFO | main | ----------------------------------------
+2026-04-06 18:43:06 | INFO | main | Outside windows. Next: WINDOW_1 in 257min
+2026-04-06 18:44:06 | INFO | main | ----------------------------------------
+2026-04-06 18:44:06 | INFO | main | Outside windows. Next: WINDOW_1 in 256min
+2026-04-06 18:45:06 | INFO | main | ----------------------------------------
+2026-04-06 18:45:06 | INFO | main | Outside windows. Next: WINDOW_1 in 255min
+2026-04-06 18:46:06 | INFO | main | ----------------------------------------
+2026-04-06 18:46:06 | INFO | main | Outside windows. Next: WINDOW_1 in 254min
+2026-04-06 18:47:06 | INFO | main | ----------------------------------------
+2026-04-06 18:47:06 | INFO | main | Outside windows. Next: WINDOW_1 in 253min
+2026-04-06 18:48:06 | INFO | main | ----------------------------------------
+2026-04-06 18:48:06 | INFO | main | Outside windows. Next: WINDOW_1 in 252min
+2026-04-06 18:49:06 | INFO | main | ----------------------------------------
+2026-04-06 18:49:06 | INFO | main | Outside windows. Next: WINDOW_1 in 251min
+2026-04-06 18:50:06 | INFO | main | ----------------------------------------
+2026-04-06 18:50:06 | INFO | main | Outside windows. Next: WINDOW_1 in 250min
+2026-04-06 18:51:06 | INFO | main | ----------------------------------------
+2026-04-06 18:51:06 | INFO | main | Outside windows. Next: WINDOW_1 in 249min
+2026-04-06 18:52:06 | INFO | main | ----------------------------------------
+2026-04-06 18:52:06 | INFO | main | Outside windows. Next: WINDOW_1 in 248min
+2026-04-06 18:53:06 | INFO | main | ----------------------------------------
+2026-04-06 18:53:06 | INFO | main | Outside windows. Next: WINDOW_1 in 247min
+2026-04-06 18:54:06 | INFO | main | ----------------------------------------
+2026-04-06 18:54:06 | INFO | main | Outside windows. Next: WINDOW_1 in 246min
+2026-04-06 18:55:06 | INFO | main | ----------------------------------------
+2026-04-06 18:55:06 | INFO | main | Outside windows. Next: WINDOW_1 in 245min
+2026-04-06 18:56:06 | INFO | main | ----------------------------------------
+2026-04-06 18:56:06 | INFO | main | Outside windows. Next: WINDOW_1 in 244min
+2026-04-06 18:57:06 | INFO | main | ----------------------------------------
+2026-04-06 18:57:06 | INFO | main | Outside windows. Next: WINDOW_1 in 243min
+2026-04-06 18:58:06 | INFO | main | ----------------------------------------
+2026-04-06 18:58:06 | INFO | main | Outside windows. Next: WINDOW_1 in 242min
+2026-04-06 18:59:06 | INFO | main | ----------------------------------------
+2026-04-06 18:59:06 | INFO | main | Outside windows. Next: WINDOW_1 in 241min
+2026-04-06 19:00:06 | INFO | main | ----------------------------------------
+2026-04-06 19:00:06 | INFO | main | Outside windows. Next: WINDOW_1 in 240min
+2026-04-06 19:01:06 | INFO | main | ----------------------------------------
+2026-04-06 19:01:06 | INFO | main | Outside windows. Next: WINDOW_1 in 239min
+2026-04-06 19:02:06 | INFO | main | ----------------------------------------
+2026-04-06 19:02:06 | INFO | main | Outside windows. Next: WINDOW_1 in 238min
+2026-04-06 19:03:06 | INFO | main | ----------------------------------------
+2026-04-06 19:03:06 | INFO | main | Outside windows. Next: WINDOW_1 in 237min
+2026-04-06 19:04:06 | INFO | main | ----------------------------------------
+2026-04-06 19:04:06 | INFO | main | Outside windows. Next: WINDOW_1 in 236min
+2026-04-06 19:05:06 | INFO | main | ----------------------------------------
+2026-04-06 19:05:06 | INFO | main | Outside windows. Next: WINDOW_1 in 235min
+2026-04-06 19:06:06 | INFO | main | ----------------------------------------
+2026-04-06 19:06:06 | INFO | main | Outside windows. Next: WINDOW_1 in 234min
+2026-04-06 19:07:06 | INFO | main | ----------------------------------------
+2026-04-06 19:07:06 | INFO | main | Outside windows. Next: WINDOW_1 in 233min
+2026-04-06 19:08:06 | INFO | main | ----------------------------------------
+2026-04-06 19:08:06 | INFO | main | Outside windows. Next: WINDOW_1 in 232min
+2026-04-06 19:09:06 | INFO | main | ----------------------------------------
+2026-04-06 19:09:06 | INFO | main | Outside windows. Next: WINDOW_1 in 231min
+2026-04-06 19:10:06 | INFO | main | ----------------------------------------
+2026-04-06 19:10:06 | INFO | main | Outside windows. Next: WINDOW_1 in 230min
+2026-04-06 19:11:06 | INFO | main | ----------------------------------------
+2026-04-06 19:11:06 | INFO | main | Outside windows. Next: WINDOW_1 in 229min
+2026-04-06 19:12:06 | INFO | main | ----------------------------------------
+2026-04-06 19:12:06 | INFO | main | Outside windows. Next: WINDOW_1 in 228min
+2026-04-06 19:13:06 | INFO | main | ----------------------------------------
+2026-04-06 19:13:06 | INFO | main | Outside windows. Next: WINDOW_1 in 227min
+2026-04-06 19:14:06 | INFO | main | ----------------------------------------
+2026-04-06 19:14:06 | INFO | main | Outside windows. Next: WINDOW_1 in 226min
+2026-04-06 19:15:06 | INFO | main | ----------------------------------------
+2026-04-06 19:15:06 | INFO | main | Outside windows. Next: WINDOW_1 in 225min
+2026-04-06 19:16:06 | INFO | main | ----------------------------------------
+2026-04-06 19:16:06 | INFO | main | Outside windows. Next: WINDOW_1 in 224min
+2026-04-06 19:17:06 | INFO | main | ----------------------------------------
+2026-04-06 19:17:06 | INFO | main | Outside windows. Next: WINDOW_1 in 223min
+2026-04-06 19:18:06 | INFO | main | ----------------------------------------
+2026-04-06 19:18:06 | INFO | main | Outside windows. Next: WINDOW_1 in 222min
+2026-04-06 19:19:06 | INFO | main | ----------------------------------------
+2026-04-06 19:19:06 | INFO | main | Outside windows. Next: WINDOW_1 in 221min
+2026-04-06 19:20:06 | INFO | main | ----------------------------------------
+2026-04-06 19:20:06 | INFO | main | Outside windows. Next: WINDOW_1 in 220min
+2026-04-06 19:21:06 | INFO | main | ----------------------------------------
+2026-04-06 19:21:06 | INFO | main | Outside windows. Next: WINDOW_1 in 219min
+2026-04-06 19:22:06 | INFO | main | ----------------------------------------
+2026-04-06 19:22:06 | INFO | main | Outside windows. Next: WINDOW_1 in 218min
+2026-04-06 19:23:06 | INFO | main | ----------------------------------------
+2026-04-06 19:23:06 | INFO | main | Outside windows. Next: WINDOW_1 in 217min
+2026-04-06 19:24:06 | INFO | main | ----------------------------------------
+2026-04-06 19:24:06 | INFO | main | Outside windows. Next: WINDOW_1 in 216min
+2026-04-06 19:25:06 | INFO | main | ----------------------------------------
+2026-04-06 19:25:06 | INFO | main | Outside windows. Next: WINDOW_1 in 215min
+2026-04-06 19:26:06 | INFO | main | ----------------------------------------
+2026-04-06 19:26:06 | INFO | main | Outside windows. Next: WINDOW_1 in 214min
+2026-04-06 19:27:06 | INFO | main | ----------------------------------------
+2026-04-06 19:27:06 | INFO | main | Outside windows. Next: WINDOW_1 in 213min
+2026-04-06 19:28:06 | INFO | main | ----------------------------------------
+2026-04-06 19:28:06 | INFO | main | Outside windows. Next: WINDOW_1 in 212min
+2026-04-06 19:29:06 | INFO | main | ----------------------------------------
+2026-04-06 19:29:06 | INFO | main | Outside windows. Next: WINDOW_1 in 211min
+2026-04-06 19:30:06 | INFO | main | ----------------------------------------
+2026-04-06 19:30:06 | INFO | main | Outside windows. Next: WINDOW_1 in 210min
+2026-04-06 19:31:06 | INFO | main | ----------------------------------------
+2026-04-06 19:31:06 | INFO | main | Outside windows. Next: WINDOW_1 in 209min
+2026-04-06 19:32:06 | INFO | main | ----------------------------------------
+2026-04-06 19:32:06 | INFO | main | Outside windows. Next: WINDOW_1 in 208min
+2026-04-06 19:33:06 | INFO | main | ----------------------------------------
+2026-04-06 19:33:06 | INFO | main | Outside windows. Next: WINDOW_1 in 207min
+2026-04-06 19:34:06 | INFO | main | ----------------------------------------
+2026-04-06 19:34:06 | INFO | main | Outside windows. Next: WINDOW_1 in 206min
+2026-04-06 19:35:06 | INFO | main | ----------------------------------------
+2026-04-06 19:35:06 | INFO | main | Outside windows. Next: WINDOW_1 in 205min
+2026-04-06 19:36:06 | INFO | main | ----------------------------------------
+2026-04-06 19:36:06 | INFO | main | Outside windows. Next: WINDOW_1 in 204min
+2026-04-06 19:37:06 | INFO | main | ----------------------------------------
+2026-04-06 19:37:06 | INFO | main | Outside windows. Next: WINDOW_1 in 203min
+2026-04-06 19:38:06 | INFO | main | ----------------------------------------
+2026-04-06 19:38:06 | INFO | main | Outside windows. Next: WINDOW_1 in 202min
+2026-04-06 19:39:06 | INFO | main | ----------------------------------------
+2026-04-06 19:39:06 | INFO | main | Outside windows. Next: WINDOW_1 in 201min
+2026-04-06 19:40:06 | INFO | main | ----------------------------------------
+2026-04-06 19:40:06 | INFO | main | Outside windows. Next: WINDOW_1 in 200min
+2026-04-06 19:41:06 | INFO | main | ----------------------------------------
+2026-04-06 19:41:06 | INFO | main | Outside windows. Next: WINDOW_1 in 199min
+2026-04-06 19:42:06 | INFO | main | ----------------------------------------
+2026-04-06 19:42:06 | INFO | main | Outside windows. Next: WINDOW_1 in 198min
+2026-04-06 19:43:06 | INFO | main | ----------------------------------------
+2026-04-06 19:43:06 | INFO | main | Outside windows. Next: WINDOW_1 in 197min
+2026-04-06 19:44:06 | INFO | main | ----------------------------------------
+2026-04-06 19:44:06 | INFO | main | Outside windows. Next: WINDOW_1 in 196min
+2026-04-06 19:45:06 | INFO | main | ----------------------------------------
+2026-04-06 19:45:06 | INFO | main | Outside windows. Next: WINDOW_1 in 195min
+2026-04-06 19:46:06 | INFO | main | ----------------------------------------
+2026-04-06 19:46:06 | INFO | main | Outside windows. Next: WINDOW_1 in 194min
+2026-04-06 19:47:06 | INFO | main | ----------------------------------------
+2026-04-06 19:47:06 | INFO | main | Outside windows. Next: WINDOW_1 in 193min
+2026-04-06 19:48:06 | INFO | main | ----------------------------------------
+2026-04-06 19:48:06 | INFO | main | Outside windows. Next: WINDOW_1 in 192min
+2026-04-06 19:49:06 | INFO | main | ----------------------------------------
+2026-04-06 19:49:06 | INFO | main | Outside windows. Next: WINDOW_1 in 191min
+2026-04-06 19:50:06 | INFO | main | ----------------------------------------
+2026-04-06 19:50:06 | INFO | main | Outside windows. Next: WINDOW_1 in 190min
+2026-04-06 19:51:06 | INFO | main | ----------------------------------------
+2026-04-06 19:51:06 | INFO | main | Outside windows. Next: WINDOW_1 in 189min
+2026-04-06 19:52:06 | INFO | main | ----------------------------------------
+2026-04-06 19:52:06 | INFO | main | Outside windows. Next: WINDOW_1 in 188min
+2026-04-06 19:53:06 | INFO | main | ----------------------------------------
+2026-04-06 19:53:06 | INFO | main | Outside windows. Next: WINDOW_1 in 187min
+2026-04-06 19:54:06 | INFO | main | ----------------------------------------
+2026-04-06 19:54:06 | INFO | main | Outside windows. Next: WINDOW_1 in 186min
+2026-04-06 19:55:06 | INFO | main | ----------------------------------------
+2026-04-06 19:55:06 | INFO | main | Outside windows. Next: WINDOW_1 in 185min
+2026-04-06 19:56:06 | INFO | main | ----------------------------------------
+2026-04-06 19:56:06 | INFO | main | Outside windows. Next: WINDOW_1 in 184min
+2026-04-06 19:57:06 | INFO | main | ----------------------------------------
+2026-04-06 19:57:06 | INFO | main | Outside windows. Next: WINDOW_1 in 183min
+2026-04-06 19:58:06 | INFO | main | ----------------------------------------
+2026-04-06 19:58:06 | INFO | main | Outside windows. Next: WINDOW_1 in 182min
+2026-04-06 19:59:06 | INFO | main | ----------------------------------------
+2026-04-06 19:59:06 | INFO | main | Outside windows. Next: WINDOW_1 in 181min
+2026-04-06 20:00:06 | INFO | main | ----------------------------------------
+2026-04-06 20:00:06 | INFO | main | Outside windows. Next: WINDOW_1 in 180min
+2026-04-06 20:01:06 | INFO | main | ----------------------------------------
+2026-04-06 20:01:06 | INFO | main | Outside windows. Next: WINDOW_1 in 179min
+2026-04-06 20:02:06 | INFO | main | ----------------------------------------
+2026-04-06 20:02:06 | INFO | main | Outside windows. Next: WINDOW_1 in 178min
+2026-04-06 20:03:06 | INFO | main | ----------------------------------------
+2026-04-06 20:03:06 | INFO | main | Outside windows. Next: WINDOW_1 in 177min
+2026-04-06 20:04:06 | INFO | main | ----------------------------------------
+2026-04-06 20:04:06 | INFO | main | Outside windows. Next: WINDOW_1 in 176min
+2026-04-06 20:05:06 | INFO | main | ----------------------------------------
+2026-04-06 20:05:06 | INFO | main | Outside windows. Next: WINDOW_1 in 175min
+2026-04-06 20:06:06 | INFO | main | ----------------------------------------
+2026-04-06 20:06:06 | INFO | main | Outside windows. Next: WINDOW_1 in 174min
+2026-04-06 20:07:06 | INFO | main | ----------------------------------------
+2026-04-06 20:07:06 | INFO | main | Outside windows. Next: WINDOW_1 in 173min
+2026-04-06 20:08:06 | INFO | main | ----------------------------------------
+2026-04-06 20:08:06 | INFO | main | Outside windows. Next: WINDOW_1 in 172min
+2026-04-06 20:09:06 | INFO | main | ----------------------------------------
+2026-04-06 20:09:06 | INFO | main | Outside windows. Next: WINDOW_1 in 171min
+2026-04-06 20:10:06 | INFO | main | ----------------------------------------
+2026-04-06 20:10:06 | INFO | main | Outside windows. Next: WINDOW_1 in 170min
+2026-04-06 20:11:06 | INFO | main | ----------------------------------------
+2026-04-06 20:11:06 | INFO | main | Outside windows. Next: WINDOW_1 in 169min
+2026-04-06 20:12:06 | INFO | main | ----------------------------------------
+2026-04-06 20:12:06 | INFO | main | Outside windows. Next: WINDOW_1 in 168min
+2026-04-06 20:13:06 | INFO | main | ----------------------------------------
+2026-04-06 20:13:06 | INFO | main | Outside windows. Next: WINDOW_1 in 167min
+2026-04-06 20:14:06 | INFO | main | ----------------------------------------
+2026-04-06 20:14:06 | INFO | main | Outside windows. Next: WINDOW_1 in 166min
+2026-04-06 20:15:06 | INFO | main | ----------------------------------------
+2026-04-06 20:15:06 | INFO | main | Outside windows. Next: WINDOW_1 in 165min
+2026-04-06 20:16:06 | INFO | main | ----------------------------------------
+2026-04-06 20:16:06 | INFO | main | Outside windows. Next: WINDOW_1 in 164min
+2026-04-06 20:17:06 | INFO | main | ----------------------------------------
+2026-04-06 20:17:06 | INFO | main | Outside windows. Next: WINDOW_1 in 163min
+2026-04-06 20:18:06 | INFO | main | ----------------------------------------
+2026-04-06 20:18:06 | INFO | main | Outside windows. Next: WINDOW_1 in 162min
+2026-04-06 20:19:06 | INFO | main | ----------------------------------------
+2026-04-06 20:19:06 | INFO | main | Outside windows. Next: WINDOW_1 in 161min
+2026-04-06 20:20:06 | INFO | main | ----------------------------------------
+2026-04-06 20:20:06 | INFO | main | Outside windows. Next: WINDOW_1 in 160min
+2026-04-06 20:21:06 | INFO | main | ----------------------------------------
+2026-04-06 20:21:06 | INFO | main | Outside windows. Next: WINDOW_1 in 159min
+2026-04-06 20:22:06 | INFO | main | ----------------------------------------
+2026-04-06 20:22:06 | INFO | main | Outside windows. Next: WINDOW_1 in 158min
+2026-04-06 20:23:06 | INFO | main | ----------------------------------------
+2026-04-06 20:23:06 | INFO | main | Outside windows. Next: WINDOW_1 in 157min
+2026-04-06 20:24:06 | INFO | main | ----------------------------------------
+2026-04-06 20:24:06 | INFO | main | Outside windows. Next: WINDOW_1 in 156min
+2026-04-06 20:25:06 | INFO | main | ----------------------------------------
+2026-04-06 20:25:06 | INFO | main | Outside windows. Next: WINDOW_1 in 155min
+2026-04-06 20:26:06 | INFO | main | ----------------------------------------
+2026-04-06 20:26:06 | INFO | main | Outside windows. Next: WINDOW_1 in 154min
+2026-04-06 20:27:06 | INFO | main | ----------------------------------------
+2026-04-06 20:27:06 | INFO | main | Outside windows. Next: WINDOW_1 in 153min
+2026-04-06 20:28:06 | INFO | main | ----------------------------------------
+2026-04-06 20:28:06 | INFO | main | Outside windows. Next: WINDOW_1 in 152min
+2026-04-06 20:29:06 | INFO | main | ----------------------------------------
+2026-04-06 20:29:06 | INFO | main | Outside windows. Next: WINDOW_1 in 151min
+2026-04-06 20:30:06 | INFO | main | ----------------------------------------
+2026-04-06 20:30:06 | INFO | main | Outside windows. Next: WINDOW_1 in 150min
+2026-04-06 20:31:06 | INFO | main | ----------------------------------------
+2026-04-06 20:31:06 | INFO | main | Outside windows. Next: WINDOW_1 in 149min
+2026-04-06 20:32:06 | INFO | main | ----------------------------------------
+2026-04-06 20:32:06 | INFO | main | Outside windows. Next: WINDOW_1 in 148min
+2026-04-06 20:33:06 | INFO | main | ----------------------------------------
+2026-04-06 20:33:06 | INFO | main | Outside windows. Next: WINDOW_1 in 147min
+2026-04-06 20:34:06 | INFO | main | ----------------------------------------
+2026-04-06 20:34:06 | INFO | main | Outside windows. Next: WINDOW_1 in 146min
+2026-04-06 20:35:06 | INFO | main | ----------------------------------------
+2026-04-06 20:35:06 | INFO | main | Outside windows. Next: WINDOW_1 in 145min
+2026-04-06 20:36:06 | INFO | main | ----------------------------------------
+2026-04-06 20:36:06 | INFO | main | Outside windows. Next: WINDOW_1 in 144min
+2026-04-06 20:37:06 | INFO | main | ----------------------------------------
+2026-04-06 20:37:06 | INFO | main | Outside windows. Next: WINDOW_1 in 143min
+2026-04-06 20:38:06 | INFO | main | ----------------------------------------
+2026-04-06 20:38:06 | INFO | main | Outside windows. Next: WINDOW_1 in 142min
+2026-04-06 20:39:06 | INFO | main | ----------------------------------------
+2026-04-06 20:39:06 | INFO | main | Outside windows. Next: WINDOW_1 in 141min
+2026-04-06 20:40:06 | INFO | main | ----------------------------------------
+2026-04-06 20:40:06 | INFO | main | Outside windows. Next: WINDOW_1 in 140min
+2026-04-06 20:41:06 | INFO | main | ----------------------------------------
+2026-04-06 20:41:06 | INFO | main | Outside windows. Next: WINDOW_1 in 139min
+2026-04-06 20:42:06 | INFO | main | ----------------------------------------
+2026-04-06 20:42:06 | INFO | main | Outside windows. Next: WINDOW_1 in 138min
+2026-04-06 20:43:06 | INFO | main | ----------------------------------------
+2026-04-06 20:43:06 | INFO | main | Outside windows. Next: WINDOW_1 in 137min
+2026-04-06 20:44:06 | INFO | main | ----------------------------------------
+2026-04-06 20:44:06 | INFO | main | Outside windows. Next: WINDOW_1 in 136min
+2026-04-06 20:45:06 | INFO | main | ----------------------------------------
+2026-04-06 20:45:06 | INFO | main | Outside windows. Next: WINDOW_1 in 135min
+2026-04-06 20:46:06 | INFO | main | ----------------------------------------
+2026-04-06 20:46:06 | INFO | main | Outside windows. Next: WINDOW_1 in 134min
+2026-04-06 20:47:06 | INFO | main | ----------------------------------------
+2026-04-06 20:47:06 | INFO | main | Outside windows. Next: WINDOW_1 in 133min
+2026-04-06 20:48:06 | INFO | main | ----------------------------------------
+2026-04-06 20:48:06 | INFO | main | Outside windows. Next: WINDOW_1 in 132min
+2026-04-06 20:49:06 | INFO | main | ----------------------------------------
+2026-04-06 20:49:06 | INFO | main | Outside windows. Next: WINDOW_1 in 131min
+2026-04-06 20:50:06 | INFO | main | ----------------------------------------
+2026-04-06 20:50:06 | INFO | main | Outside windows. Next: WINDOW_1 in 130min
+2026-04-06 20:51:06 | INFO | main | ----------------------------------------
+2026-04-06 20:51:06 | INFO | main | Outside windows. Next: WINDOW_1 in 129min
+2026-04-06 20:52:06 | INFO | main | ----------------------------------------
+2026-04-06 20:52:06 | INFO | main | Outside windows. Next: WINDOW_1 in 128min
+2026-04-06 20:53:06 | INFO | main | ----------------------------------------
+2026-04-06 20:53:06 | INFO | main | Outside windows. Next: WINDOW_1 in 127min
+2026-04-06 20:54:06 | INFO | main | ----------------------------------------
+2026-04-06 20:54:06 | INFO | main | Outside windows. Next: WINDOW_1 in 126min
+2026-04-06 20:55:06 | INFO | main | ----------------------------------------
+2026-04-06 20:55:06 | INFO | main | Outside windows. Next: WINDOW_1 in 125min
+2026-04-06 20:56:06 | INFO | main | ----------------------------------------
+2026-04-06 20:56:06 | INFO | main | Outside windows. Next: WINDOW_1 in 124min
+2026-04-06 20:57:06 | INFO | main | ----------------------------------------
+2026-04-06 20:57:06 | INFO | main | Outside windows. Next: WINDOW_1 in 123min
+2026-04-06 20:58:06 | INFO | main | ----------------------------------------
+2026-04-06 20:58:06 | INFO | main | Outside windows. Next: WINDOW_1 in 122min
+2026-04-06 20:59:06 | INFO | main | ----------------------------------------
+2026-04-06 20:59:06 | INFO | main | Outside windows. Next: WINDOW_1 in 121min
+2026-04-06 21:00:06 | INFO | main | ----------------------------------------
+2026-04-06 21:00:06 | INFO | main | Outside windows. Next: WINDOW_1 in 120min
+2026-04-06 21:01:06 | INFO | main | ----------------------------------------
+2026-04-06 21:01:06 | INFO | main | Outside windows. Next: WINDOW_1 in 119min
+2026-04-06 21:02:06 | INFO | main | ----------------------------------------
+2026-04-06 21:02:06 | INFO | main | Outside windows. Next: WINDOW_1 in 118min
+2026-04-06 21:03:06 | INFO | main | ----------------------------------------
+2026-04-06 21:03:06 | INFO | main | Outside windows. Next: WINDOW_1 in 117min
+2026-04-06 21:04:06 | INFO | main | ----------------------------------------
+2026-04-06 21:04:06 | INFO | main | Outside windows. Next: WINDOW_1 in 116min
+2026-04-06 21:05:06 | INFO | main | ----------------------------------------
+2026-04-06 21:05:06 | INFO | main | Outside windows. Next: WINDOW_1 in 115min
+2026-04-06 21:06:06 | INFO | main | ----------------------------------------
+2026-04-06 21:06:06 | INFO | main | Outside windows. Next: WINDOW_1 in 114min
+2026-04-06 21:07:06 | INFO | main | ----------------------------------------
+2026-04-06 21:07:06 | INFO | main | Outside windows. Next: WINDOW_1 in 113min
+2026-04-06 21:08:06 | INFO | main | ----------------------------------------
+2026-04-06 21:08:06 | INFO | main | Outside windows. Next: WINDOW_1 in 112min
+2026-04-06 21:09:06 | INFO | main | ----------------------------------------
+2026-04-06 21:09:06 | INFO | main | Outside windows. Next: WINDOW_1 in 111min
+2026-04-06 21:10:06 | INFO | main | ----------------------------------------
+2026-04-06 21:10:06 | INFO | main | Outside windows. Next: WINDOW_1 in 110min
+2026-04-06 21:11:06 | INFO | main | ----------------------------------------
+2026-04-06 21:11:06 | INFO | main | Outside windows. Next: WINDOW_1 in 109min
+2026-04-06 21:12:06 | INFO | main | ----------------------------------------
+2026-04-06 21:12:06 | INFO | main | Outside windows. Next: WINDOW_1 in 108min
+2026-04-06 21:13:06 | INFO | main | ----------------------------------------
+2026-04-06 21:13:06 | INFO | main | Outside windows. Next: WINDOW_1 in 107min
+2026-04-06 21:14:06 | INFO | main | ----------------------------------------
+2026-04-06 21:14:06 | INFO | main | Outside windows. Next: WINDOW_1 in 106min
+2026-04-06 21:15:06 | INFO | main | ----------------------------------------
+2026-04-06 21:15:06 | INFO | main | Outside windows. Next: WINDOW_1 in 105min
+2026-04-06 21:16:06 | INFO | main | ----------------------------------------
+2026-04-06 21:16:06 | INFO | main | Outside windows. Next: WINDOW_1 in 104min
+2026-04-06 21:17:06 | INFO | main | ----------------------------------------
+2026-04-06 21:17:06 | INFO | main | Outside windows. Next: WINDOW_1 in 103min
+2026-04-06 21:18:06 | INFO | main | ----------------------------------------
+2026-04-06 21:18:06 | INFO | main | Outside windows. Next: WINDOW_1 in 102min
+2026-04-06 21:19:06 | INFO | main | ----------------------------------------
+2026-04-06 21:19:06 | INFO | main | Outside windows. Next: WINDOW_1 in 101min
+2026-04-06 21:20:06 | INFO | main | ----------------------------------------
+2026-04-06 21:20:06 | INFO | main | Outside windows. Next: WINDOW_1 in 100min
+2026-04-06 21:21:06 | INFO | main | ----------------------------------------
+2026-04-06 21:21:06 | INFO | main | Outside windows. Next: WINDOW_1 in 99min
+2026-04-06 21:22:06 | INFO | main | ----------------------------------------
+2026-04-06 21:22:06 | INFO | main | Outside windows. Next: WINDOW_1 in 98min
+2026-04-06 21:23:06 | INFO | main | ----------------------------------------
+2026-04-06 21:23:06 | INFO | main | Outside windows. Next: WINDOW_1 in 97min
+2026-04-06 21:24:06 | INFO | main | ----------------------------------------
+2026-04-06 21:24:06 | INFO | main | Outside windows. Next: WINDOW_1 in 96min
+2026-04-06 21:25:06 | INFO | main | ----------------------------------------
+2026-04-06 21:25:06 | INFO | main | Outside windows. Next: WINDOW_1 in 95min
+2026-04-06 21:26:06 | INFO | main | ----------------------------------------
+2026-04-06 21:26:06 | INFO | main | Outside windows. Next: WINDOW_1 in 94min
+2026-04-06 21:27:07 | INFO | main | ----------------------------------------
+2026-04-06 21:27:07 | INFO | main | Outside windows. Next: WINDOW_1 in 93min
+2026-04-06 21:28:07 | INFO | main | ----------------------------------------
+2026-04-06 21:28:07 | INFO | main | Outside windows. Next: WINDOW_1 in 92min
+2026-04-06 21:29:07 | INFO | main | ----------------------------------------
+2026-04-06 21:29:07 | INFO | main | Outside windows. Next: WINDOW_1 in 91min
+2026-04-06 21:30:07 | INFO | main | ----------------------------------------
+2026-04-06 21:30:07 | INFO | main | Outside windows. Next: WINDOW_1 in 90min
+2026-04-06 21:31:07 | INFO | main | ----------------------------------------
+2026-04-06 21:31:07 | INFO | main | Outside windows. Next: WINDOW_1 in 89min
+2026-04-06 21:32:07 | INFO | main | ----------------------------------------
+2026-04-06 21:32:07 | INFO | main | Outside windows. Next: WINDOW_1 in 88min
+2026-04-06 21:33:07 | INFO | main | ----------------------------------------
+2026-04-06 21:33:07 | INFO | main | Outside windows. Next: WINDOW_1 in 87min
+2026-04-06 21:34:07 | INFO | main | ----------------------------------------
+2026-04-06 21:34:07 | INFO | main | Outside windows. Next: WINDOW_1 in 86min
+2026-04-06 21:35:07 | INFO | main | ----------------------------------------
+2026-04-06 21:35:07 | INFO | main | Outside windows. Next: WINDOW_1 in 85min
+2026-04-06 21:36:07 | INFO | main | ----------------------------------------
+2026-04-06 21:36:07 | INFO | main | Outside windows. Next: WINDOW_1 in 84min
+2026-04-06 21:37:07 | INFO | main | ----------------------------------------
+2026-04-06 21:37:07 | INFO | main | Outside windows. Next: WINDOW_1 in 83min
+2026-04-06 21:38:07 | INFO | main | ----------------------------------------
+2026-04-06 21:38:07 | INFO | main | Outside windows. Next: WINDOW_1 in 82min
+2026-04-06 21:39:07 | INFO | main | ----------------------------------------
+2026-04-06 21:39:07 | INFO | main | Outside windows. Next: WINDOW_1 in 81min
+2026-04-06 21:40:07 | INFO | main | ----------------------------------------
+2026-04-06 21:40:07 | INFO | main | Outside windows. Next: WINDOW_1 in 80min
+2026-04-06 21:41:07 | INFO | main | ----------------------------------------
+2026-04-06 21:41:07 | INFO | main | Outside windows. Next: WINDOW_1 in 79min
+2026-04-06 21:42:07 | INFO | main | ----------------------------------------
+2026-04-06 21:42:07 | INFO | main | Outside windows. Next: WINDOW_1 in 78min
+2026-04-06 21:43:07 | INFO | main | ----------------------------------------
+2026-04-06 21:43:07 | INFO | main | Outside windows. Next: WINDOW_1 in 77min
+2026-04-06 21:44:07 | INFO | main | ----------------------------------------
+2026-04-06 21:44:07 | INFO | main | Outside windows. Next: WINDOW_1 in 76min
+2026-04-06 21:45:07 | INFO | main | ----------------------------------------
+2026-04-06 21:45:07 | INFO | main | Outside windows. Next: WINDOW_1 in 75min
+2026-04-06 21:46:07 | INFO | main | ----------------------------------------
+2026-04-06 21:46:07 | INFO | main | Outside windows. Next: WINDOW_1 in 74min
+2026-04-06 21:47:07 | INFO | main | ----------------------------------------
+2026-04-06 21:47:07 | INFO | main | Outside windows. Next: WINDOW_1 in 73min
+2026-04-06 21:48:07 | INFO | main | ----------------------------------------
+2026-04-06 21:48:07 | INFO | main | Outside windows. Next: WINDOW_1 in 72min
+2026-04-06 21:49:07 | INFO | main | ----------------------------------------
+2026-04-06 21:49:07 | INFO | main | Outside windows. Next: WINDOW_1 in 71min
+2026-04-06 21:50:07 | INFO | main | ----------------------------------------
+2026-04-06 21:50:07 | INFO | main | Outside windows. Next: WINDOW_1 in 70min
+2026-04-06 21:51:07 | INFO | main | ----------------------------------------
+2026-04-06 21:51:07 | INFO | main | Outside windows. Next: WINDOW_1 in 69min
+2026-04-06 21:52:07 | INFO | main | ----------------------------------------
+2026-04-06 21:52:07 | INFO | main | Outside windows. Next: WINDOW_1 in 68min
+2026-04-06 21:53:07 | INFO | main | ----------------------------------------
+2026-04-06 21:53:07 | INFO | main | Outside windows. Next: WINDOW_1 in 67min
+2026-04-06 21:54:07 | INFO | main | ----------------------------------------
+2026-04-06 21:54:07 | INFO | main | Outside windows. Next: WINDOW_1 in 66min
+2026-04-06 21:55:07 | INFO | main | ----------------------------------------
+2026-04-06 21:55:07 | INFO | main | Outside windows. Next: WINDOW_1 in 65min
+2026-04-06 21:56:07 | INFO | main | ----------------------------------------
+2026-04-06 21:56:07 | INFO | main | Outside windows. Next: WINDOW_1 in 64min
+2026-04-06 21:57:07 | INFO | main | ----------------------------------------
+2026-04-06 21:57:07 | INFO | main | Outside windows. Next: WINDOW_1 in 63min
+2026-04-06 21:58:07 | INFO | main | ----------------------------------------
+2026-04-06 21:58:07 | INFO | main | Outside windows. Next: WINDOW_1 in 62min
+2026-04-06 21:59:07 | INFO | main | ----------------------------------------
+2026-04-06 21:59:07 | INFO | main | Outside windows. Next: WINDOW_1 in 61min
+2026-04-06 22:00:07 | INFO | main | ----------------------------------------
+2026-04-06 22:00:07 | INFO | main | Outside windows. Next: WINDOW_1 in 60min
+2026-04-06 22:01:07 | INFO | main | ----------------------------------------
+2026-04-06 22:01:07 | INFO | main | Outside windows. Next: WINDOW_1 in 59min
+2026-04-06 22:02:07 | INFO | main | ----------------------------------------
+2026-04-06 22:02:07 | INFO | main | Outside windows. Next: WINDOW_1 in 58min
+2026-04-06 22:03:07 | INFO | main | ----------------------------------------
+2026-04-06 22:03:07 | INFO | main | Outside windows. Next: WINDOW_1 in 57min
+2026-04-06 22:04:07 | INFO | main | ----------------------------------------
+2026-04-06 22:04:07 | INFO | main | Outside windows. Next: WINDOW_1 in 56min
+2026-04-06 22:05:07 | INFO | main | ----------------------------------------
+2026-04-06 22:05:07 | INFO | main | Outside windows. Next: WINDOW_1 in 55min
+2026-04-06 22:06:07 | INFO | main | ----------------------------------------
+2026-04-06 22:06:07 | INFO | main | Outside windows. Next: WINDOW_1 in 54min
+2026-04-06 22:07:07 | INFO | main | ----------------------------------------
+2026-04-06 22:07:07 | INFO | main | Outside windows. Next: WINDOW_1 in 53min
+2026-04-06 22:08:07 | INFO | main | ----------------------------------------
+2026-04-06 22:08:07 | INFO | main | Outside windows. Next: WINDOW_1 in 52min
+2026-04-06 22:09:07 | INFO | main | ----------------------------------------
+2026-04-06 22:09:07 | INFO | main | Outside windows. Next: WINDOW_1 in 51min
+2026-04-06 22:10:07 | INFO | main | ----------------------------------------
+2026-04-06 22:10:07 | INFO | main | Outside windows. Next: WINDOW_1 in 50min
+2026-04-06 22:11:07 | INFO | main | ----------------------------------------
+2026-04-06 22:11:07 | INFO | main | Outside windows. Next: WINDOW_1 in 49min
+2026-04-06 22:12:07 | INFO | main | ----------------------------------------
+2026-04-06 22:12:07 | INFO | main | Outside windows. Next: WINDOW_1 in 48min
+2026-04-06 22:13:07 | INFO | main | ----------------------------------------
+2026-04-06 22:13:07 | INFO | main | Outside windows. Next: WINDOW_1 in 47min
+2026-04-06 22:14:07 | INFO | main | ----------------------------------------
+2026-04-06 22:14:07 | INFO | main | Outside windows. Next: WINDOW_1 in 46min
+2026-04-06 22:15:07 | INFO | main | ----------------------------------------
+2026-04-06 22:15:07 | INFO | main | Outside windows. Next: WINDOW_1 in 45min
+2026-04-06 22:16:07 | INFO | main | ----------------------------------------
+2026-04-06 22:16:07 | INFO | main | Outside windows. Next: WINDOW_1 in 44min
+2026-04-06 22:17:07 | INFO | main | ----------------------------------------
+2026-04-06 22:17:07 | INFO | main | Outside windows. Next: WINDOW_1 in 43min
+2026-04-06 22:18:07 | INFO | main | ----------------------------------------
+2026-04-06 22:18:07 | INFO | main | Outside windows. Next: WINDOW_1 in 42min
+2026-04-06 22:19:07 | INFO | main | ----------------------------------------
+2026-04-06 22:19:07 | INFO | main | Outside windows. Next: WINDOW_1 in 41min
+2026-04-06 22:20:07 | INFO | main | ----------------------------------------
+2026-04-06 22:20:07 | INFO | main | Outside windows. Next: WINDOW_1 in 40min
+2026-04-06 22:21:07 | INFO | main | ----------------------------------------
+2026-04-06 22:21:07 | INFO | main | Outside windows. Next: WINDOW_1 in 39min
+2026-04-06 22:22:07 | INFO | main | ----------------------------------------
+2026-04-06 22:22:07 | INFO | main | Outside windows. Next: WINDOW_1 in 38min
+2026-04-06 22:23:07 | INFO | main | ----------------------------------------
+2026-04-06 22:23:07 | INFO | main | Outside windows. Next: WINDOW_1 in 37min
+2026-04-06 22:24:07 | INFO | main | ----------------------------------------
+2026-04-06 22:24:07 | INFO | main | Outside windows. Next: WINDOW_1 in 36min
+2026-04-06 22:25:07 | INFO | main | ----------------------------------------
+2026-04-06 22:25:07 | INFO | main | Outside windows. Next: WINDOW_1 in 35min
+2026-04-06 22:26:07 | INFO | main | ----------------------------------------
+2026-04-06 22:26:07 | INFO | main | Outside windows. Next: WINDOW_1 in 34min
+2026-04-06 22:27:07 | INFO | main | ----------------------------------------
+2026-04-06 22:27:07 | INFO | main | Outside windows. Next: WINDOW_1 in 33min
+2026-04-06 22:28:07 | INFO | main | ----------------------------------------
+2026-04-06 22:28:07 | INFO | main | Outside windows. Next: WINDOW_1 in 32min
+2026-04-06 22:29:07 | INFO | main | ----------------------------------------
+2026-04-06 22:29:07 | INFO | main | Outside windows. Next: WINDOW_1 in 31min
+2026-04-06 22:30:07 | INFO | main | ----------------------------------------
+2026-04-06 22:30:07 | INFO | main | Outside windows. Next: WINDOW_1 in 30min
+2026-04-06 22:31:07 | INFO | main | ----------------------------------------
+2026-04-06 22:31:07 | INFO | main | Outside windows. Next: WINDOW_1 in 29min
+2026-04-06 22:32:07 | INFO | main | ----------------------------------------
+2026-04-06 22:32:07 | INFO | main | Outside windows. Next: WINDOW_1 in 28min
+2026-04-06 22:33:07 | INFO | main | ----------------------------------------
+2026-04-06 22:33:07 | INFO | main | Outside windows. Next: WINDOW_1 in 27min
+2026-04-06 22:34:07 | INFO | main | ----------------------------------------
+2026-04-06 22:34:07 | INFO | main | Outside windows. Next: WINDOW_1 in 26min
+2026-04-06 22:35:07 | INFO | main | ----------------------------------------
+2026-04-06 22:35:07 | INFO | main | Outside windows. Next: WINDOW_1 in 25min
+2026-04-06 22:36:07 | INFO | main | ----------------------------------------
+2026-04-06 22:36:07 | INFO | main | Outside windows. Next: WINDOW_1 in 24min
+2026-04-06 22:37:07 | INFO | main | ----------------------------------------
+2026-04-06 22:37:07 | INFO | main | Outside windows. Next: WINDOW_1 in 23min
+2026-04-06 22:38:07 | INFO | main | ----------------------------------------
+2026-04-06 22:38:07 | INFO | main | Outside windows. Next: WINDOW_1 in 22min
+2026-04-06 22:39:07 | INFO | main | ----------------------------------------
+2026-04-06 22:39:07 | INFO | main | Outside windows. Next: WINDOW_1 in 21min
+2026-04-06 22:40:07 | INFO | main | ----------------------------------------
+2026-04-06 22:40:07 | INFO | main | Outside windows. Next: WINDOW_1 in 20min
+2026-04-06 22:41:07 | INFO | main | ----------------------------------------
+2026-04-06 22:41:07 | INFO | main | Outside windows. Next: WINDOW_1 in 19min
+2026-04-06 22:42:07 | INFO | main | ----------------------------------------
+2026-04-06 22:42:07 | INFO | main | Outside windows. Next: WINDOW_1 in 18min
+2026-04-06 22:43:07 | INFO | main | ----------------------------------------
+2026-04-06 22:43:07 | INFO | main | Outside windows. Next: WINDOW_1 in 17min
+2026-04-06 22:44:07 | INFO | main | ----------------------------------------
+2026-04-06 22:44:07 | INFO | main | Outside windows. Next: WINDOW_1 in 16min
+2026-04-06 22:45:07 | INFO | main | ----------------------------------------
+2026-04-06 22:45:07 | INFO | main | Outside windows. Next: WINDOW_1 in 15min
+2026-04-06 22:46:07 | INFO | main | ----------------------------------------
+2026-04-06 22:46:07 | INFO | main | Outside windows. Next: WINDOW_1 in 14min
+2026-04-06 22:47:07 | INFO | main | ----------------------------------------
+2026-04-06 22:47:07 | INFO | main | Outside windows. Next: WINDOW_1 in 13min
+2026-04-06 22:48:07 | INFO | main | ----------------------------------------
+2026-04-06 22:48:07 | INFO | main | Outside windows. Next: WINDOW_1 in 12min
+2026-04-06 22:49:07 | INFO | main | ----------------------------------------
+2026-04-06 22:49:07 | INFO | main | Outside windows. Next: WINDOW_1 in 11min
+2026-04-06 22:50:07 | INFO | main | ----------------------------------------
+2026-04-06 22:50:07 | INFO | main | Outside windows. Next: WINDOW_1 in 10min
+2026-04-06 22:51:07 | INFO | main | ----------------------------------------
+2026-04-06 22:51:07 | INFO | main | Outside windows. Next: WINDOW_1 in 9min
+2026-04-06 22:52:07 | INFO | main | ----------------------------------------
+2026-04-06 22:52:07 | INFO | main | Outside windows. Next: WINDOW_1 in 8min
+2026-04-06 22:53:07 | INFO | main | ----------------------------------------
+2026-04-06 22:53:07 | INFO | main | Outside windows. Next: WINDOW_1 in 7min
+2026-04-06 22:54:07 | INFO | main | ----------------------------------------
+2026-04-06 22:54:07 | INFO | main | Outside windows. Next: WINDOW_1 in 6min
+2026-04-06 22:55:07 | INFO | main | ----------------------------------------
+2026-04-06 22:55:07 | INFO | main | Outside windows. Next: WINDOW_1 in 5min
+2026-04-06 22:56:07 | INFO | main | ----------------------------------------
+2026-04-06 22:56:07 | INFO | main | Outside windows. Next: WINDOW_1 in 4min
+2026-04-06 22:57:07 | INFO | main | ----------------------------------------
+2026-04-06 22:57:07 | INFO | main | Outside windows. Next: WINDOW_1 in 3min
+2026-04-06 22:58:07 | INFO | main | ----------------------------------------
+2026-04-06 22:58:07 | INFO | main | Outside windows. Next: WINDOW_1 in 2min
+2026-04-06 22:59:07 | INFO | main | ----------------------------------------
+2026-04-06 22:59:07 | INFO | main | Outside windows. Next: WINDOW_1 in 1min
+2026-04-06 23:00:07 | INFO | main | ----------------------------------------
+2026-04-06 23:00:07 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 0min in | session=ASIA
+2026-04-06 23:00:07 | INFO | main | Fetching market data...
+2026-04-06 23:00:08 | INFO | main | Calculating indicators...
+2026-04-06 23:00:08 | INFO | main | Running prefilter...
+2026-04-06 23:00:08 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:00:08 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:15:02 | INFO | main | ----------------------------------------
+2026-04-06 23:15:02 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 15min in | session=ASIA
+2026-04-06 23:15:02 | INFO | main | Fetching market data...
+2026-04-06 23:15:02 | INFO | main | Calculating indicators...
+2026-04-06 23:15:02 | INFO | main | Running prefilter...
+2026-04-06 23:15:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:15:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:30:03 | INFO | main | ----------------------------------------
+2026-04-06 23:30:03 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 30min in | session=ASIA
+2026-04-06 23:30:03 | INFO | main | Fetching market data...
+2026-04-06 23:30:03 | INFO | main | Calculating indicators...
+2026-04-06 23:30:03 | INFO | main | Running prefilter...
+2026-04-06 23:30:03 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:30:03 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:45:02 | INFO | main | ----------------------------------------
+2026-04-06 23:45:02 | INFO | main | WINDOW: Asia Open (23:00-07:00) | 45min in | session=ASIA
+2026-04-06 23:45:02 | INFO | main | Fetching market data...
+2026-04-06 23:45:02 | INFO | main | Calculating indicators...
+2026-04-06 23:45:02 | INFO | main | Running prefilter...
+2026-04-06 23:45:02 | INFO | prefilter | FAIL | htf_conflict: H4=BUY vs M15=SELL
+2026-04-06 23:45:02 | INFO | main | Prefilter FAIL: htf_conflict: H4=BUY vs M15=SELL
