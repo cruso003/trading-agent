@@ -132,13 +132,17 @@ def build_context(
             "momentum_quality": _describe_momentum(indicators.get("M30", {})),
         },
 
-        # M15 indicators
+        # M15 indicators (swings populated for PLAYBOOK v2.0 SL reference)
         "m15": {
             "direction": indicators.get("M15", {}).get("direction", "NEUTRAL"),
             "strength": indicators.get("M15", {}).get("strength", 0),
             "rsi": indicators.get("M15", {}).get("rsi", 50),
             "last_closed_price": indicators.get("M15", {}).get("last_close", current_price),
             "body_ratio": indicators.get("M15", {}).get("body_ratio", 0),
+            "m15_swing_low": indicators.get("m15_swings", {}).get("m15_swing_low", 0),
+            "m15_swing_high": indicators.get("m15_swings", {}).get("m15_swing_high", 0),
+            "m15_swing_low_age": indicators.get("m15_swings", {}).get("m15_swing_low_age", 0),
+            "m15_swing_high_age": indicators.get("m15_swings", {}).get("m15_swing_high_age", 0),
         },
 
         # Session levels

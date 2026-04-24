@@ -24,7 +24,7 @@ from agent.windows import (
 from agent.market import Market
 from agent.indicators import (
     analyse_timeframe, get_session_levels, get_price_position,
-    get_m30_sequence, calculate_atr,
+    get_m30_sequence, get_m15_swings, calculate_atr,
 )
 from agent.prefilter import run_prefilter
 from agent.news import get_news_context
@@ -366,6 +366,7 @@ def main():
 
             session_levels = get_session_levels(candles_h1)
             m30_sequence = get_m30_sequence(candles_m30, count=5)
+            m15_swings = get_m15_swings(candles_m15, lookback=10)
 
             # ATR average for anomaly detection
             atr_average = calculate_atr(candles_h1, period=20) if len(candles_h1) >= 21 else h1_data["atr"]
@@ -379,6 +380,7 @@ def main():
                 "current_price": current_price,
                 "spread": price_info.get("spread", 0),
                 "m30_sequence": m30_sequence,
+                "m15_swings": m15_swings,
                 "atr_average": atr_average,
             }
 
@@ -465,9 +467,12 @@ def main():
                 "confidence": analysis.get("confidence"),
                 "pillar_trend": analysis.get("pillar_trend"),
                 "pillar_momentum": analysis.get("pillar_momentum"),
-                "pillar_location": analysis.get("pillar_location"),
+                # DB column retains legacy name `pillar_location` for row
+                # compatibility; PLAYBOOK v2.0 renames this to pillar_structure.
+                "pillar_location": analysis.get("pillar_structure"),
                 "setup_type": analysis.get("setup_type"),
-                "base_zone": analysis.get("base_zone"),
+                # DB column `base_zone` now stores the M15 swing SL reference.
+                "base_zone": analysis.get("m15_swing_ref"),
                 "news_risk": news_context.get("risk_level"),
                 "news_summary": news_context.get("summary"),
                 "skip_reason": analysis.get("skip_reason"),
