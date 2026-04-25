@@ -1,7 +1,13 @@
 """
 GoldTrader AI Agent — Trade Executor
-MT5 order placement, position management, and TP1 monitoring.
+MT5 order placement, position management, and trade monitoring.
 Reference: ARCHITECTURE.md Section 8, Section 13 (concurrency), mt5-bot/src
+
+Monitor behaviour (PLAYBOOK v2.0 Trade Management):
+  Phase 1 — entry → +10pt: SL stays at original structural level
+  Phase 2 — +10pt → TP1: SL moves to breakeven (locks 0-loss)
+  Phase 3 — TP1 hit: close 50%, SL already at BE
+  Phase 4 — 90min elapsed: force-close remaining position
 """
 
 import logging
@@ -11,6 +17,11 @@ from datetime import datetime, timezone
 from typing import Optional
 
 logger = logging.getLogger("executor")
+
+# Trade management thresholds (points, 1 point = $0.01 on XAUUSD)
+BE_TRIGGER_POINTS = 10.0       # Move SL to BE after +10pt favourable
+TIME_STOP_MINUTES = 90         # Force-close after 90 minutes
+MONITOR_INTERVAL_SECONDS = 30
 
 
 class Executor:
@@ -252,7 +263,7 @@ class Executor:
 
     def check_positions(self) -> list:
         """Get all open positions with our magic number."""
-        return self.market.get_open_positions(magic=MAGIC_NUMBER)
+        return self.market.get_open_positions(magic=self.magic)
 
     # ------------------------------------------------------------------
     # TP1 Monitoring (background daemon thread)
@@ -277,62 +288,103 @@ class Executor:
 
     def _tp1_monitor_loop(self, ticket_id: int, tp1_level: float, entry_price: float, direction: str):
         """
-        Background loop: check every 30s if TP1 is hit.
-        When TP1 hit:
-        1. Close 50% of position
-        2. Move SL to breakeven (entry price)
-        3. Send Telegram notification
-        4. Log to database
-        5. Thread exits
+        Background loop: poll every 30s. Implements PLAYBOOK v2.0 Phases 2-4.
+
+        Events handled (each triggers once, then flag stays set):
+          BE: when favourable excursion >= BE_TRIGGER_POINTS → move SL to
+              entry price. Protects capital early on slow-mover scalps.
+          TP1: when price reaches tp1_level → close 50%, ensure SL at BE,
+               notify Telegram.
+          TIME_STOP: when open for TIME_STOP_MINUTES → force-close the
+                     remainder. Quick scalps do not hold for hours.
+        Thread exits when position closes or time stop fires.
         """
+        be_moved = False
+        tp1_hit = False
+        started_at = time.monotonic()
+
         try:
             while True:
-                time.sleep(30)
+                time.sleep(MONITOR_INTERVAL_SECONDS)
 
                 pos = self._get_mt5_position(ticket_id)
                 if pos is None:
-                    logger.info(f"TP1 monitor: position {ticket_id} closed, exiting")
+                    logger.info(
+                        f"Monitor: position {ticket_id} closed externally, exiting"
+                    )
                     break
 
                 current_price = pos.price_current
+                elapsed_minutes = (time.monotonic() - started_at) / 60.0
 
-                # Check if TP1 hit
-                tp1_hit = False
-                if direction == "BUY" and current_price >= tp1_level:
-                    tp1_hit = True
-                elif direction == "SELL" and current_price <= tp1_level:
-                    tp1_hit = True
+                # Favourable-points excursion (points, not dollars)
+                if direction == "BUY":
+                    favourable_points = (current_price - entry_price) * 100
+                else:
+                    favourable_points = (entry_price - current_price) * 100
 
-                if tp1_hit:
-                    logger.info(f"TP1 HIT | ticket={ticket_id}, price={current_price}, tp1={tp1_level}")
+                # -----------------------------------------------------------
+                # Phase 2 — early breakeven once +BE_TRIGGER_POINTS reached
+                # -----------------------------------------------------------
+                if not be_moved and favourable_points >= BE_TRIGGER_POINTS:
+                    if self.modify_sl(ticket_id, entry_price):
+                        logger.info(
+                            f"BE | ticket={ticket_id}, +{favourable_points:.1f}pt, "
+                            f"SL→{entry_price}"
+                        )
+                        be_moved = True
 
-                    # Close 50% of position
-                    half_volume = round(pos.volume / 2, 2)
-                    if half_volume >= 0.01:
-                        self.close_partial(ticket_id, half_volume)
+                # -----------------------------------------------------------
+                # Phase 3 — TP1 hit: close 50%, ensure SL at BE, notify
+                # -----------------------------------------------------------
+                if not tp1_hit:
+                    reached = (
+                        (direction == "BUY" and current_price >= tp1_level)
+                        or (direction == "SELL" and current_price <= tp1_level)
+                    )
+                    if reached:
+                        logger.info(
+                            f"TP1 HIT | ticket={ticket_id}, price={current_price}, "
+                            f"tp1={tp1_level}"
+                        )
 
-                    # Move SL to breakeven
-                    self.modify_sl(ticket_id, entry_price)
+                        half_volume = round(pos.volume / 2, 2)
+                        if half_volume >= 0.01:
+                            self.close_partial(ticket_id, half_volume)
 
-                    # Update database
-                    self.db.update_trade(ticket_id, {
-                        "exit_reason": "TP1_PARTIAL",
-                    })
+                        if not be_moved:
+                            self.modify_sl(ticket_id, entry_price)
+                            be_moved = True
 
-                    # Send Telegram
-                    self.notifier.send_tp1_hit({
-                        "direction": direction,
-                        "ticket_id": ticket_id,
-                        "tp1_price": tp1_level,
-                        "entry_price": entry_price,
-                        "tp2_price": pos.tp,
-                        "account_type": self.config.active_account,
-                    })
+                        self.db.update_trade(ticket_id, {
+                            "exit_reason": "TP1_PARTIAL",
+                        })
+                        self.notifier.send_tp1_hit({
+                            "direction": direction,
+                            "ticket_id": ticket_id,
+                            "tp1_price": tp1_level,
+                            "entry_price": entry_price,
+                            "tp2_price": pos.tp,
+                            "account_type": self.config.active_account,
+                        })
+                        tp1_hit = True
 
+                # -----------------------------------------------------------
+                # Phase 4 — 90min time stop: force-close remainder
+                # -----------------------------------------------------------
+                if elapsed_minutes >= TIME_STOP_MINUTES:
+                    logger.info(
+                        f"TIME STOP | ticket={ticket_id}, "
+                        f"{elapsed_minutes:.0f}min elapsed, force-closing"
+                    )
+                    if self.close_trade(ticket_id):
+                        self.db.update_trade(ticket_id, {
+                            "exit_reason": "TIME_STOP_90MIN",
+                        })
                     break
 
         except Exception as e:
-            logger.error(f"TP1 monitor error for {ticket_id}: {e}")
+            logger.error(f"Monitor error for {ticket_id}: {e}")
         finally:
             self._monitor_threads.pop(ticket_id, None)
 

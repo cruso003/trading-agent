@@ -105,7 +105,7 @@ class GPTAgent:
             "tp2": claude_analysis.get("tp2"),
             "invalidation": claude_analysis.get("invalidation"),
             "setup_type": claude_analysis.get("setup_type"),
-            "base_zone": claude_analysis.get("base_zone"),
+            "m15_swing_ref": claude_analysis.get("m15_swing_ref"),
         }
 
         # Simplified market context

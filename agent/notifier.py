@@ -172,7 +172,7 @@ class Notifier:
         for p, label in [
             ("pillar_trend", "Trend"),
             ("pillar_momentum", "Mom"),
-            ("pillar_location", "Loc"),
+            ("pillar_structure", "Str"),
         ]:
             val = analysis.get(p, "?")
             pillars.append(f"{label}:{val}")

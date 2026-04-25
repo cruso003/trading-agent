@@ -335,6 +335,93 @@ def get_price_position(price: float, high: float, low: float) -> float:
     return round(max(0.0, min(100.0, position)), 1)
 
 
+def get_m15_swings(candles_m15: list, lookback: int = 10) -> dict:
+    """
+    Find the most recent M15 swing low and swing high.
+
+    A swing low is a candle whose low is lower than both neighbours.
+    A swing high is a candle whose high is higher than both neighbours.
+    When no pivot is found in the lookback, fall back to the simple
+    lookback extreme so Claude always has a structural anchor.
+
+    Used by PLAYBOOK v2.0 as the structural SL reference:
+      BUY:  SL = m15_swing_low - 5 to 8 pt buffer
+      SELL: SL = m15_swing_high + 5 to 8 pt buffer
+
+    Args:
+        candles_m15: list of M15 candle dicts (chronological)
+        lookback: how many most-recent M15 candles to scan
+
+    Returns:
+        {
+          "m15_swing_low": float or 0,
+          "m15_swing_high": float or 0,
+          "m15_swing_low_age": int (bars back, 0 if not found),
+          "m15_swing_high_age": int,
+        }
+    """
+    if not candles_m15 or len(candles_m15) < 3:
+        return {
+            "m15_swing_low": 0.0,
+            "m15_swing_high": 0.0,
+            "m15_swing_low_age": 0,
+            "m15_swing_high_age": 0,
+        }
+
+    # Scan the window [-lookback-1 : -1] for pivots. Last candle is the
+    # trigger and cannot be a pivot yet (no right neighbour).
+    window_end = len(candles_m15) - 1  # exclude the trigger candle
+    window_start = max(1, window_end - lookback)
+
+    swing_low = 0.0
+    swing_low_age = 0
+    swing_high = 0.0
+    swing_high_age = 0
+
+    for i in range(window_end - 1, window_start - 1, -1):
+        prev_c = candles_m15[i - 1]
+        this_c = candles_m15[i]
+        next_c = candles_m15[i + 1]
+
+        # Swing low: this candle's low is the local minimum
+        if swing_low == 0.0:
+            if this_c["low"] < prev_c["low"] and this_c["low"] < next_c["low"]:
+                swing_low = this_c["low"]
+                swing_low_age = window_end - i
+
+        # Swing high: this candle's high is the local maximum
+        if swing_high == 0.0:
+            if this_c["high"] > prev_c["high"] and this_c["high"] > next_c["high"]:
+                swing_high = this_c["high"]
+                swing_high_age = window_end - i
+
+        if swing_low > 0 and swing_high > 0:
+            break
+
+    # Fallback: no strict 3-bar pivot found within lookback.
+    # Use the simple lookback extreme so Claude always has an anchor.
+    # Slice excludes the trigger candle (window_end) by design.
+    lookback_slice = candles_m15[window_start:window_end]
+    if swing_low == 0.0 and lookback_slice:
+        lows = [c["low"] for c in lookback_slice]
+        swing_low = min(lows)
+        # Age = bars back from trigger (which sits at window_end)
+        low_idx_in_slice = lows.index(swing_low)
+        swing_low_age = window_end - (window_start + low_idx_in_slice)
+    if swing_high == 0.0 and lookback_slice:
+        highs = [c["high"] for c in lookback_slice]
+        swing_high = max(highs)
+        high_idx_in_slice = highs.index(swing_high)
+        swing_high_age = window_end - (window_start + high_idx_in_slice)
+
+    return {
+        "m15_swing_low": round(swing_low, 3),
+        "m15_swing_high": round(swing_high, 3),
+        "m15_swing_low_age": swing_low_age,
+        "m15_swing_high_age": swing_high_age,
+    }
+
+
 def get_m30_sequence(candles_m30: list, count: int = 5) -> list:
     """
     Last N M30 candles summarized for context.
