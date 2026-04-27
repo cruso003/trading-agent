@@ -106,6 +106,7 @@ def build_context(
         "h4": {
             "direction": indicators.get("H4", {}).get("direction", "NEUTRAL"),
             "strength": indicators.get("H4", {}).get("strength", 0),
+            "consecutive_bars": indicators.get("H4", {}).get("consecutive_bars", 0),
             "rsi": indicators.get("H4", {}).get("rsi", 50),
             "macd": indicators.get("H4", {}).get("macd", {}),
             "macd_slope": indicators.get("H4", {}).get("macd", {}).get("slope", "flat"),
@@ -115,6 +116,7 @@ def build_context(
         "h1": {
             "direction": indicators.get("H1", {}).get("direction", "NEUTRAL"),
             "strength": indicators.get("H1", {}).get("strength", 0),
+            "consecutive_bars": indicators.get("H1", {}).get("consecutive_bars", 0),
             "rsi": indicators.get("H1", {}).get("rsi", 50),
             "macd": indicators.get("H1", {}).get("macd", {}),
             "macd_slope": indicators.get("H1", {}).get("macd", {}).get("slope", "flat"),
