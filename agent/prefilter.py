@@ -4,9 +4,10 @@ Zero API cost local signal gate. Runs before any paid API call.
 Reference: PLAYBOOK.md v2.0 Quick-Scalp Three Pillars
 
 Strategy:
-  Gate only on fundamentals — H4 permission, position conflicts,
-  cooling periods, and basic M15 trigger sanity. Leave the full
-  structural read to Claude.
+  Gate only on fundamentals — H4 has *some* direction, cooling
+  periods, and basic M15 trigger sanity. Leave the full structural
+  read (including stale-H4 reversal calls) to Claude. Position-limit
+  enforcement lives in risk.py (post-Claude).
 """
 
 import logging
@@ -25,11 +26,19 @@ def run_prefilter(
     """
     Zero-cost local prefilter. Checks in order:
     1. H4 has a directional bias (not NEUTRAL)
-    2. H4 strength >= 4 (provides permission side)
-    3. Not in post-trade / post-loss cooling period
-    4. No same-direction position already open
-    5. Latest closed M15 candle has at least some body (>= 25%)
+    2. Not in post-trade / post-loss cooling period
+    3. Latest closed M15 candle has at least some body (>= 25%)
        — blocks full-doji indecision; Claude handles nuance above
+
+    H4 strength is intentionally NOT gated. Strength = |EMA9 - EMA21|
+    / ATR on H4, which stays low (<3) for hours after weekend gaps,
+    Monday opens, and post-news reversals — exactly when fresh moves
+    fire on the lower TFs. Claude reads strength from the context and
+    decides whether H4 is a valid permission side, stale, or in
+    transition.
+
+    Position-limit enforcement (max_positions) runs post-Claude in
+    risk.py, so we don't need a duplicate-direction proxy here.
 
     All location / range / compression / base logic is delegated
     to Claude, which has the full structural picture via the
@@ -64,19 +73,7 @@ def run_prefilter(
         return (False, reason)
 
     # ---------------------------------------------------------------
-    # Check 2: H4 strength must meet permission threshold.
-    # Playbook v2.0 requires H4 strength >= 4 for directional trades.
-    # Rejection_reversal at H4 strength 3-4 is still possible, but
-    # we let Claude make that call with its full view. Below 3 is
-    # pure chop — no edge worth an API call.
-    # ---------------------------------------------------------------
-    if h4_strength < 3.0:
-        reason = f"h4_weak: H4={h4_dir} strength {h4_strength:.1f} < 3.0"
-        logger.info(f"FAIL | {reason}")
-        return (False, reason)
-
-    # ---------------------------------------------------------------
-    # Check 3: Post-trade / post-loss cooling period
+    # Check 2: Post-trade / post-loss cooling period
     # Enforces the 20min (normal) / 30min (after loss) cooling.
     # ---------------------------------------------------------------
     last_trade_time = db.get_last_trade_time()
@@ -106,22 +103,7 @@ def run_prefilter(
             logger.warning(f"Cooling period check error: {e}")
 
     # ---------------------------------------------------------------
-    # Check 4: No same-direction position already open
-    # Intended direction = H4 direction (our permission side).
-    # ---------------------------------------------------------------
-    if market_positions:
-        for pos in market_positions:
-            if pos.get("direction") == h4_dir:
-                ticket = pos.get("ticket", "?")
-                reason = (
-                    f"duplicate_direction: already {h4_dir} open "
-                    f"(ticket {ticket})"
-                )
-                logger.info(f"FAIL | {reason}")
-                return (False, reason)
-
-    # ---------------------------------------------------------------
-    # Check 5: M15 trigger candle has minimum body.
+    # Check 3: M15 trigger candle has minimum body.
     # A full doji (body < 25%) means no trigger has fired —
     # nothing to evaluate. This is the only momentum check we
     # do locally; Claude handles direction-specific body analysis.

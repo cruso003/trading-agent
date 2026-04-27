@@ -66,41 +66,64 @@ Any single FAIL = SKIP.
 
 Timeframes: H4 and H1
 
-H4 is the permission side. It tells us what direction is allowed.
+H4 is the permission side, but H4 LAGS. Strength = |EMA9 - EMA21|
+/ ATR on H4. After weekend gaps, Monday opens, post-news flips,
+and fresh reversals, H4 strength stays low (often < 3) for many
+hours while the EMAs cross. The lower TFs see the move first.
 
-- H4 direction = BUY and strength ≥ 4 → BUY setups allowed
-- H4 direction = SELL and strength ≥ 4 → SELL setups allowed
-- H4 NEUTRAL or strength < 4 → no directional bias, SKIP
-  (exception: rejection_reversal at major level when H4 weak)
+Read H4 as one of three states:
 
-H1 confirms the trend is alive.
+A) **Established H4** — direction is set and strength ≥ 4
+   → trade in H4 direction. This is the textbook permission case.
 
-- H1 direction matches H4 with strength ≥ 3 → PASS
-- H1 direction matches H4 with strength 1-3 and MACD expanding
-  in H4 direction → PASS
-- H1 neutral OR pulling back (opposite of H4) but MACD slope
-  returning toward H4 direction → WARN (still tradeable)
-- H1 direction strongly opposite H4 with strength ≥ 4 and
-  MACD expanding against H4 → FAIL
+B) **Stale / lagging H4** — H4 has direction but strength < 4 AND
+   one or more of the following is true:
+     - is_week_open_session is true (Monday Asia)
+     - h4.consecutive_bars ≤ 2 (just flipped)
+     - M30 dominant_direction and most recent M15 trigger both
+       point counter to H4 with strong bodies (≥ 50%)
+     - Day_of_week is Monday and H1 already flipped against H4
+   → H4 is catching up. Trade with M30 + M15 alignment, NOT with
+   the lagging H4 direction. This is exactly the fresh-trend setup.
+   The intended trade direction is the M30/M15 direction, and H4
+   is treated as "in transition" rather than as a veto.
 
-Key insight: H1 pulling back WITHIN the H4 trend is not a
-problem — it is often the setup. What matters is whether the
-pullback is exhausting or extending.
+C) **No bias H4** — H4 is NEUTRAL (EMAs equal). Skip directional
+   trades. Only rejection_reversal at a major level qualifies.
+
+H1 confirms the trade is alive in the *intended* direction
+(which equals H4 in case A, equals M30/M15 in case B):
+
+- H1 matches intended direction with strength ≥ 3 → PASS
+- H1 matches intended direction with strength 1-3 and MACD
+  expanding in intended direction → PASS
+- H1 neutral OR pulling back (opposite of intended) but MACD
+  slope returning toward intended direction → WARN (still tradeable)
+- H1 strongly opposite intended with strength ≥ 4 and MACD
+  expanding against intended → FAIL
+
+Key insight: H1 pulling back WITHIN the trend is not a problem —
+it is often the setup. What matters is whether the pullback is
+exhausting or extending.
 
 Trend pillar PASSES when:
 
-- H4 has direction AND strength ≥ 4
-- H1 aligned with H4 OR recovering toward H4
+- Case A (H4 strength ≥ 4) AND H1 aligned with H4, OR
+- Case B (stale H4) AND M30 sequence + M15 trigger + H1 all
+  align in the same counter-H4 direction with strength
 
 Trend pillar WARNS when:
 
-- H4 direction with strength 3-4 (weak permission)
-- H1 flat or pulling back but MACD turning back toward H4
+- Case A with H4 strength 3-4 (weak but established)
+- Case B with H1 still flat (M30/M15 leading, H1 not in yet)
 
 Trend pillar FAILS when:
 
-- H4 NEUTRAL or strength < 3
-- H1 strongly opposing H4 with expanding counter-MACD
+- H4 NEUTRAL (no direction at all) AND not a rejection_reversal
+- H4 established (strength ≥ 4) and trade is *against* H4 with
+  no rejection_reversal justification
+- H1 strongly opposing intended direction with expanding
+  counter-MACD
 
 ### Pillar 2: Momentum — Execution Truth
 
@@ -201,7 +224,8 @@ next M15 closed back in the trend direction with conviction.
 
 Conditions:
 
-- H4 strength ≥ 4, H1 aligned with H4
+- Trend pillar PASSES (Case A established H4, OR Case B stale-H4
+  fresh reversal where M30+M15+H1 align in the *new* direction)
 - M30 last 3 candles: ≥ 2 in trend direction with bodies ≥ 50%
 - Last closed M15 body ≥ 45% in trend direction
 - M15 RSI in 40-70 range (BUY) or 30-60 range (SELL)
@@ -210,6 +234,12 @@ Conditions:
 This is the most common scalp. Does not require a base.
 Does not require session extreme. Price can be anywhere
 in the session range.
+
+Stale-H4 example (Monday Asia open): H4=SELL strength 0.8 from
+last week's downtrend, weekend gap up, M30 last 3 = BULL/BULL/BULL
+with bodies 60%+, M15 trigger BULL 55%, H1 just flipped BUY.
+This is momentum_continuation in the NEW BUY direction — H4 is
+catching up, do not wait for it.
 
 Example: H4=SELL, H1=SELL, price grinding down, one M15
 bounce candle (bullish 40%) then next M15 closes bearish 62%
@@ -221,10 +251,11 @@ Deeper pullback against H4 that has exhausted, M15 reclaiming.
 
 Conditions:
 
-- H4 strength ≥ 4, H1 pulled back counter to H4 but MACD slope
-  turning back toward H4
+- Trend pillar PASSES (established or stale-H4 case)
+- H1 pulled back counter to intended direction but MACD slope
+  turning back toward intended direction
 - 2-4 M30 candles pulled back (body ratios declining, exhaustion)
-- Most recent M15 closed in H4 direction with body ≥ 45%
+- Most recent M15 closed in intended direction with body ≥ 45%
 - M15 swing SL beyond the pullback extreme + buffer
 
 Slightly better RR than momentum_continuation because entry
